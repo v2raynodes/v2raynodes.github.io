@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-19312.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>创建线程方式三实现Callable接口</title>
+        <meta name="description" content="一、步骤 1、定义一个线程任务类实现Callable接口，声明线程执行的结果类型。 2、重写线程任务类的call()方法，这个方法可以直接返回执行的结果。 3、创建一个Callable的线程任务对象。" />
+        <link rel="icon" href="__ADDON__/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>创建线程方式三实现Callable接口</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2><a id="_0" rel="nofollow"></a>一、步骤</h2> <p>1、定义一个线程任务类实现Callable接口，声明线程执行的结果类型。<br /> 2、重写线程任务类的call()方法，这个方法可以直接返回执行的结果。<br /> 3、创建一个Callable的线程任务对象。<br /> 4、把Callable的线程任务对象包装成一个未来任务对象。<br /> 5、把未来任务对象包装成线程对象。<br /> 6、调用线程start()方法，启动线程。<br /> 7、获取线程执行结果。</p> <h2><a id="_9" rel="nofollow"></a>二、代码</h2> <pre><code class="prism language-java"><span class="token keyword">package</span><span class="token namespace">com<span class="token punctuation">.</span>zjl<span class="token punctuation">.</span>study<span class="token punctuation">.</span></span>多线程<span class="token punctuation">;</span><span class="token keyword">import</span><span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">Callable</span></span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">FutureTask</span></span><span class="token punctuation">;</span><span class="token comment">/**  * Created by zjl 2022/5/28  **/</span><span class="token keyword">public</span><span class="token keyword">class</span> 创建线程方式<span class="token number">3</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 3、创建一个Callable的线程任务对象。</span><span class="token class-name">MyCallable</span> myCallable<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">MyCallable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 4、把Callable的线程任务对象包装成一个未来任务对象。</span><span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> futureTask<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>myCallable<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 5、把未来任务对象包装成线程对象。</span><span class="token class-name">Thread</span> thread<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Thread</span><span class="token punctuation">(</span>futureTask<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 6、调用线程start()方法，启动线程。</span>     thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 7、获取线程执行结果。如果此时获取结果的任务还未执行完成，会让出CPU，直至任务执行完成才获取结果。</span><span class="token keyword">try</span><span class="token punctuation">{<!-- --></span><span class="token class-name">String</span> s<span class="token operator">=</span> futureTask<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">// 1、定义一个线程任务类实现Callable接口，声明线程执行的结果类型。</span><span class="token keyword">class</span><span class="token class-name">MyCallable</span><span class="token keyword">implements</span><span class="token class-name">Callable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token comment">// 2、重写线程任务类的call()方法，这个方法可以直接返回执行的结果。</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">String</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">throws</span><span class="token class-name">Exception</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token string">"子线程任务执行,线程名称为："</span><span class="token operator">+</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h2><a id="_58" rel="nofollow"></a>三、运行结果</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/9dbd52c4560893d38ed3be23de3543d0.jpg" alt="创建线程方式三实现Callable接口"></p> <h2><a id="_60" rel="nofollow"></a>四、优缺点</h2> </h1> <ul> <li>代码复杂</li> </ul> </h1> <ul> <li>线程任务只是实现了Callable接口，可以继续继承其他类，而且可以继续实现其他接口。</li> <li>同一个线程任务对象可以被包装成多个线程对象。</li> <li>适合多个线程去共享同一个资源。</li> <li>实现解耦操作，线程任务代码可以被多个线程共享，线程任务代码和线程独立。</li> <li>线程池可以放入Runnable接口和Callable接口。</li> <li>可以得到线程执行结果。</li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19311.htm">MySQL VARCHAR列的最大长度是多少？</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-shadowrocket-node.htm" title="「10月4日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「10月4日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-free-v2ray.htm" title="「9月6日」最高速度20.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「9月6日」最高速度20.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-23-free-clash.htm" title="「6月23日」最高速度22.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「6月23日」最高速度22.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-31-free-v2ray.htm" title="「7月31日」最高速度19.7M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅链接">「7月31日」最高速度19.7M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-19-node-share-links.htm" title="「6月19日」最高速度20.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「6月19日」最高速度20.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-clash-v2ray-ss-ssr.htm" title="「10月12日」最高速度19.2M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「10月12日」最高速度19.2M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-28-free-ssr-node.htm" title="「7月28日」最高速度22M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「7月28日」最高速度22M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-clash-node.htm" title="「9月25日」最高速度22.3M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「9月25日」最高速度22.3M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-2-clash-node.htm" title="「9月2日」最高速度19.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接">「9月2日」最高速度19.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-v2ray.htm" title="「11月5日」最高速度20.9M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接">「11月5日」最高速度20.9M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
