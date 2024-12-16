@@ -1,4 +1,4 @@
-# 「12月14日」最高速度21.9M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接  更新时间 2024-12-14 10:18:49
+# 「12月16日」最高速度19.3M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接  更新时间 2024-12-16 10:20:33
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2raynodes.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://v2raynodes.github.io/uploads/2024/12/0-20241214.yaml
-- https://v2raynodes.github.io/uploads/2024/12/1-20241214.yaml
-- https://v2raynodes.github.io/uploads/2024/12/2-20241214.yaml
-- https://v2raynodes.github.io/uploads/2024/12/3-20241214.yaml
-- https://v2raynodes.github.io/uploads/2024/12/4-20241214.yml
+- https://v2raynodes.github.io/uploads/2024/12/0-20241216.yaml
+- https://v2raynodes.github.io/uploads/2024/12/1-20241216.yaml
+- https://v2raynodes.github.io/uploads/2024/12/2-20241216.yaml
+- https://v2raynodes.github.io/uploads/2024/12/3-20241216.yaml
+- https://v2raynodes.github.io/uploads/2024/12/4-20241216.yml
 
 ### V2ray订阅链接
 
-- https://v2raynodes.github.io/uploads/2024/12/0-20241214.txt
-- https://v2raynodes.github.io/uploads/2024/12/1-20241214.txt
-- https://v2raynodes.github.io/uploads/2024/12/2-20241214.txt
-- https://v2raynodes.github.io/uploads/2024/12/3-20241214.txt
-- https://v2raynodes.github.io/uploads/2024/12/4-20241214.txt
+- https://v2raynodes.github.io/uploads/2024/12/0-20241216.txt
+- https://v2raynodes.github.io/uploads/2024/12/1-20241216.txt
+- https://v2raynodes.github.io/uploads/2024/12/2-20241216.txt
+- https://v2raynodes.github.io/uploads/2024/12/3-20241216.txt
+- https://v2raynodes.github.io/uploads/2024/12/4-20241216.txt
 
 ## 更多clash节点订阅 ：
 
