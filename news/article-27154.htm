@@ -2,12 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://v2raynodes.github.io" />
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-27154.htm" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>2024-08归档 - V2rayNodes节点订阅站</title>
-        <meta name="keywords" content="2024-08归档" />
-        <meta name="description" content="2024-08归档" />
+    <title>python mysql where in 对列表（list,,array）问题</title>
+        <meta name="description" content="例如有这么一个查询语句： select * from server where ip in (....) 同时一个存放ip 的列表 ：['1.1.1.1','2.2.2.2','2.2.2.2'] 我" />
         <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
@@ -56,34 +55,24 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>2024-08 归档</h1>
+                    <h1>python mysql where in 对列表（list,,array）问题</h1>
                 </div>
                 <div>
-                    <a href="/">首页</a> / <span>2024-08 归档</span>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                 </div>
             </div>
         </section><!-- End Breadcrumbs -->
-                <!-- ======= About Section ======= -->
+        <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-08-01">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-8-1-clash-v2ray-ss-ssr.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240603/39899952ca972eeb173ceea5f5cc4c95.webp" alt="「8月1日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-8-1-clash-v2ray-ss-ssr.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">
-                                        「8月1日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接                                    </h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了香港、美国、韩国、新加坡、欧洲、日本、加拿大等地区,最高速度可达19.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-08/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-08/">1</a></li><li><a href="/date/2024-08/page-2.htm">2</a></li><li><a href="/date/2024-08/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <p>例如有这么一个查询语句：</p> <p>select * from server where ip in (....)</p> <p>同时一个存放ip 的列表 ：['1.1.1.1','2.2.2.2','2.2.2.2']</p> <p>我们希望在查询语句的in中放入这个Ip列表，这里我们首先会想到的是用join来对这个列表处理成一个字符串，如下：</p> <pre><code class="language-python">&gt;&gt;&gt; a=['1.1.1.1','2.2.2.2','2.2.2.2'] &gt;&gt;&gt; ','.join(a)                       '1.1.1.1,2.2.2.2,2.2.2.2'</code></pre> <p>可以看到，join后的结果并不是我们想要的结果，因为引号的问题。所以我们会想到另外的办法：</p> <pre><code class="language-python">&gt;&gt;&gt; a=['1.1.1.1','2.2.2.2','2.2.2.2'] &gt;&gt;&gt; ','.join(["'%s'" % item for item in a]) "'1.1.1.1','2.2.2.2','2.2.2.2'"</code></pre> <p>同样会有引号的问题，这个时候我们可以通过这个字符串去掉前后的双引号来达到目的。</p> <p>但是，其实我们还有一种更安全更方便的方式，如下：</p> <pre><code class="language-python">&gt;&gt;&gt; a = ['1.1.1.1','2.2.2.2','3.3.3.3']                                                   &gt;&gt;&gt; select_str = 'select * from server where ip in (%s)' % ','.join(['%s'] * len(a))      &gt;&gt;&gt; select_str 'select * from server where ip in (%s,%s,%s)'</code></pre> <p>这里我们先根据Ip列表的长度来生成对应的参数位置，然后通过MySQLdb模块中的execute函数来执行：</p> <pre><code class="language-python">cursor.execute(select_str,a)</code></pre> <p>这样子就可以了</p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-26695.htm">猫咪多久就不认识自己的孩子了（猫咪多久就不认识自己的孩子了呢）</a></p>
+                                        <p>下一个：<a href="/news/article-27155.htm">宠物买卖交易合法吗（宠物买卖交易合法吗安全吗）</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -91,16 +80,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-shadowrocket-node.htm" title="「10月10日」最高速度21.9M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「10月10日」最高速度21.9M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-26-free-ssr-subscribe.htm" title="「8月26日」最高速度21.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「8月26日」最高速度21.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-shadowrocket-node.htm" title="「10月16日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「10月16日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-clash-node-daily-updates.htm" title="「12月11日」最高速度20M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「12月11日」最高速度20M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-28-free-ssr-node.htm" title="「7月28日」最高速度22M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「7月28日」最高速度22M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-18-free-shadowrocket-node.htm" title="「8月18日」最高速度19.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「8月18日」最高速度19.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-18659.htm" title="被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）">被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-high-speed-nodes.htm" title="「10月17日」最高速度22.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「10月17日」最高速度22.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-shadowrocket-node.htm" title="「11月10日」最高速度18.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「11月10日」最高速度18.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-shadowrocket-node.htm" title="「9月13日」最高速度18.3M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「9月13日」最高速度18.3M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19311.htm" title="MySQL VARCHAR列的最大长度是多少？">MySQL VARCHAR列的最大长度是多少？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe.htm" title="「11月2日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「11月2日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-14-clash-node.htm" title="「7月14日」最高速度19.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「7月14日」最高速度19.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-10-free-ssr-node.htm" title="「8月10日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「8月10日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-free-subscribe-node.htm" title="「10月20日」最高速度19M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「10月20日」最高速度19M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-subscribe-node.htm" title="「8月21日」最高速度22.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「8月21日」最高速度22.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-22-free-node-subscribe.htm" title="「8月22日」最高速度23M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「8月22日」最高速度23M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24104.htm" title="动物疫苗厂家排名前十（动物疫苗生产厂家排名）">动物疫苗厂家排名前十（动物疫苗生产厂家排名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-free-v2ray-subscribe.htm" title="「8月20日」最高速度22M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接">「8月20日」最高速度22M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-clash-windows.htm" title="「11月11日」最高速度18.7M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接">「11月11日」最高速度18.7M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
