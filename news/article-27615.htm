@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-27615.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>EasyExcel完成excel文件的导入导出</title>
+        <meta name="description" content="　常见的Excel分析框架有Apache poi 和EasyExcel， poi在另一篇已经介绍过了，详情可以看[https://www.cnblogs.com/jasmine-e/p/1606451" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>EasyExcel完成excel文件的导入导出</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>　常见的Excel分析框架有Apache poi 和EasyExcel， poi在另一篇已经介绍过了，详情可以看[<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/jasmine-e/p/16064518.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/jasmine-e/p/16064518.html</a>]。<br /> 这篇主要针对EasyExcel，它是阿里巴巴开源的一个excel处理框架，使用简单，节省内存。解析Excel时没有将文件数据一次性全部加载到内存中，而是从磁盘上一行行读取数据，逐个解析，因此大大减少占用内存。官网：[<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/alibaba/easyexcel"  target="_blank" rel="nofollow">https://github.com/alibaba/easyexcel</a>]。</p> </h1> <h2 id="一导入pom依赖">一、导入pom依赖</h2> <pre><code class="language-xml">&lt;dependencies&gt;      &lt;dependency&gt;         &lt;groupId&gt;com.alibaba&lt;/groupId&gt;         &lt;artifactId&gt;easyexcel&lt;/artifactId&gt;         &lt;version&gt;2.1.7&lt;/version&gt;     &lt;/dependency&gt;      &lt;dependency&gt;         &lt;groupId&gt;org.slf4j&lt;/groupId&gt;         &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;         &lt;version&gt;1.7.5&lt;/version&gt;     &lt;/dependency&gt;      &lt;dependency&gt;         &lt;groupId&gt;org.apache.xmlbeans&lt;/groupId&gt;         &lt;artifactId&gt;xmlbeans&lt;/artifactId&gt;         &lt;version&gt;3.1.0&lt;/version&gt;     &lt;/dependency&gt;      &lt;dependency&gt;         &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;         &lt;artifactId&gt;lombok&lt;/artifactId&gt;         &lt;version&gt;1.18.12&lt;/version&gt;     &lt;/dependency&gt;      &lt;dependency&gt;         &lt;groupId&gt;junit&lt;/groupId&gt;         &lt;artifactId&gt;junit&lt;/artifactId&gt;         &lt;version&gt;4.12&lt;/version&gt;     &lt;/dependency&gt;  &lt;/dependencies&gt;</code></pre> <h2 id="二创建实体类">二、创建实体类</h2> <pre><code class="language-java\">@Data public class ExcelStudentDTO {      @ExcelProperty("姓名")     private String name;      @ExcelProperty("生日")     private Date birthday;      @ExcelProperty("薪资")     private Double salary; }</code></pre> <h2 id=">三、导出excel</h2> <pre><code class="language-java">public class ExcelWriteTest {     @Test     public void simpleWriteXlsx() {         String fileName = "d:/excel/simpleWrite.xlsx"; //需要提前新建目录         // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭         EasyExcel.write(fileName, ExcelStudentDTO.class).sheet("模板").doWrite(data());     }          //辅助方法     private List&lt;ExcelStudentDTO&gt; data(){         List&lt;ExcelStudentDTO&gt; list = new ArrayList&lt;&gt;();          //算上标题，做多可写65536行         //超出：java.lang.IllegalArgumentException: Invalid row number (65536) outside allowable range (0..65535)         for (int i = 0; i &lt; 65535; i++) {             ExcelStudentDTO data = new ExcelStudentDTO();             data.setName("Helen" + i);             data.setBirthday(new Date());             data.setSalary(123456.1234);             list.add(data);         }          return list;     } }</code></pre> <h2 id="四读取excel">四、读取Excel</h2> <h3 id="--创建监听器">- 创建监听器</h3> <pre><code class="language-java">@Slf4j public class ExcelStudentDTOListener extends AnalysisEventListener&lt;ExcelStudentDTO&gt; {          /**      * 这个每一条数据解析都会来调用      */     @Override     public void invoke(ExcelStudentDTO data, AnalysisContext context) {         log.info("解析到一条数据:{}", data);      }      /**      * 所有数据解析完成了 都会来调用      */     @Override     public void doAfterAllAnalysed(AnalysisContext context) {         log.info("所有数据解析完成！");     } }</code></pre> <h3 id="--读取数据">- 读取数据</h3> <pre><code class="language-java">public class ExcelReadTest {      /**      * 最简单的读      */     @Test     public void simpleReadXlsx() {          String fileName = "d:/excel/simpleWrite.xlsx";         // 这里默认读取第一个sheet         EasyExcel.read(fileName, ExcelStudentDTO.class, new ExcelStudentDTOListener()).sheet().doRead();     }      @Test     public void simpleReadXls() {          String fileName = "d:/excel/simpleWrite.xls";         EasyExcel.read(fileName, ExcelStudentDTO.class, new ExcelStudentDTOListener()).excelType(ExcelTypeEnum.XLS).sheet().doRead();     } }</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27155.htm">宠物买卖交易合法吗（宠物买卖交易合法吗安全吗）</a></p>
+                                        <p>下一个：<a href="/news/article-27617.htm">包含福州免费领养宠物的平台有哪些的词条</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28075.htm" title="动物医院无限金币版（动物医院无广告下载）">动物医院无限金币版（动物医院无广告下载）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-v2ray.htm" title="「11月23日」最高速度19.1M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接">「11月23日」最高速度19.1M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19768.htm" title="离我最近的美容院在哪里广州市黄埔区大沙地（广州市黄埔区大沙地有什么好玩的）">离我最近的美容院在哪里广州市黄埔区大沙地（广州市黄埔区大沙地有什么好玩的）</a></li>
+                        <li class="py-2"><a href="/news/article-18659.htm" title="被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）">被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-10-node-share-links.htm" title="「6月10日」最高速度20.6M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「6月10日」最高速度20.6M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-clash-v2ray-ss-ssr.htm" title="「11月25日」最高速度22.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接">「11月25日」最高速度22.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-14-free-clash.htm" title="「8月14日」最高速度18.3M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「8月14日」最高速度18.3M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-15-free-v2ray.htm" title="「7月15日」最高速度21M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「7月15日」最高速度21M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-free-node-subscribe.htm" title="「8月16日」最高速度20.9M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「8月16日」最高速度20.9M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
