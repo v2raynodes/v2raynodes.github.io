@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-28547.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>vue+Echarts绘制动态折线图</title>
+        <meta name="description" content="1 引入Echarts 1.1 安装 使用如下命令通过 npm 安装 ECharts npm install echarts --save  注：本文安装Echarts版本为：“echarts”: “" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>vue+Echarts绘制动态折线图</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h3><a id="1_Echarts_1" rel="nofollow"></a>1 引入Echarts</h3> <h4><a id="11__3" rel="nofollow"></a>1.1 安装</h4> <p>使用如下命令通过 npm 安装 ECharts</p> <pre><code class="prism language-text">npm install echarts --save</code></pre> <blockquote> <p>注：本文安装Echarts版本为：“echarts”: “5.2.1”</p> </blockquote> <h4><a id="12__13" rel="nofollow"></a>1.2 引入</h4> <p>安装完成以后，可以将<code>echarts</code>全部引入，这样一来，我们可以在该页面使用<code>echarts</code>所有组件；引入代码如下：</p> <pre><code class="prism language-js"><span class="token keyword">import</span><span class="token operator">*</span><span class="token keyword">as</span> echarts<span class="token keyword">from</span><span class="token string">"echarts"</span><span class="token punctuation">;</span></code></pre> <h4><a id="13__21" rel="nofollow"></a>1.3 基本使用</h4> <p>vue+Echarts基本使用请见：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/m0_46309087/article/details/121689772"  rel="nofollow">在Vue项目中引入 ECharts</a></p> <h3><a id="2__25" rel="nofollow"></a>2 动态折线图</h3> <h4><a id="21__27" rel="nofollow"></a>2.1 基本折线图</h4> <p>折线图得基本引入使用见:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/m0_46309087/article/details/122465520"  rel="nofollow">vue引入Echarts画折线图</a></p> <h4><a id="22__33" rel="nofollow"></a>2.2 动态折线图</h4> <p>动态折线图分两种，一种为动渲染静态数据，产生动态变化得动画效果的折线图，另一种为动态渲染动态数据产生折线图；一下给出我国人口总数20年变化示例。如图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/662fcd636d5c7d5f6a80ccf5fc39dd55.jpg" alt="vue+Echarts绘制动态折线图"></p> <p>实现以上效果最重要的就是利用<code>Echarts</code>中的动画属性<code>animation</code>；并使用<code>animationDuration</code>控制动画时间；配置项代码如下：</p> <pre><code class="prism language-js"><span class="token keyword">const</span> optionFree<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>         xAxis<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>           data<span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>xData<span class="token punctuation">}</span><span class="token punctuation">,</span>         yAxis<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>           name<span class="token operator">:</span><span class="token string">"人口(万）"</span><span class="token punctuation">,</span>           min<span class="token operator">:</span><span class="token string">"120000"</span><span class="token punctuation">,</span>           max<span class="token operator">:</span><span class="token string">"150000"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>         animation<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>         animationDuration<span class="token operator">:</span><span class="token number">20000</span><span class="token punctuation">,</span>         series<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{<!-- --></span>             data<span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>populationData<span class="token punctuation">,</span>             type<span class="token operator">:</span><span class="token string">"line"</span><span class="token punctuation">,</span>             smooth<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>             endLabel<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>               show<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre> <p>以上动图效果中还是用了<code>endLabel</code>属性控制在折线最后展示数值。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28076.htm">沈阳宠物狗免费领养中心（沈阳宠物狗免费领养中心在哪）</a></p>
+                                        <p>下一个：<a href="/news/article-28548.htm">vue实现简单无缝滚动效果_vue.js</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-22061.htm" title="猫咪宠物疫苗间隔多久打（猫咪疫苗隔多久打一次一针）">猫咪宠物疫苗间隔多久打（猫咪疫苗隔多久打一次一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-shadowrocket-node.htm" title="「12月10日」最高速度21.1M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「12月10日」最高速度21.1M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25292.htm" title="幼猫首次驱虫是体内还是体外（幼猫首次驱虫是体内还是体外驱虫）">幼猫首次驱虫是体内还是体外（幼猫首次驱虫是体内还是体外驱虫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-node-share.htm" title="「8月23日」最高速度19.6M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接">「8月23日」最高速度19.6M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-node-share-links.htm" title="「10月19日」最高速度19.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费机场订阅链接">「10月19日」最高速度19.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-18-free-v2ray.htm" title="「9月18日」最高速度22.7M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「9月18日」最高速度22.7M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-27-clash-windows.htm" title="「7月27日」最高速度21.7M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「7月27日」最高速度21.7M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-11-free-v2ray-subscribe.htm" title="「6月11日」最高速度21.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「6月11日」最高速度21.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-clash.htm" title="「8月24日」最高速度21.8M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接">「8月24日」最高速度21.8M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-node-share-links.htm" title="「9月23日」最高速度22.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「9月23日」最高速度22.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

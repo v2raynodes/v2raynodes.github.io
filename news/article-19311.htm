@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>MySQL VARCHAR列的最大长度是多少？</title>
         <meta name="description" content="VARCHAR数据类型将可变长度字符数据存储在单字节和多字节字符中。此数据类型的语法为VARCHAR(n)，其中n是最大字符数，并且必须在创建表时指定。在MySQL 5.03之前，n的值可以在0到25" />
-        <link rel="icon" href="__ADDON__/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -67,7 +67,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<p>VARCHAR数据类型将可变长度字符数据存储在单字节和多字节字符中。此数据类型的语法为VARCHAR(n)，其中n是最大字符数，并且必须在创建表时指定。在MySQL 5.03之前，n的值可以在0到255之间，但是在MySQL 5.03之前和之后，n的值可以在0到65,535之间。</p> <p>VARCHAR中存储的最大字符数取决于最大行大小和使用的字符集。如果我们使用的是ASCII字符集，那么它可以存储65,535个字符，因为ASCII每个字符使用1字节。另一方面，如果我们使用utf8字符集，则字符限制为21,844，因为utf8每个字符使用3个字节。最大行大小限制为65,535字节，这意味着包括所有列在内，其最大长度不能超过65,535字节。</p> <h2>示例</h2> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;var_test(FName&nbsp;Varchar(32765)&nbsp;NOT&nbsp;NULL,&nbsp;LName&nbsp;Varchar(32766) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT&nbsp;NULL);</pre> <p>上面的查询创建了一个包含两列的表，即FName Varchar(32765)和LName Varchar(32766)。总长度为32765 + 2 + 32766 + 2 = 65535（每列使用2个字节来存储长度）。</p> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;var_test1(FName&nbsp;varchar(32766)&nbsp;NOT&nbsp;NULL,&nbsp;LName&nbsp;Varchar(32766) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT&nbsp;NULL); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ERROR&nbsp;1118&nbsp;(42000):&nbsp;Row&nbsp;size&nbsp;too&nbsp;large.&nbsp;The&nbsp;maximum&nbsp;row&nbsp;size&nbsp;for&nbsp;the&nbsp;used &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type,&nbsp;not&nbsp;counting&nbsp;BLOBs,&nbsp;is&nbsp;65535.&nbsp;You&nbsp;have&nbsp;to&nbsp;change&nbsp;some&nbsp;columns&nbsp;to&nbsp;TEXT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;BLOBs</pre> <p>将长度增加1字节，MySQL就会返回一个错误，如上面的查询所示。</p> <div></div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>VARCHAR数据类型将可变长度字符数据存储在单字节和多字节字符中。此数据类型的语法为VARCHAR(n)，其中n是最大字符数，并且必须在创建表时指定。在MySQL 5.03之前，n的值可以在0到255之间，但是在MySQL 5.03之前和之后，n的值可以在0到65,535之间。</p> <p>VARCHAR中存储的最大字符数取决于最大行大小和使用的字符集。如果我们使用的是ASCII字符集，那么它可以存储65,535个字符，因为ASCII每个字符使用1字节。另一方面，如果我们使用utf8字符集，则字符限制为21,844，因为utf8每个字符使用3个字节。最大行大小限制为65,535字节，这意味着包括所有列在内，其最大长度不能超过65,535字节。</p> <h2>示例</h2> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;var_test(FName&nbsp;Varchar(32765)&nbsp;NOT&nbsp;NULL,&nbsp;LName&nbsp;Varchar(32766) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT&nbsp;NULL);</pre> <p>上面的查询创建了一个包含两列的表，即FName Varchar(32765)和LName Varchar(32766)。总长度为32765 + 2 + 32766 + 2 = 65535（每列使用2个字节来存储长度）。</p> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;var_test1(FName&nbsp;varchar(32766)&nbsp;NOT&nbsp;NULL,&nbsp;LName&nbsp;Varchar(32766) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT&nbsp;NULL); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ERROR&nbsp;1118&nbsp;(42000):&nbsp;Row&nbsp;size&nbsp;too&nbsp;large.&nbsp;The&nbsp;maximum&nbsp;row&nbsp;size&nbsp;for&nbsp;the&nbsp;used &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type,&nbsp;not&nbsp;counting&nbsp;BLOBs,&nbsp;is&nbsp;65535.&nbsp;You&nbsp;have&nbsp;to&nbsp;change&nbsp;some&nbsp;columns&nbsp;to&nbsp;TEXT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;BLOBs</pre> <p>将长度增加1字节，MySQL就会返回一个错误，如上面的查询所示。</p> <div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-18660.htm">女性红斑狼疮有什么症状(女性红斑狼疮能治愈吗?)</a></p>
                                         <p>下一个：<a href="/news/article-19312.htm">创建线程方式三实现Callable接口</a></p>
@@ -80,16 +81,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-v2ray-subscribe.htm" title="「10月18日」最高速度18.1M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「10月18日」最高速度18.1M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21601.htm" title="动物疫苗属于生物农业吗 动物疫苗属于生物农业吗为什么">动物疫苗属于生物农业吗 动物疫苗属于生物农业吗为什么</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-8-free-shadowrocket-node.htm" title="「7月8日」最高速度22.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「7月8日」最高速度22.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-29-free-node-subscribe.htm" title="「6月29日」最高速度21.9M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「6月29日」最高速度21.9M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-clash-v2ray-ss-ssr.htm" title="「11月25日」最高速度22.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接">「11月25日」最高速度22.5M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-13-free-high-speed-nodes.htm" title="「10月13日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接">「10月13日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-ssr-subscribe.htm" title="「9月15日」最高速度19.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「9月15日」最高速度19.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-node-share-links.htm" title="「10月7日」最高速度18.7M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「10月7日」最高速度18.7M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-12-free-node-subscribe.htm" title="「8月12日」最高速度22M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接">「8月12日」最高速度22M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20688.htm" title="广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）">广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-5-node-share-links.htm" title="「6月5日」最高速度18.4M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「6月5日」最高速度18.4M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-clash-node.htm" title="「11月17日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「11月17日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-subscribe-node.htm" title="「8月21日」最高速度22.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「8月21日」最高速度22.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-clash-v2ray-ss-ssr.htm" title="「9月5日」最高速度23M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「9月5日」最高速度23M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-14-clash-node.htm" title="「7月14日」最高速度19.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「7月14日」最高速度19.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25762.htm" title="dell设置ssd启动（dell设置从ssd启动）">dell设置ssd启动（dell设置从ssd启动）</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-21-clash-windows.htm" title="「11月21日」最高速度18.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「11月21日」最高速度18.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-ssr-subscribe.htm" title="「6月14日」最高速度20.1M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「6月14日」最高速度20.1M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -101,7 +102,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -136,6 +137,15 @@
     <footer id="footer">
         <div class="container py-4">
             <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                 <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
             </div>
         </div>

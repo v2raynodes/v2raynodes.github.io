@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-28548.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>vue实现简单无缝滚动效果_vue.js</title>
+        <meta name="description" content="本文实例为大家分享了vue实现简单无缝滚动的具体代码，供大家参考，具体内容如下 效果  实现思路  在vue中如何复制一份列表出来呢且不能丢失绑定的事件，很简单使用slot插槽，使用两个插槽我们就拥有" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>vue实现简单无缝滚动效果_vue.js</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>本文实例为大家分享了vue实现简单无缝滚动的具体代码，供大家参考，具体内容如下</p> <p>效果</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220423/2127b839598f042dfb6dd7269b8448d0.jpg"></p> <p>实现思路</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220423/1cf9667f3400b28bc294a9a328a3816e.jpg"></p> <p>在vue中如何复制一份列表出来呢且不能丢失绑定的事件，很简单使用slot插槽，使用两个插槽我们就拥有了两个列表</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div class="listScroll" ref="box"&gt;      &lt;slot&gt;&lt;/slot&gt;      &lt;slot&gt;&lt;/slot&gt;  &lt;/div&gt;</pre> </div> <p>组件完整代码</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;    &lt;div class="listScroll" ref="box"&gt;      &lt;slot&gt;&lt;/slot&gt;      &lt;slot&gt;&lt;/slot&gt;    &lt;/div&gt;  &lt;/template&gt;    &lt;script&gt;  export default {    name: "listScroll",    created() {},    mounted() {      //在盒子内容高度小于可视高度时不滚动      if (this.boxHeight &lt; this.ele0.clientHeight) {        this.start(this.height);        this.setEvet();      } else {        this.isScroll = false;      }    },    props: {      speed: {        default: 1,        type: Number,      },    },    computed: {      //第一个slot      ele0() {        return this.$refs.box.children[0];      },      //第二个slot      ele1() {        return this.$refs.box.children[1];      },      //盒子的可视高度      boxHeight() {        return this.$refs.box.clientHeight;      },    },    data() {      return {        height: 0,        isScroll: true,      };    },    methods: {      //鼠标移入停止滚动 移出继续滚动      setEvet() {        this.$refs.box.onmouseenter = () =&gt; {          this.isScroll = false;          // this.height = 0;        };        this.$refs.box.onmouseleave = () =&gt; {          this.isScroll = true;          this.$nextTick(() =&gt; {            this.start(this.height);          });        };      },      //滚动方法      start(height) {        this.ele0.style = `transform:translateY(-${height}px);`;        this.ele1.style = `height:${this.boxHeight}px;transform:translateY(-${height}px);overflow: hidden;`;        if (height &gt;= this.ele0.clientHeight) {          this.height = 0;        } else {          this.height += this.speed;        }        if (!this.isScroll) return;        window.requestAnimationFrame(() =&gt; {          this.start(this.height);        });      },    },  };  &lt;/script&gt;    &lt;style lang="less" scoped&gt;  .listScroll {    overflow: hidden;  }  .hover {    overflow-y: auto;  }  .hide {    display: none;  }  &lt;/style&gt;</pre> </div> <p>使用</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;    &lt;div class="scroll"&gt;      &lt;list-scroll class="box" :speed="1"&gt;        &lt;div class="list"&gt;          &lt;div class="item" v-for="item in list" :key="item.xh"&gt;            &lt;span&gt;{{ item.xh }}&lt;/span            &gt;&lt;span&gt;{{ item.label }}&lt;/span&gt;          &lt;/div&gt;        &lt;/div&gt;      &lt;/list-scroll&gt;    &lt;/div&gt;  &lt;/template&gt;    &lt;script&gt;  import ListScroll from "@/components/listScroll";  export default {    name: "scroll",    components: { ListScroll },    data() {      return {        list: new Array(10)          .fill(1)          .map((s, i) =&gt; ({ xh: i + 1, label: "hello wrold" })),      };    },  };  &lt;/script&gt;    &lt;style lang="less" scoped&gt;  .box {    height: 300px;  }  .list {    padding: 0 10px;    width: 300px;    .item {      display: flex;      justify-content: space-between;      padding: 5px 0;      cursor: pointer;      &amp;:hover {        background-color: #95a5a6;      }    }  }  &lt;/style&gt;</pre> </div> <p>至此一个简单的无缝滚动就完成了（vue2和vue3通用）</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28547.htm">vue+Echarts绘制动态折线图</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-node-subscribe.htm" title="「12月18日」最高速度21.2M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「12月18日」最高速度21.2M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-30-free-clash.htm" title="「8月30日」最高速度21M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「8月30日」最高速度21M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-30-free-clash.htm" title="「9月30日」最高速度20.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「9月30日」最高速度20.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="「12月1日」最高速度18.7M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接">「12月1日」最高速度18.7M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-31-free-high-speed-nodes.htm" title="「8月31日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接">「8月31日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="「11月12日」最高速度21.5M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接">「11月12日」最高速度21.5M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-21-free-high-speed-nodes.htm" title="「7月21日」最高速度21.7M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接">「7月21日」最高速度21.7M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27617.htm" title="包含福州免费领养宠物的平台有哪些的词条">包含福州免费领养宠物的平台有哪些的词条</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-ssr-node.htm" title="「12月5日」最高速度20.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「12月5日」最高速度20.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-clash-node-daily-updates.htm" title="「9月22日」最高速度23M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接">「9月22日」最高速度23M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
