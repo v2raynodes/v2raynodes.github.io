@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-29009.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>c++基于模板匹配的手写数字识别（超详细）</title>
+        <meta name="description" content="大家好！本篇文章是关于手写数字识别的，接下来我将在这里记录我的手写数字识别的从零到有。当初我刚刚做这个实验的时候在csdn上找不到相应的例子，我在这里把我自己的写代码过程发出来，希望能帮到和我一样努力" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>c++基于模板匹配的手写数字识别（超详细）</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>大家好！本篇文章是关于手写数字识别的，接下来我将在这里记录我的手写数字识别的从零到有。当初我刚刚做这个实验的时候在csdn上找不到相应的例子，我在这里把我自己的写代码过程发出来，希望能帮到和我一样努力求知的人！</p> <p>首先，本篇文章用到的方法是模板匹配，而不是基于神经网络的，还请各位注意了！（模板匹配还请自行了解，站上有很多介绍）我刚开始做实验的时候只有一点c++基础，对于文件和opencv我一点都不了解，所以导致了我刚开始迷茫了很久，直到后来才渐渐做起来。废话不多说，让我们开始吧！</p> <p>过程很简单，如下：</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230223/872e028e31e06dd9ebef3393823ee12c.jpg"></p> <p>&nbsp;匹配成功：存在一个最小距离（这些距离相等），且为一个数字；存在多个最小距离，且为同一个数字。</p> <p>拒绝识别：存在多个最小距离，且为不同数字。</p> <p>识别错误：存在一个最小距离，但与被测数字不是相同的数字。</p> <p>也许乍一看看不明白，我在这里解释一下，明白的可以绕过。我们这里假设1，2，3（注意，他们的样本都有多个）为训练集，d为测试样本。匹配时匹配到d与1距离最小且只与1距离最小，（可能与多个1的样本距离最小或者只有一个）那么匹配成功；匹配时匹配到d与1和2的某个样本都有最小距离，那么拒绝匹配；匹配时匹配到d（假如d是1的样本）与2有最小距离，那么识别错误。</p> <p>因为图片处理不是本文章的主要内容，我们跳过图像处理步骤（有兴趣的可以去看图像处理这门课），直接给处理好的图片。那么我们该如何构建训练库，又该如何让计算机能够识别我们的图片呢？接下来我们来看看如何实现构建训练库。</p> <p>我的实验中有1000张训练样本（200张测试样本），既然要让计算机能够识别，那当然是把图片数字化。在图像处理的步骤里，我们得到的训练样本都是28*28像素点的图片，可以想到28*28是一个不小的数量，为了提高处理速度，我们把图片压缩成7*7大小的，这样即提高了处理速度，也方便我们写代码，因为7*7和4*4都是正方形。如下图：</p> <p style="text-align:center;"><img fetchpriority="high" decoding="async" alt="" height="333" src="http://img.555519.xyz/uploads/20230223/046e6456631d0e163c1c0d5bb5568ed9.jpg"></p> <p>&nbsp;<strong>压缩图片：</strong>我们纵向遍历7*7的方格，将里面像素大于127的小格子进行计数，当其数量超过6（有的同学会觉得应该是8，因为8是一半，但是8最终得到的正确率太低了，所以我找了一个合适的参数）我们就把大格子对应的7*7的二维数组的相应位置设置为1，反之为0；然后再将数组转换成字符串，这样下来我们就会得到一个长度为49的字符串，这个字符串就是我们计算机匹配的核心。</p> <p>另外，我是先把训练集和测试集分别数据化，再依次取出来作比较。也可以采用一边遍历测试集和处理，一遍作比较，我没有输出文件名，因为我采用的方式比较笨，代码量也很多，主要是因为我之前写完之后有很多bug，导致我不能成功运行，所以我采用这种简单代码来避免错误，小伙伴们大可不必用这种方式！</p> <p>值得注意的是，文件流的打开和关闭的时机也会很大程度上影响代码运行，这个问题困扰了我很久，希望大家引以为戒，代码中具体位置我已经标出来了。（标***的位置）另外，大家对于读文件写文件的文件流自己去了解，读文件是ofstream，写文件是ifstream，每次访问文件都要打开文件和关闭文件。getline函数每次依次取一行数据，所以我们在遍历完一个文档之前不会关闭文档，也就不会再打开文档。</p> <p>最后我对我字符串比较做一个解释，我是采用了一个标志refused来标志当前字符串有没有被拒绝识别，当发现相似度（代码中用total表示的）小于49的就把它赋值给相似度，并且把拒绝识别设置为假，直到找到最小的，当找到最小的之后又找到了另一个相同相似度的，则判断两个样本数字是不是相同的，不是的话就把refused设置为真，即在后面直接输出拒绝识别。</p> <p>我判断两个样本是否为同一个数字是通过范围比对，简单地来说就是训练样本的第0——99个对应测试样本的第0——19个，这是一个偷懒的办法，我没时间改代码了所以就这样代替了别人那种文本带文件名的。（带文件名比对时还需要去文件名）</p> <p>其他的解释我放在代码里，有助于大家更直接的理解！</p> <pre><code class="language-cpp">#include&lt;iostream&gt; #include&lt;fstream&gt; #include&lt;opencv2/opencv.hpp&gt; #include&lt;opencv2/highgui.hpp&gt; #include&lt;opencv2/core.hpp&gt; #include&lt;io.h&gt;                          //api和结构体 #include&lt;string.h&gt; #include&lt;string&gt;   using namespace std; using namespace cv;  void ergodicTest(string filename, string name);    //遍历函数 string Image_Compression(string imgpath);          //压缩图片并返回字符串 int distance(string str1, string str2);            //对比函数不一样的位数 void compare(); int turn(char a);  void main() { 	const char* filepath = "E:\\learn\\vsfile\\c++project\\pictureData\\train-images";      	ergodicTest(filepath,"train_num.txt");         //处理训练集 	const char* test_path= "E:\\learn\\vsfile\\c++project\\pictureData\\test-images"; 	ergodicTest(test_path, "test_num.txt"); 	compare();    }  void ergodicTest(string filename,string name)       //遍历并把路径存到files { 	string firstfilename = filename + "\\*.bmp"; 	struct _finddata_t fileinfo; 	intptr_t handle;            //不能用long，因为精度问题会导致访问冲突,longlong也可 	string rout = "E:\\learn\\vsfile\\c++project\\pictureData\\" + name; 	ofstream file; 	file.open(rout, ios::out); 	handle = _findfirst(firstfilename.c_str(), &amp;fileinfo); 	if ( _findfirst(firstfilename.c_str(), &amp;fileinfo) != -1) 	{ 		do 		{ 			file &lt;&lt; fileinfo.name &lt;&lt; ":" &lt;&lt; Image_Compression(filename + "\\" + fileinfo.name) &lt;&lt; endl; 		} while (!_findnext(handle, &amp;fileinfo)); 		file.close(); 		_findclose(handle); 	} }  string Image_Compression(string imgpath)   //输入图片地址返回图片二值像素字符 { 	Mat Image = imread(imgpath);               //输入的图片 	cvtColor(Image, Image, COLOR_BGR2GRAY); 	int Matrix[28][28];                        //将digitization转化为字符串类型 	for (int row = 0; row &lt; Image.rows; row++)  //把图片的像素点传给数组 		for (int col = 0; col &lt; Image.cols; col++) 		{ 			Matrix[row][col] = Image.at&lt;uchar&gt;(row, col); 		} 	string img_str = "";                   //用来存储结果字符串 	int x = 0, y = 0; 	for (int k = 1; k &lt; 50; k++) 	{ 		int total = 0; 		for (int q = 0; q &lt; 4; q++) 			for (int p = 0; p &lt; 4; p++) 				if (Matrix[x + q][y + p] &gt; 127) total += 1; 		y = (y + 4) % 28; 		if (total &gt;= 6) img_str += '1';    //将28*28的图片转化为7*7即压缩 		else img_str += '0'; 		if (k % 7 == 0) 		{ 			x += 4; 			y = 0; 		} 	} 	return img_str; }  int distance(string str1, string str2)  //比对两个字符串有多少个不一样 { 	int counts=0; 	for (int i = 0; i &lt; str1.length(); i++) 	{ 		if (str1[i] == str2[i]) continue; 		else counts++;  	} 	return counts; }   int turn(char a) { 	stringstream str; 	int f = 1; 	str &lt;&lt; a; 	str &gt;&gt; f; 	str.clear(); 	return f; }  void compare() { 	ifstream train_data;//建立读文件流 	ifstream test_data; 	string tmp1 = "";         //从train中取数据存在tmp1 	string tmp11 = ""; 	string tmp2 = "";         //从test中取 	string tmp22 = ""; 	bool refused = false; //拒绝识别标志 	int tr_num = 0;       //用来存储最小值的文件名(训练集) 	int num_refused = 0;   //拒绝识别个数 	int num_false = 0;     //识别错误个数 	int num_true = 0;      //正确识别个数 	test_data.open("E:\\learn\\vsfile\\c++project\\pictureData\\test_num.txt"); 	for (int p = 0; p &lt; 200; p++) 	{ 		int total = 49;      //方便比大小，设置初值为49 		getline(test_data, tmp2); 		tmp22 = tmp2;    //在切割字符串之前保留，以便后面知晓该字符串是哪个数字的 		if(tmp2.length()==57) tmp2.erase(0,8); //erase函数是用来切割字符串的，这里是切割第0位的后面8位，存剩余的其他位 		else tmp2.erase(0,9); 		train_data.open("E:\\learn\\vsfile\\c++project\\pictureData\\train_num.txt"); 		for (int j = 0; j &lt; 1000; j++)         //一个测试样本和所有训练样本对比 		{ 			getline(train_data, tmp1); 			tmp11 = tmp1; 			if (tmp1.length() == 57) tmp1.erase(0, 8); 			else tmp1.erase(0, 9); 			if (distance(tmp1, tmp2) &lt; total)  //取最相近的 			{ 				refused = false;   //拒绝识别被设置为否，即识别没有被拒绝 				total = distance(tmp1, tmp2); 				tr_num = turn(tmp11[0]);          //记录数字 			} 			else if(distance(tmp1, tmp2) == total &amp;&amp; tr_num!= turn(tmp11[0]))  //发现相同相似度，且两者归属的数字不同 			{ 				refused = true;   //拒绝识别 				continue;          //循环继续 			}	 		} 		train_data.close();  		if (!refused) 		{ 			if (tr_num == turn(tmp22[0])) 			{ 				//cout &lt;&lt; tmp2[0] &lt;&lt; endl; 				num_true++; 				cout &lt;&lt; "识别为：" &lt;&lt; tr_num &lt;&lt; endl; 			} 			else 			{ 				num_false++; 				cout &lt;&lt; "识别错误！" &lt;&lt; endl; 			} 		} 		else 		{ 			num_refused++; 			cout &lt;&lt; "拒绝识别！" &lt;&lt; endl; 		} 	} 	test_data.close(); 	double t = num_true / 200.0, f = num_false / 200.0, r = num_refused / 200.0; 	cout &lt;&lt; "正确率为：" &lt;&lt; t &lt;&lt; endl; 	cout &lt;&lt; "错误率为：" &lt;&lt; f &lt;&lt; endl; 	cout &lt;&lt; "拒绝识别率为：" &lt;&lt; r &lt;&lt; endl; }</code></pre> <p>代码中有很多//注释，都是我调试代码用的，不用管。</p> <p>我把遍历文件夹的参考链接放在这里：<a class="link-info" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/ranjiewen/p/5960976.html"  title="点这个" rel="nofollow">点这个</a></p> <p>另外，如有错误欢迎大家指正！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28548.htm">vue实现简单无缝滚动效果_vue.js</a></p>
+                                        <p>下一个：<a href="/news/article-29010.htm">瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-clash-node.htm" title="「9月7日」最高速度22.8M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「9月7日」最高速度22.8M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-30-shadowrocket-node.htm" title="「7月30日」最高速度18.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「7月30日」最高速度18.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-clash-node.htm" title="「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20226.htm" title="领养宠物狗狗多少钱一只（领养狗狗一般多少钱）">领养宠物狗狗多少钱一只（领养狗狗一般多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-clash-v2ray-ss-ssr.htm" title="「9月5日」最高速度23M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「9月5日」最高速度23M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-19-free-subscribe-node.htm" title="「8月19日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「8月19日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-1-free-ssr-subscribe.htm" title="「9月1日」最高速度18M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「9月1日」最高速度18M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-free-ssr-subscribe.htm" title="「8月26日」最高速度21.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「8月26日」最高速度21.5M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-4-node-share.htm" title="「6月4日」最高速度21.5M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「6月4日」最高速度21.5M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-1-clash-v2ray-ss-ssr.htm" title="「8月1日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接">「8月1日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
