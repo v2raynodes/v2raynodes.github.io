@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-34961.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SpringAop实现原理及代理模式</title>
+        <meta name="description" content="Spring的AOP就是通过动态代理实现的。当为某个Bean或者某些Bean配置切面时，Spring会为其创建代理对象，当调用该对象的某个方法时，实际是调用生成的代理类的对象方法。Spring的Aop" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>SpringAop实现原理及代理模式</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <pre><code>Spring的AOP就是通过动态代理实现的。当为某个Bean或者某些Bean配置切面时，Spring会为其创建代理对象，当调用该对象的某个方法时，实际是调用生成的代理类的对象方法。Spring的Aop主要是使用了两个动态代理，分别是JDK的动态代理和CGLIB动态代理。</code></pre> <h2 id="1-jdk动态代理">1. JDK动态代理</h2> <pre><code> 如果代理类实现了接口，Spring默认会使用JDK动态代理。JDK的动态代理是基于反射实现。JDK通过反射，生成一个代理类，这个代理类实现了原来那个类的全部接口，并对接口中定义的所有方法进行了代理。当我们通过代理对象执行原来那个类的方法时，代理类底层会通过反射机制，调用我们实现的InvocationHandler接口的invoke方法。</code></pre> <details> <summary>点击查看代码</summary> <pre><code>/*  *  接口类  */ public interface Person {      void say(); }  /*  *  接口实现类  */ public class Man implements Person {      private String word;      public Man(String word){          this.word = word;     }      public Man(){      }      public void say(){          System.out.println("Man Can Say " + word);     } }  public class ManJDKProxy implements InvocationHandler {      /**      * 需要的代理对象      */     private Object o;      public Object bind(Object o){          this.o = o;         return Proxy.newProxyInstance(o.getClass().getClassLoader(), o.getClass().getInterfaces(), this);     }      @Override     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {          System.out.println("JDK Proxy Design");         return method.invoke(o, args);     } }  /**  * JDK动态代理  */ public class ProxyDesign_2 {      public static void main(String[] args) {          Man man = new Man("Hello");          Person p = (Person)new ManJDKProxy().bind(man);          p.say();     } }</code></pre> </details> <h3 id="-jdk动态代理的优缺点">* JDK动态代理的优缺点</h3> <pre><code>优点：     1. JDK动态代理是JDK原生的，不需要任何依赖即可使用     2. 通过反射机制生成代理类的速度要比CGLib操作字节码生成代理类的速度更快 缺点：     1. 如果要使用JDK动态代理，被代理的类必须实现了接口，否则无法代理(InvocationHandler)     2. JDK动态代理无法为没有在接口中定义的方法实现代理     3. JDK动态代理执行代理方法时，需要通过反射机制进行回调，此时方法执行的效率比较低</code></pre> <h2 id="2-cglib动态代理">2. CGLIB动态代理</h2> <pre><code> 若需要代理的类没有实现接口，JDK的动态代理就无法使用，Spring会使用CGLiB动态代理来生成代理对象。CGLiB直接操作字节码，生成类的子类，重写类的方法完成代理。</code></pre> <details> <summary>点击查看代码</summary> <pre><code>/*  *  接口类  */ public interface Person {      void say(); }  /*  *  接口实现类  */ public class Man implements Person {      private String word;      public Man(String word){          this.word = word;     }      public Man(){      }      public void say(){          System.out.println("Man Can Say " + word);     } }  public class ManCGLIBProxy {      public Object bind(Object target){          Enhancer enhancer = new Enhancer();         enhancer.setSuperclass(target.getClass());          enhancer.setCallback(new MethodInterceptor() {             @Override             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {                  System.out.println("CGLIB Proxy Design");                 return method.invoke(target, objects);             }         });          return enhancer.create();     } }  /**  * CGLIB动态代理  */ public class ProxyDesign_3 {      public static void main(String[] args) {          Man man = new Man("Hello");          Person p = (Person)new ManCGLIBProxy().bind(man);          p.say();     } }</code></pre> </details> <h3 id="-cglib动态代理的优缺点">* CGLiB动态代理的优缺点</h3> <pre><code>优点：     1. 使用CGLIB代理的类，不需要实现接口，因为CGLIB生成的代理类是直接继承自需要被代理的类     2. CGLIB是通过修改字节码生成的代理类，所以CGLIB执行代理方法的效率要高于JDK的动态代理 缺点：     1. 因为CGLIB实现方式是重写父类的方法，所以对final方法，或者private方法是没有办法代理的     2. 因为CGLIB生成代理类的方式是通过操作字节码(asm工具包)，这种生成的代理类的方式比JDK通过反射生成代理类的方式的效率低</code></pre> <h2 id="3-spring项目中如何强制使用cglib代理方式">3. Spring项目中如何强制使用CGLIB代理方式</h2> <h3 id="-xml方式">* xml方式</h3> <pre><code>&lt;!-- aop:config用来在xml中配置切面，指定proxy-target-class="true" --&gt; &lt;aop:config proxy-target-class="true"&gt; 	&lt;!-- AOP相关配置 --&gt; &lt;/aop:config&gt;</code></pre> <h3 id="-aspect注解方式">* @Aspect注解方式</h3> <pre><code>&lt;!-- 将proxy-target-class配置设置为true --&gt; &lt;aop:aspectj-autoproxy proxy-target-class="true"/&gt;</code></pre> <h3 id="-配置类注解方式">* 配置类注解方式</h3> <pre><code>添加@EnableAspectJAutoProxy(proxyTargetClass = true)</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34717.htm">宠物医院24小时在线咨询电话（宠物医院联系方式）</a></p>
+                                        <p>下一个：<a href="/news/article-34962.htm">怀孕期间被猫咪轻微抓伤怎么办（怀孕期被猫抓了怎么办）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-6-20-free-node-subscribe.htm" title="「6月20日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「6月20日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-shadowrocket-node.htm" title="「10月4日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「10月4日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-node-subscribe.htm" title="「12月18日」最高速度21.2M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「12月18日」最高速度21.2M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20688.htm" title="广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）">广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-shadowrocket-node.htm" title="「12月15日」最高速度20.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「12月15日」最高速度20.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-v2ray-subscribe.htm" title="「11月8日」最高速度20.4M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接">「11月8日」最高速度20.4M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-24-node-share.htm" title="「6月24日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「6月24日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22978.htm" title="基于RestTemplate扩展，支持Get请求传递javaBean参数">基于RestTemplate扩展，支持Get请求传递javaBean参数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-22-free-node-subscribe.htm" title="「8月22日」最高速度23M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「8月22日」最高速度23M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-shadowrocket-node.htm" title="「10月23日」最高速度19.1M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接">「10月23日」最高速度19.1M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
