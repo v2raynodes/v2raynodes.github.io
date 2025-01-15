@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-40578.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>C++编程——C++对象模型和this指针</title>
+        <meta name="description" content="文章目录  1. C++对象模型 2. this指针    C++中类对象的成员变量和成员函数是分开存储的  非静态成员变量，属于类的对象上 静态成员变量，不属于类的对象上 非静态成员函数，不属于类的" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>C++编程——C++对象模型和this指针</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#1_C_1" rel="nofollow">1. C++对象模型</a></li> <li><a href="#2_this_96" rel="nofollow">2. this指针</a></li> </ul> </div> </h1> <p>C++中类对象的成员变量和成员函数是分开存储的</p> <ul> <li>非静态成员变量，属于类的对象上</li> <li>静态成员变量，不属于类的对象上</li> <li>非静态成员函数，不属于类的对象上</li> <li>静态成员函数，不属于类的对象上</li> </ul> <p><mark>即只有非静态成员变量才属于类的对象上</mark></p> <p><strong>示例1</strong>：(空类的对象模型)</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	Person p<span class="token punctuation">;</span>  	<span class="token comment">//空对象占用的内存空间为1</span> 	<span class="token comment">//C++编译器会给每个空对象也分配一个字节空间，是为了区分空对象占内存的位置</span> 	<span class="token comment">//每个空对象也应该有一个独一无二的内存地址</span> 	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"size of p = "</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><strong>示例2</strong>：(只含int类型静态成员变量)</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">int</span> m_A<span class="token punctuation">;</span> <span class="token comment">//非静态成员变量 属于类的对象上</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	Person p<span class="token punctuation">;</span> 	<span class="token comment">// 含有int m_A后，类对象所占用的大小为4</span> 	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"size of p = "</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><strong>示例3</strong>：(含int类型静态成员变量和int类型非静态成员变量)</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">int</span> m_A<span class="token punctuation">;</span> <span class="token comment">//非静态成员变量 属于类的对象上</span> 	<span class="token keyword">static</span> <span class="token keyword">int</span> m_B<span class="token punctuation">;</span> <span class="token comment">//静态成员变量， 不属于类的对象上</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">int</span> Person<span class="token operator">::</span>m_B <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//静态成员变量类内声明，类外初始化</span>   <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	Person p<span class="token punctuation">;</span> 	<span class="token comment">// 含有int m_A和static int m_B后，类对象所占用的大小同样为4</span> 	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"size of p = "</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><strong>示例4</strong>：（含int类型静态成与非静态成员变量，同时含有静态与非静态成员函数）</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token keyword">int</span> m_A<span class="token punctuation">;</span> <span class="token comment">//非静态成员变量 属于类的对象上</span> 	<span class="token keyword">static</span> <span class="token keyword">int</span> m_B<span class="token punctuation">;</span> <span class="token comment">//静态成员变量， 不属于类的对象上</span>  	<span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//非静态成员函数，不属于类的对象上</span> 	<span class="token punctuation">{<!-- --></span>  	<span class="token punctuation">}</span>  	<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//静态成员函数，不属于类的对象上</span> 	<span class="token punctuation">{<!-- --></span>  	<span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">int</span> Person<span class="token operator">::</span>m_B <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//静态成员变量类内声明，类外初始化</span>   <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	Person p<span class="token punctuation">;</span> 	<span class="token comment">// 类对象所占用的大小为4</span> 	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"size of p = "</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> </h1> <p>通过C++对象模型可知，静态与非静态成员函数都不属于类的对象，即每一个成员函数只会生成一份函数实例，类的不同对象共享这一份函数实例。<br /> 那么就面临着一个问题：既然类的所有对象都共享同一份函数实例，那代码如何区分是哪个对象在调用成员函数呢？<br /> 这就引出了this指针的概念，C++通过提供特殊的对象指针，即this指针，解决上述问题。<mark><strong>this指针指向被调用成员函数所属的对象</strong></mark></p> <p>this指针的两大用途：</p> <ul> <li>当形参和成员变量同名时，可用this指针区分,以解决名称冲突</li> </ul> <p><strong>示例：</strong></p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> <span class="token comment">//this指针指向被调用成员函数所属的对象</span> 		<span class="token comment">//age = age; 采用这种方式无法给类成员属性赋正确的值</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">int</span> age<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	 <span class="token punctuation">{<!-- --></span> 	Person <span class="token function">p1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  	<span class="token comment">//当创建p1对象后，this指针就指向了p1对象，执行this-&gt;age = age;就能给成员变量赋正确的值</span>  	<span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <ul> <li>在类的非静态成员函数中返回对象本身，可使用return *this</li> </ul> <p><strong>示例1</strong>：</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> 		<span class="token comment">//age = age;</span> 	<span class="token punctuation">}</span>  	<span class="token keyword">void</span> <span class="token function">AddPerson</span><span class="token punctuation">(</span>Person <span class="token operator">&amp;</span>p<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">+=</span> p<span class="token punctuation">.</span>age<span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token keyword">int</span> age<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	 <span class="token punctuation">{<!-- --></span> 	Person <span class="token function">p1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	Person <span class="token function">p2</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  	p2<span class="token punctuation">.</span><span class="token function">AddPerson</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//AddPerson返回的是void，所以p2.AddPerson(p1).AddPerson(p1)会报错，无法实现连续AddPerson</span>  	<span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><strong>示例2</strong>：(解决示例1无法连续调用AddPerson的问题)</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> 		<span class="token comment">//age = age;</span> 	<span class="token punctuation">}</span>  	Person<span class="token operator">&amp;</span> <span class="token function">AddPerson</span><span class="token punctuation">(</span>Person <span class="token operator">&amp;</span>p<span class="token punctuation">)</span> <span class="token comment">//注意这里返回值必须是引用，不然操作的对象就不是返回的对象了。值传递的方式会创建新的对象</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">+=</span> p<span class="token punctuation">.</span>age<span class="token punctuation">;</span> 		<span class="token keyword">return</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token comment">//返回当前调用该函数的对象</span> 	<span class="token punctuation">}</span>  	<span class="token keyword">int</span> age<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	 <span class="token punctuation">{<!-- --></span> 	Person <span class="token function">p1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	Person <span class="token function">p2</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  	p2<span class="token punctuation">.</span><span class="token function">AddPerson</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">AddPerson</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//如果AddPerson的返回值是Person,那后面输出的值就是20，因为值传递会产生新的对象</span> 	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"p2的年龄是"</span> <span class="token operator">&lt;&lt;</span> p2<span class="token punctuation">.</span>age <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">//输出的结果是30</span> 	<span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p>注意事项：由this指针衍生出的一个问题是<strong>空指针访问成员函数</strong>的问题<br /> 空指针是可以访问成员函数的，但是如果成员函数出现访问类属性的情况，就会出现报错。<br /><strong>示例</strong>：</p> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token keyword">this</span><span class="token operator">-&gt;</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> 		<span class="token comment">//age = age;</span> 	<span class="token punctuation">}</span>  	<span class="token keyword">void</span> <span class="token function">showClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		cout <span class="token operator">&lt;&lt;</span> <span class="token string">"this is Person class"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token keyword">void</span> <span class="token function">showPersonAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		cout <span class="token operator">&lt;&lt;</span> <span class="token string">"age = "</span> <span class="token operator">&lt;&lt;</span> age <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">//相当于this-&gt;age</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">int</span> age<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	 <span class="token punctuation">{<!-- --></span> 	Person <span class="token operator">*</span> p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> 	p<span class="token operator">-&gt;</span><span class="token function">showClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//能够正常运行</span> 	p<span class="token operator">-&gt;</span><span class="token function">showPersonAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//出现报错，因此空指针无法访问成员变量</span>  	<span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40076.htm">宠物零食制作教程风干（宠物自制风干零食）</a></p>
+                                        <p>下一个：<a href="/news/article-40579.htm">猫咪疫苗打多少针才有抗体（猫疫苗打几针有抗体）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-node-share-links.htm" title="「12月26日」最高速度21.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「12月26日」最高速度21.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-40075.htm" title="郑州哪里有卖狗粮的地方（郑州宠物粮批发市场）">郑州哪里有卖狗粮的地方（郑州宠物粮批发市场）</a></li>
+                        <li class="py-2"><a href="/news/article-37128.htm" title="动物注射给药的方法有（动物注射给药的方法有哪两种）">动物注射给药的方法有（动物注射给药的方法有哪两种）</a></li>
+                        <li class="py-2"><a href="/news/article-33306.htm" title="torch报错TypeError: can&#8217;t convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor">torch报错TypeError: can&#8217;t convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor</a></li>
+                        <li class="py-2"><a href="/news/article-19311.htm" title="MySQL VARCHAR列的最大长度是多少？">MySQL VARCHAR列的最大长度是多少？</a></li>
+                        <li class="py-2"><a href="/news/article-40579.htm" title="猫咪疫苗打多少针才有抗体（猫疫苗打几针有抗体）">猫咪疫苗打多少针才有抗体（猫疫苗打几针有抗体）</a></li>
+                        <li class="py-2"><a href="/news/article-30434.htm" title="58同城卖泰迪狗（泰迪犬出售需要的联系,便宜出）">58同城卖泰迪狗（泰迪犬出售需要的联系,便宜出）</a></li>
+                        <li class="py-2"><a href="/news/article-34717.htm" title="宠物医院24小时在线咨询电话（宠物医院联系方式）">宠物医院24小时在线咨询电话（宠物医院联系方式）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-free-v2ray-subscribe.htm" title="「11月4日」最高速度23M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「11月4日」最高速度23M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31848.htm" title="layui form.render(&#8216;select&#8217;, &#8216;test2&#8217;) 更新渲染">layui form.render(&#8216;select&#8217;, &#8216;test2&#8217;) 更新渲染</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
