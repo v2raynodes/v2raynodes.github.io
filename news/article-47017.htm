@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-47017.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Azure DevOps (八) 通过流水线编译Docker镜像</title>
+        <meta name="description" content="上一篇文章我们完成了最简单的传统部署：上传应用到服务器上使用守护进程进行应用的部署。 本篇文章我们开始研究容器化和流水线的协作。 在开始操作之前，我们首先需要准备一下我们的dockerfile,这里我" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-47017.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="Azure DevOps (八) 通过流水线编译Docker镜像" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/d0f73e3a1e40ce849c9b922dc6fd862e.webp" />
+        <meta property="og:release_date" content="2025-01-27T08:18:53" />
+    <meta property="og:updated_time" content="2025-01-27T08:18:53" />
+        <meta property="og:description" content="上一篇文章我们完成了最简单的传统部署：上传应用到服务器上使用守护进程进行应用的部署。 本篇文章我们开始研究容器化和流水线的协作。 在开始操作之前，我们首先需要准备一下我们的dockerfile,这里我" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Azure DevOps (八) 通过流水线编译Docker镜像">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo">V2ray Nodes</a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Azure DevOps (八) 通过流水线编译Docker镜像</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>上一篇文章我们完成了最简单的传统部署：上传应用到服务器上使用守护进程进行应用的部署。</p> <p>本篇文章我们开始研究容器化和流水线的协作。</p> <p>在开始操作之前，我们首先需要准备一下我们的dockerfile,这里我们依然还是使用前几篇文章使用的项目,贴一下文件内容。</p> <p>既然我们是使用的微软的azure，所以我也就直接用了azure维护的jdk：zulu,我自己电脑上的jdk也是用的这个，因为我是M1芯片的mac，最一开始的时候官方并没有ARM架构的JDK</p> <p>但是微软第一时间发行了zulu的ARM版本，我就一直用到了现在。</p> <div class="cnblogs_code"> <pre>FROM  azul/zulu-openjdk-debian:<span style="color: rgba(128, 0, 128, 1)">8</span><span style="color: rgba(0, 0, 0, 1)"> COPY demo</span>-app.jar /demo-<span style="color: rgba(0, 0, 0, 1)">app.jar ENV JAVA_TOOL_OPTIONS</span>-Dfile.encoding=UTF8 -Duser.language=zh -Duser.region=zh_CN -Duser.country=<span style="color: rgba(0, 0, 0, 1)">zh_CN ENTRYPOINT exec java</span>-jar demo-app.jar</pre> </div> <p>接下来我们来创建一条新的release 流水线，这里有个深坑，就是我们在选择agent的时候一定要选对了，选linux的发行版，我最一开始没注意这个问题</p> <p>导致后执行docker build 的时候一直提示我平台不对，结果我一看执行的是docker.exe o(╥﹏╥)o</p> <p>首选创建agent，上面选择azure pipelines,下面选择ubantu</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9843323c06bf71e0ced606dbad1b0a8f.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>接下来创建两个Task,第一个task用来整理一下文件目录，第二个task用来执行容器的编译。</p> <p>首先创建第一个task，我们需要把dockerfile和我们的应用放在同一目录下。</p> <p>我们在agent下创建一个bash任务，选择在线脚本。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a9f9b68254825292e001a43bd3a23ea9.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bc7cb8ae211fee1558e88ff0e8d8e935.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>这里我贴一下脚本的内容，主要就是从流水线编译好的制品中，提取出Dockerfile和我们的应用程序放在统一目录下。</p> <div class="cnblogs_code"> <pre>cd _my-<span style="color: rgba(0, 0, 0, 1)">devops mkdir finaldir pwd ls cd webhook ls mv demo</span>-app.jar  ../<span style="color: rgba(0, 0, 0, 1)">finaldir mv classes</span>/Dockerfile ../<span style="color: rgba(0, 0, 0, 1)">finaldir cd ..</span>/<span style="color: rgba(0, 0, 0, 1)">finaldir ls pwd</span></pre> </div> <p>接下来我们创建第二个task，用来执行docker build</p> <p>我们在agent下添加一个docker执行步骤，在右侧搜索docker，进行添加</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9bee12c2d23c8137e4ddd2fd838f7801.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>添加完成之后，这里有两部分需要我们填，Container Repository我们暂时先留空，因为我手头没有合适的仓库，我们本篇文章的重点放在镜像的编译工作上，</p> <p>我们在commands配置项里输入dockerfile的路径，和命令的执行路径，这里我把路径填写为了上面我整理好的finaldir中去，如果你有需要指定的编译参数可以</p> <p>写到Arguments中去，这里还有一个tag，用来指定我们镜像的版本，$(Build.BuildId)环境变量会获取我们本次流水线的编译号，例如我这用的是test-$(Build.BuildId)</p> <p>那么到时候就会生成类似：test-3的一个tag打在镜像上，让我们区分镜像结果。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/10b0945058f69a8f727fb555f3bded78.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>按照要求填完之后，我们启动一下这个流水线看一下执行的效果。</p> <p>从bash的执行结果中，我们可以看到，我们已经成功的整理好了文件目录，把应用程序和dockerfile放在了同一个文件夹下。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/079caa33c15a0afed1848e87c6919e95.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>&nbsp;我们再来看一下dockerbuild的结果，azure成功的编译出了我们的镜像</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/55b37cbda4fffe178a08ccbd955e1612.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ef15f7297f3c66422f9aa655fd3b12fb.jpg" alt="Azure DevOps (八) 通过流水线编译Docker镜像"></p> <p>&nbsp;到这里我们就成功的使用azure的流水线编译出了第一个docker的镜像，说实话踩了很多坑，尤其是一开始没有选择对agent的类型，卡了半天没意识到这个问题，我一直以为是我dockerfile中FROM的基础镜像有问题，还去翻了半天源码，看着源码里那个debain发行版本怀疑了半天人生，最后才意识到可能是agent的问题o(╥﹏╥)o</p> <p>下一篇我们会研究如何通过azure打通一个公网的docker仓库，把我们编译好的镜像推送到仓库去。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-46538.htm">生物颗粒取暖炉（生物颗粒取暖炉优缺点）</a></p>
+                                        <p>下一个：<a href="/news/article-47018.htm">新手适合开的店（新手开什么店最好）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-shadowrocket-node.htm" title="「10月23日」最高速度19.1M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接">「10月23日」最高速度19.1M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44035.htm" title="宠物粮龙头企业排名 宠物粮龙头企业排名前十">宠物粮龙头企业排名 宠物粮龙头企业排名前十</a></li>
+                        <li class="py-2"><a href="/news/article-45047.htm" title="动物疫苗最新消息新闻 动物疫苗最新消息新闻报道">动物疫苗最新消息新闻 动物疫苗最新消息新闻报道</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-v2ray-ss-ssr.htm" title="「11月30日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「11月30日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-node-subscribe.htm" title="「12月13日」最高速度18.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接">「12月13日」最高速度18.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe.htm" title="「11月2日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「11月2日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39106.htm" title="国内宠物知名品牌（著名宠物品牌）">国内宠物知名品牌（著名宠物品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-clash-node-daily-updates.htm" title="「12月7日」最高速度20.7M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「12月7日」最高速度20.7M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18659.htm" title="被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）">被家猫抓伤脸轻微出血（被家猫抓伤脸轻微出血要***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-29010.htm" title="瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）">瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
