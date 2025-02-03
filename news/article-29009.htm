@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2raynodes.github.io/news/article-29009.htm" />
@@ -8,14 +8,42 @@
     <title>c++基于模板匹配的手写数字识别（超详细）</title>
         <meta name="description" content="大家好！本篇文章是关于手写数字识别的，接下来我将在这里记录我的手写数字识别的从零到有。当初我刚刚做这个实验的时候在csdn上找不到相应的例子，我在这里把我自己的写代码过程发出来，希望能帮到和我一样努力" />
         <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-29009.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="c++基于模板匹配的手写数字识别（超详细）" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/1a5f7a6f22e5b68f47b43652da629790.webp" />
+        <meta property="og:release_date" content="2024-12-21T10:10:33" />
+    <meta property="og:updated_time" content="2024-12-21T10:10:33" />
+        <meta property="og:description" content="大家好！本篇文章是关于手写数字识别的，接下来我将在这里记录我的手写数字识别的从零到有。当初我刚刚做这个实验的时候在csdn上找不到相应的例子，我在这里把我自己的写代码过程发出来，希望能帮到和我一样努力" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="c++基于模板匹配的手写数字识别（超详细）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
@@ -81,16 +109,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-32809.htm" title="动物医院有公立的吗还是私立医院有公立的 动物医院有公立的吗还是私立医院有公立的吗">动物医院有公立的吗还是私立医院有公立的 动物医院有公立的吗还是私立医院有公立的吗</a></li>
-                        <li class="py-2"><a href="/news/article-25762.htm" title="dell设置ssd启动（dell设置从ssd启动）">dell设置ssd启动（dell设置从ssd启动）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-clash-node-daily-updates.htm" title="「12月7日」最高速度20.7M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「12月7日」最高速度20.7M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23893.htm" title="合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的">合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-25-node-share-links.htm" title="「7月25日」最高速度18.2M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「7月25日」最高速度18.2M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-32329.htm" title="宠物粮厂家利润多少钱一个月（宠物粮利润是多少）">宠物粮厂家利润多少钱一个月（宠物粮利润是多少）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-20-free-node-subscribe.htm" title="「6月20日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「6月20日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-28-free-v2ray-subscribe.htm" title="「6月28日」最高速度21.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅链接">「6月28日」最高速度21.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-16-clash-node.htm" title="「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-26-shadowrocket-node.htm" title="「9月26日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「9月26日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22518.htm" title="猫三联一共几针,间隔多久打第二针疫苗（猫三联几针?）">猫三联一共几针,间隔多久打第二针疫苗（猫三联几针?）</a></li>
+                        <li class="py-2"><a href="/news/article-29747.htm" title="简单的红烧鸡腿的家常做法">简单的红烧鸡腿的家常做法</a></li>
+                        <li class="py-2"><a href="/news/article-30901.htm" title="宠物领养的平台叫什么名字（宠物领养 app）">宠物领养的平台叫什么名字（宠物领养 app）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-ssr-subscribe.htm" title="「1月7日」最高速度21.8M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接">「1月7日」最高速度21.8M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41565.htm" title="猫给抓了出一点点血要紧吗我和酒精擦了（猫抓了一下出了点血用酒精消毒可以吗）">猫给抓了出一点点血要紧吗我和酒精擦了（猫抓了一下出了点血用酒精消毒可以吗）</a></li>
+                        <li class="py-2"><a href="/news/article-29010.htm" title="瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）">瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）</a></li>
+                        <li class="py-2"><a href="/news/article-38600.htm" title="vue项目使用echarts（封装函数：监听dom元素尺寸变化resize echarts）">vue项目使用echarts（封装函数：监听dom元素尺寸变化resize echarts）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-node-subscribe-links.htm" title="「12月12日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「12月12日」最高速度22.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35947.htm" title="大猫养小猫多久可以繁殖（大猫养小猫多久可以繁殖出来）">大猫养小猫多久可以繁殖（大猫养小猫多久可以繁殖出来）</a></li>
+                        <li class="py-2"><a href="/news/article-34242.htm" title="动物疫苗法律法规有哪些规定（动物疫苗政策）">动物疫苗法律法规有哪些规定（动物疫苗政策）</a></li>
                     </ul>
     </div>
 </div>
@@ -102,28 +130,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

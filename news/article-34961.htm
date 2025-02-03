@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2raynodes.github.io/news/article-34961.htm" />
@@ -8,14 +8,42 @@
     <title>SpringAop实现原理及代理模式</title>
         <meta name="description" content="Spring的AOP就是通过动态代理实现的。当为某个Bean或者某些Bean配置切面时，Spring会为其创建代理对象，当调用该对象的某个方法时，实际是调用生成的代理类的对象方法。Spring的Aop" />
         <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-34961.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="SpringAop实现原理及代理模式" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/d0f73e3a1e40ce849c9b922dc6fd862e.webp" />
+        <meta property="og:release_date" content="2025-01-03T00:17:11" />
+    <meta property="og:updated_time" content="2025-01-03T00:17:11" />
+        <meta property="og:description" content="Spring的AOP就是通过动态代理实现的。当为某个Bean或者某些Bean配置切面时，Spring会为其创建代理对象，当调用该对象的某个方法时，实际是调用生成的代理类的对象方法。Spring的Aop" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringAop实现原理及代理模式">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
@@ -81,16 +109,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-33306.htm" title="torch报错TypeError: can&#8217;t convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor">torch报错TypeError: can&#8217;t convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-shadowrocket-node.htm" title="「11月19日」最高速度19.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「11月19日」最高速度19.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20688.htm" title="广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）">广州宠物领养平台官网地址查询（广州宠物领养平台官网地址查询下载）</a></li>
-                        <li class="py-2"><a href="/news/article-20689.htm" title="动物医院申请条件有哪些呢英语怎么写（动物医院诊疗许可证需要提供什么）">动物医院申请条件有哪些呢英语怎么写（动物医院诊疗许可证需要提供什么）</a></li>
-                        <li class="py-2"><a href="/news/article-29009.htm" title="c++基于模板匹配的手写数字识别（超详细）">c++基于模板匹配的手写数字识别（超详细）</a></li>
-                        <li class="py-2"><a href="/news/article-23893.htm" title="合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的">合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-node-subscribe-links.htm" title="「12月20日」最高速度19.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「12月20日」最高速度19.8M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19312.htm" title="创建线程方式三实现Callable接口">创建线程方式三实现Callable接口</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="「11月29日」最高速度20.6M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「11月29日」最高速度20.6M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-high-speed-nodes.htm" title="「12月27日」最高速度18.8M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「12月27日」最高速度18.8M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share.htm" title="「12月2日」最高速度22.3M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「12月2日」最高速度22.3M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29746.htm" title="南京宠物托运飞机（南京机场托运宠物）">南京宠物托运飞机（南京机场托运宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-48981.htm" title="spring boot2 (28)-cache缓存">spring boot2 (28)-cache缓存</a></li>
+                        <li class="py-2"><a href="/news/article-20226.htm" title="领养宠物狗狗多少钱一只（领养狗狗一般多少钱）">领养宠物狗狗多少钱一只（领养狗狗一般多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-clash-node.htm" title="「11月13日」最高速度21.4M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「11月13日」最高速度21.4M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-v2ray.htm" title="「1月31日」最高速度20.8M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「1月31日」最高速度20.8M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-node-subscribe.htm" title="「12月30日」最高速度20.6M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「12月30日」最高速度20.6M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39585.htm" title="动物疫苗的作用有哪些呢 动物疫苗的作用有哪些呢视频">动物疫苗的作用有哪些呢 动物疫苗的作用有哪些呢视频</a></li>
+                        <li class="py-2"><a href="/news/article-29461.htm" title="性能优化之html、css、js三者的加载顺序">性能优化之html、css、js三者的加载顺序</a></li>
+                        <li class="py-2"><a href="/news/article-21601.htm" title="动物疫苗属于生物农业吗 动物疫苗属于生物农业吗为什么">动物疫苗属于生物农业吗 动物疫苗属于生物农业吗为什么</a></li>
                     </ul>
     </div>
 </div>
@@ -102,16 +130,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

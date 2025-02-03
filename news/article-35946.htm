@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2raynodes.github.io/news/article-35946.htm" />
@@ -8,14 +8,42 @@
     <title>flex布局实现左右都不定宽的自适应布局</title>
         <meta name="description" content="第一个应用：固定宽度+自适应布局， 需求如下：左边图片定宽，图示选中区域为自适应布局 实现：这个比较简单，父元素设置display: flex; 右边子元素设置：flex-grow: 1，这样子右边会" />
         <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-35946.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="flex布局实现左右都不定宽的自适应布局" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/7f8a2354bd56fe0a38cf1b6cf6cf6292.webp" />
+        <meta property="og:release_date" content="2025-01-05T09:43:31" />
+    <meta property="og:updated_time" content="2025-01-05T09:43:31" />
+        <meta property="og:description" content="第一个应用：固定宽度+自适应布局， 需求如下：左边图片定宽，图示选中区域为自适应布局 实现：这个比较简单，父元素设置display: flex; 右边子元素设置：flex-grow: 1，这样子右边会" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="flex布局实现左右都不定宽的自适应布局">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
@@ -81,16 +109,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-19312.htm" title="创建线程方式三实现Callable接口">创建线程方式三实现Callable接口</a></li>
-                        <li class="py-2"><a href="/news/article-29010.htm" title="瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）">瑞鹏宠物医院工资怎么样（瑞鹏宠物医院工资待遇）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-clash-v2ray-ss-ssr.htm" title="「10月12日」最高速度19.2M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「10月12日」最高速度19.2M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-shadowrocket-node.htm" title="「10月16日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「10月16日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-26-node-share-links.htm" title="「12月26日」最高速度21.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接">「12月26日」最高速度21.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-29746.htm" title="南京宠物托运飞机（南京机场托运宠物）">南京宠物托运飞机（南京机场托运宠物）</a></li>
-                        <li class="py-2"><a href="/news/article-35946.htm" title="flex布局实现左右都不定宽的自适应布局">flex布局实现左右都不定宽的自适应布局</a></li>
-                        <li class="py-2"><a href="/news/article-25760.htm" title="JavaScript-页面布局-div布局-盒子模型">JavaScript-页面布局-div布局-盒子模型</a></li>
-                        <li class="py-2"><a href="/news/article-34716.htm" title="驱虫给猫多少钱（驱虫猫多少钱一次）">驱虫给猫多少钱（驱虫猫多少钱一次）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「11月18日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-47018.htm" title="新手适合开的店（新手开什么店最好）">新手适合开的店（新手开什么店最好）</a></li>
+                        <li class="py-2"><a href="/news/article-38090.htm" title="参观动物园心得感悟（动物园文案短句干净治愈）">参观动物园心得感悟（动物园文案短句干净治愈）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-clash-node.htm" title="「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接">「12月16日」最高速度21.9M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20689.htm" title="动物医院申请条件有哪些呢英语怎么写（动物医院诊疗许可证需要提供什么）">动物医院申请条件有哪些呢英语怎么写（动物医院诊疗许可证需要提供什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-v2ray-ss-ssr.htm" title="「11月30日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「11月30日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37129.htm" title="动物打针去哪里打好（给动物打针打哪里）">动物打针去哪里打好（给动物打针打哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-ssr-node.htm" title="「12月9日」最高速度20.1M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「12月9日」最高速度20.1M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-high-speed-nodes.htm" title="「12月27日」最高速度18.8M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「12月27日」最高速度18.8M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23893.htm" title="合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的">合肥哪里领养宠物狗狗 合肥哪里领养宠物狗狗的</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-ssr-node.htm" title="「12月5日」最高速度20.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「12月5日」最高速度20.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -102,16 +130,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
