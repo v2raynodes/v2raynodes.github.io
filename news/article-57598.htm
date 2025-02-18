@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-57598.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>controller使用map接收参数注意事项</title>
+        <meta name="description" content="#关于前端使用map去接收参数的问题 @PostMapping("test01") @ResponseBody                        // 如果这里不加@RequestBody" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-57598.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="controller使用map接收参数注意事项" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/bb4b020335cd785442b455ac06b7dfa1.webp" />
+        <meta property="og:release_date" content="2025-02-16T07:21:21" />
+    <meta property="og:updated_time" content="2025-02-16T07:21:21" />
+        <meta property="og:description" content="#关于前端使用map去接收参数的问题 @PostMapping("test01") @ResponseBody                        // 如果这里不加@RequestBody" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="controller使用map接收参数注意事项">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>controller使用map接收参数注意事项</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>#关于前端使用map去接收参数的问题</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"test01"</span><span class="token punctuation">)</span> <span class="token annotation punctuation">@ResponseBody</span>                        <span class="token comment">// 如果这里不加@RequestBody，那么springmvc默认创建的是BindAwareModelMap</span> <span class="token keyword">public</span> Object <span class="token function">test01</span><span class="token punctuation">(</span> Map dataMap<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> <span class="token comment">// 对象，并且都参数都不会封装进去</span>     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>dataMap<span class="token punctuation">)</span><span class="token punctuation">;</span>     dataMap <span class="token operator">=</span> null<span class="token punctuation">;</span>     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BindingAwareModelMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果返回BindingAwareModelMap对象,就会抛出异常</span> <span class="token punctuation">}</span> </code></pre> <p>#正确封装姿势</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Controller</span> <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"map"</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MapController</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"test01"</span><span class="token punctuation">)</span>     <span class="token annotation punctuation">@ResponseBody</span>                                    <span class="token comment">// 如果加了@RequestBody，那么创建的是LinkedHashMap</span>     <span class="token keyword">public</span> Object <span class="token function">test01</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> Map dataMap<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> <span class="token comment">// 并且参数都封装了进去(url路径参数和json参数都会封装进去)</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>dataMap<span class="token punctuation">)</span><span class="token punctuation">;</span>         dataMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span> <span class="token string">"ojbk"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> dataMap<span class="token punctuation">;</span>     <span class="token punctuation">}</span>  <span class="token punctuation">}</span> </code></pre> <p>// 结论：如果使用map接收前端参数，那么一定要加@Requestbody才行</p> <pre><code class="prism language-java">#mybatis使用map封装参数， <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from t_product where pid = #{pid} or pname = #{pname}"</span><span class="token punctuation">)</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>Product<span class="token punctuation">&gt;</span></span> <span class="token function">getByMap</span><span class="token punctuation">(</span>Map map<span class="token punctuation">)</span><span class="token punctuation">;</span>      #mybatisplus中有写好的方法 List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">selectByMap</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"cm"</span><span class="token punctuation">)</span> Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <pre><code class="prism language-java">#正确封装姿势<span class="token number">2</span> <span class="token annotation punctuation">@Data</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Page</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> Map dataMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 这里可以不用初始化，加了@RequestBody，默认创建LinkdedHashMap</span> <span class="token punctuation">}</span>  <span class="token annotation punctuation">@Controller</span> <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"map"</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MapController</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"test01"</span><span class="token punctuation">)</span>     <span class="token annotation punctuation">@ResponseBody</span>     <span class="token keyword">public</span> Object <span class="token function">test01</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> Page page<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> <span class="token comment">// 一定要加@RequestBody，否则封装不进去</span>         <span class="token keyword">return</span> page<span class="token punctuation">;</span>     <span class="token punctuation">}</span>  <span class="token punctuation">}</span> 前端需要使用json传参格式： <span class="token punctuation">{<!-- --></span>     <span class="token string">"dataMap"</span><span class="token operator">:</span><span class="token punctuation">{<!-- --></span>         <span class="token string">"name"</span><span class="token operator">:</span><span class="token string">"zzhua"</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57038.htm">宠物零食加工厂都需要什么执照（宠物零食加工需要什么资质）</a></p>
+                                        <p>下一个：<a href="/news/article-57599.htm">动物医院设备清单图片（动物医院设备清单图片大全）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23432.htm" title="动物防疫补助政策（动物防疫补助资金管理办法）">动物防疫补助政策（动物防疫补助资金管理办法）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="「12月1日」最高速度18.7M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接">「12月1日」最高速度18.7M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41061.htm" title="无货源网店一个月能赚多少钱（无货源店铺一个月可以赚多少）">无货源网店一个月能赚多少钱（无货源店铺一个月可以赚多少）</a></li>
+                        <li class="py-2"><a href="/news/article-46538.htm" title="生物颗粒取暖炉（生物颗粒取暖炉优缺点）">生物颗粒取暖炉（生物颗粒取暖炉优缺点）</a></li>
+                        <li class="py-2"><a href="/news/article-34962.htm" title="怀孕期间被猫咪轻微抓伤怎么办（怀孕期被猫抓了怎么办）">怀孕期间被猫咪轻微抓伤怎么办（怀孕期被猫抓了怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-39106.htm" title="国内宠物知名品牌（著名宠物品牌）">国内宠物知名品牌（著名宠物品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-44552.htm" title="皇姿猫罐头怎么样（皇仕猫罐头）">皇姿猫罐头怎么样（皇仕猫罐头）</a></li>
+                        <li class="py-2"><a href="/news/article-37129.htm" title="动物打针去哪里打好（给动物打针打哪里）">动物打针去哪里打好（给动物打针打哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-18660.htm" title="女性红斑狼疮有什么症状(女性红斑狼疮能治愈吗?)">女性红斑狼疮有什么症状(女性红斑狼疮能治愈吗?)</a></li>
+                        <li class="py-2"><a href="/news/article-58171.htm" title="初中学历可以考什么证书（初中学历考什么证书才能月入过万）">初中学历可以考什么证书（初中学历考什么证书才能月入过万）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
