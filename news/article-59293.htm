@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-59293.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>浅谈快速傅里叶变化的Matlab与Python实现与区别</title>
+        <meta name="description" content="信号处理免不了要求频率、画频谱图，但Matlab的 fft() 函数与Python的 numpy.fft.fft() 与 scipy.fftpack.fft() 函数得到的是fft变化后的双边复数值，" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-59293.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="浅谈快速傅里叶变化的Matlab与Python实现与区别" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/789f727a1bb7dc2e7c3014910fd9eba8.webp" />
+        <meta property="og:release_date" content="2025-02-19T06:37:03" />
+    <meta property="og:updated_time" content="2025-02-19T06:37:03" />
+        <meta property="og:description" content="信号处理免不了要求频率、画频谱图，但Matlab的 fft() 函数与Python的 numpy.fft.fft() 与 scipy.fftpack.fft() 函数得到的是fft变化后的双边复数值，" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="浅谈快速傅里叶变化的Matlab与Python实现与区别">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>浅谈快速傅里叶变化的Matlab与Python实现与区别</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>信号处理免不了要求频率、画频谱图，但Matlab的 fft() 函数与Python的 numpy.fft.fft() 与 scipy.fftpack.fft() 函数得到的是fft变化后的双边复数值，离画频谱图还有几句代码的距离。<br /> 基本原理不介绍了，下面直接懒人投喂，给出Matlab与Python的两个函数，直接调用即可画频谱图。</p> <h4> <a id="fft_3" rel="nofollow"></a>注：两种语言的fft算法是有区别的，最后细聊！</h4> <h4> <a id="Matlabfftlw_5" rel="nofollow"></a>Matlab的fftlw函数</h4> <p>输入是信号序列、对应的时间序列、以及是否作图，输出可以得到单边归一化之后的频率与对应的振幅，通过输出可以直接画出常用的频谱图！</p> <pre><code class="prism language-python">function <span class="token punctuation">[</span> F<span class="token punctuation">,</span>M <span class="token punctuation">]</span> <span class="token operator">=</span> fftlw<span class="token punctuation">(</span> x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>draw <span class="token punctuation">)</span> <span class="token operator">%</span>FFTLW 快速傅里叶变化<span class="token number">2021.10</span><span class="token number">.26</span> <span class="token operator">%</span>输入   x<span class="token operator">-</span><span class="token operator">-</span>时间 y<span class="token operator">-</span><span class="token operator">-</span>信号 draw<span class="token operator">-</span><span class="token operator">-</span><span class="token number">1</span>为画频谱图，<span class="token number">0</span>为不画 <span class="token operator">%</span>输出   F<span class="token operator">-</span><span class="token operator">-</span>频率 M<span class="token operator">-</span><span class="token operator">-</span>幅值   N<span class="token operator">=</span>length<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token operator">%</span>采样点数 <span class="token keyword">if</span><span class="token punctuation">(</span>mod<span class="token punctuation">(</span>N<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span>     N<span class="token operator">=</span>N<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> end    Fs<span class="token operator">=</span><span class="token punctuation">(</span>N<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span>x<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token operator">-</span>x<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token operator">%</span>采样频率 F<span class="token operator">=</span><span class="token punctuation">(</span>N<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">:</span>N<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>Fs<span class="token operator">/</span>N<span class="token operator">-</span>Fs<span class="token operator">/</span><span class="token number">2</span> <span class="token punctuation">;</span>            <span class="token operator">%</span>频率 y2<span class="token operator">=</span><span class="token builtin">abs</span><span class="token punctuation">(</span>fftshift<span class="token punctuation">(</span>fft<span class="token punctuation">(</span>y<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">:</span>N<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token operator">%</span>快速傅里叶变化 M<span class="token operator">=</span><span class="token number">2</span><span class="token operator">*</span>y2<span class="token punctuation">(</span>N<span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span>N<span class="token punctuation">)</span><span class="token operator">/</span>N<span class="token punctuation">;</span>                 <span class="token operator">%</span>归一化 M<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">=</span>M<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>                       <span class="token operator">%</span>常量除以<span class="token number">2</span>  <span class="token keyword">if</span> draw<span class="token operator">==</span><span class="token number">1</span>                         <span class="token operator">%</span>可视化     figure     plot<span class="token punctuation">(</span>F<span class="token punctuation">,</span>M<span class="token punctuation">)</span>     xlabel<span class="token punctuation">(</span><span class="token string">'f/HZ'</span><span class="token punctuation">)</span>     ylabel<span class="token punctuation">(</span><span class="token string">'amplitude'</span><span class="token punctuation">)</span>     title<span class="token punctuation">(</span><span class="token string">'频谱图'</span><span class="token punctuation">)</span> end end </code></pre> <h4> <a id="Pythonfftlw_35" rel="nofollow"></a>Python的fftlw函数</h4> <p>输入与matlab的略有点不同，分别是采样频率、信号序列、是否作图，输出与matlab的函数一致。</p> <pre><code class="prism language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np <span class="token keyword">from</span> scipy<span class="token punctuation">.</span>fftpack <span class="token keyword">import</span> fft<span class="token punctuation">,</span>ifft <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt  <span class="token keyword">def</span> <span class="token function">fftlw</span><span class="token punctuation">(</span>Fs<span class="token punctuation">,</span>y<span class="token punctuation">,</span>draw<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token triple-quoted-string string">'''     Parameters     ----------     Fs : 采样频率     y :  信号序列     draw :1为画频谱图，0为不画       Returns     -------     f : 频率     M : 幅值     '''</span>     L<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>                              <span class="token comment">#采样点数</span>     f <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>L <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> Fs <span class="token operator">/</span> L    <span class="token comment">#频率</span>     <span class="token comment">#M = np.abs(np.fft.fft(y))*2/L         #采用numpy.fft.fft()函数并归一化</span>     M <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fft<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span><span class="token number">2</span><span class="token operator">/</span>L             <span class="token comment">#采用scipy.fftpack.fft()函数并归一化</span>     M <span class="token operator">=</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">(</span>L <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>                   <span class="token comment">#取单边谱</span>     M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">2</span>                           <span class="token comment">#常量除以2</span>          <span class="token keyword">if</span> draw<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">:</span>                           <span class="token comment">#可视化</span>         plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>         plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'SimHei'</span><span class="token punctuation">]</span>         plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>         plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>f<span class="token punctuation">,</span>M<span class="token punctuation">)</span>         plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">'f/HZ'</span><span class="token punctuation">)</span>         plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">'amplitude'</span><span class="token punctuation">)</span>         plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">'频谱图'</span><span class="token punctuation">)</span>     <span class="token keyword">return</span> f<span class="token punctuation">,</span>M </code></pre> <h4> <a id="fftlw_73" rel="nofollow"></a>构造简单的信号对比两种语言fftlw效果</h4> <p>举个例子，构造如下信号验证所写函数的正确性：</p> <p><span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        y</p> <p>        =</p> <p>        3</p> <p>        +</p> <p>        t</p> <p>        ⋅</p> <p>        sin</p> <p>        ⁡</p> <p>        (</p> <p>        2</p> <p>        π</p> <p>        t</p> <p>        ⋅</p> <p>        100</p> <p>        )</p> <p>        +</p> <p>        3</p> <p>        ⋅</p> <p>        sin</p> <p>        ⁡</p> <p>        (</p> <p>        2</p> <p>        π</p> <p>        t</p> <p>        ⋅</p> <p>        200</p> <p>        )</p> <p>       y=3+t\cdot \sin (2\pi t\cdot 100)+3\cdot \sin (2\pi t\cdot 200)</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">y</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span style="margin-right: 0.03588em;" class="mord mathdefault">π</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span style="margin-right: 0.03588em;" class="mord mathdefault">π</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span></p> <p>其中，包括常数项，周期项和趋势项，理论上该信号的频率应该为0Hz、100Hz、200Hz（具体怎么算的补一补书知识）。在这里，我设置采样频率 fs=10000，产生10000个数据点，时域图如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/1afa53ea36fe093ca60cd8e0468f98a7.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别"><strong>Matlab调用fftlw函数的主函数</strong></p> <pre><code class="prism language-python">fs<span class="token operator">=</span><span class="token number">10000</span><span class="token punctuation">;</span>                                     <span class="token operator">%</span>采样频率 x<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token operator">/</span>fs<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span>fs<span class="token punctuation">;</span>                        <span class="token operator">%</span>时间序列 y<span class="token operator">=</span>sin<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>pi<span class="token operator">*</span>x<span class="token operator">*</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token operator">*</span>x<span class="token operator">+</span><span class="token number">3</span><span class="token operator">*</span>sin<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>pi<span class="token operator">*</span>x<span class="token operator">*</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">;</span>     <span class="token operator">%</span>信号序列 figure                                        <span class="token operator">%</span>画时域图 plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> title<span class="token punctuation">(</span><span class="token string">'时域图'</span><span class="token punctuation">)</span> xlabel<span class="token punctuation">(</span><span class="token string">'t/s'</span><span class="token punctuation">)</span> ylabel<span class="token punctuation">(</span><span class="token string">'amplitude'</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>f<span class="token punctuation">,</span>m<span class="token punctuation">]</span><span class="token operator">=</span>fftlw<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token operator">%</span>快速傅里叶变化并画频谱图 </code></pre> <p>得到的频谱图如下：发现0Hz、100Hz、200Hz处的幅值分别为3，0.5，3。0Hz与200Hz处的幅值完美对应时域中常数项与<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        s</p> <p>        i</p> <p>        n</p> <p>        (</p> <p>        2</p> <p>        π</p> <p>        t</p> <p>        ⋅</p> <p>        200</p> <p>        )</p> <p>       sin (2\pi t\cdot 200)</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">2</span><span style="margin-right: 0.03588em;" class="mord mathdefault">π</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span>的系数；而100Hz项 <span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        s</p> <p>        i</p> <p>        n</p> <p>        (</p> <p>        2</p> <p>        π</p> <p>        t</p> <p>        ⋅</p> <p>        200</p> <p>        )</p> <p>       sin (2\pi t\cdot 200)</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">2</span><span style="margin-right: 0.03588em;" class="mord mathdefault">π</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span>的系数不是常数而是 <span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        t</p> <p>       t</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span></span></span></span></span>，且时间是0-1s，该项傅里叶变化得到的是该段时间内的平均幅值，也就是0.5。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/82bf66aa15f8a0ae0c10ea507790c94d.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别"><strong>Python调用fftlw函数的主函数</strong><br /> 直接加在def fftlw()的后文调用他就行。</p> <pre><code class="prism language-python">Fs<span class="token operator">=</span><span class="token number">10000</span>                <span class="token comment">#采用频率</span> L<span class="token operator">=</span><span class="token number">10000</span>                 <span class="token comment">#采样点数</span> t<span class="token operator">=</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>L<span class="token operator">/</span>Fs<span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">/</span>Fs<span class="token punctuation">)</span>   <span class="token comment">#时间序列        </span> y<span class="token operator">=</span>np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>np<span class="token punctuation">.</span>pi<span class="token operator">*</span>t<span class="token operator">*</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">*</span>t<span class="token operator">+</span><span class="token number">3</span><span class="token operator">*</span>np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>np<span class="token punctuation">.</span>pi<span class="token operator">*</span>t<span class="token operator">*</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3</span>  <span class="token comment">#信号序列</span> f<span class="token punctuation">,</span>M<span class="token operator">=</span>fftlw<span class="token punctuation">(</span>Fs<span class="token punctuation">,</span>y<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>         <span class="token comment">#快速傅里叶变化并画频谱图</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/c7d2958d36b6e2e35aab1ddf259feb57.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别">图和matlab的一模一样！但是！</p> <h4> <a id="fftlw_105" rel="nofollow"></a>采用实际的振动信号对比两种语言fftlw效果</h4> <p>数据来源于西储大学转子实验台振动信号，采样频率为12000Hz，现取正常状态下、转速1796 rpm轴承振动信号1000个点如下。粗略的观察，有一个低频信号大概周期为0.035 s，频率大概 29Hz。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/3076afa9ec2a1f83cdae00af61ae3961.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别"><strong>Matlab画频谱图</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/2354434a3efd2dcf1e64223d3c9fff53.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别"><strong>Python画频谱图</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/69989de964a01f6e86381d10b58827bc.jpg" alt="浅谈快速傅里叶变化的Matlab与Python实现与区别">python的频谱图的幅值与原始数据量级差别较大，与matlab的频谱图也毫不相关，可能是底层傅里叶变换的算法不同所致，具体哪个正确还带进一步考证！！！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59292.htm">Android开发基础——Activity生命周期</a></p>
+                                        <p>下一个：<a href="/news/article-59889.htm">动物疫苗生产厂家排名前十名 动物疫苗生产厂家排名前十名有哪些</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-53181.htm" title="动物疫苗接种方法及注意事项有哪些呢视频教程（动物疫苗怎么注射）">动物疫苗接种方法及注意事项有哪些呢视频教程（动物疫苗怎么注射）</a></li>
+                        <li class="py-2"><a href="/news/article-40076.htm" title="宠物零食制作教程风干（宠物自制风干零食）">宠物零食制作教程风干（宠物自制风干零食）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-subscribe-node.htm" title="「12月25日」最高速度22.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「12月25日」最高速度22.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26229.htm" title="动物医院英文怎么写的啊怎么读 动物医院英文怎么写的啊怎么读">动物医院英文怎么写的啊怎么读 动物医院英文怎么写的啊怎么读</a></li>
+                        <li class="py-2"><a href="/news/article-28547.htm" title="vue+Echarts绘制动态折线图">vue+Echarts绘制动态折线图</a></li>
+                        <li class="py-2"><a href="/news/article-38599.htm" title="Celery ETA任务重复提交的问题解决">Celery ETA任务重复提交的问题解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-v2ray.htm" title="「12月3日」最高速度18.4M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「12月3日」最高速度18.4M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36631.htm" title="免费领养宠物狗套路骗局揭秘（免费领养宠物的平台是真的吗）">免费领养宠物狗套路骗局揭秘（免费领养宠物的平台是真的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-60457.htm" title="动物疫苗公司排名（动物疫苗公司10强）">动物疫苗公司排名（动物疫苗公司10强）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-free-clash.htm" title="「1月26日」最高速度21M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接">「1月26日」最高速度21M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
