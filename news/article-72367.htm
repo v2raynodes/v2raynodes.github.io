@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-72367.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Mac安装Kubernetes-minikube专治各种坑</title>
+        <meta name="description" content="根据官方文档安装https://minikube.sigs.k8s.io/docs/start/ 1.安装minikube brew install minikube 如果没有安装brew需要安装Ho" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-72367.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="Mac安装Kubernetes-minikube专治各种坑" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/025ef6a779505214e5ec7c2c9f6d3309.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:08:56" />
+    <meta property="og:updated_time" content="2025-03-12T06:08:56" />
+        <meta property="og:description" content="根据官方文档安装https://minikube.sigs.k8s.io/docs/start/ 1.安装minikube brew install minikube 如果没有安装brew需要安装Ho" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mac安装Kubernetes-minikube专治各种坑">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Mac安装Kubernetes-minikube专治各种坑</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>根据官方文档安装<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://minikube.sigs.k8s.io/docs/start/"  rel="nofollow">https://minikube.sigs.k8s.io/docs/start/</a></p> <h4><a id="1minikube_2" rel="nofollow"></a>1.安装minikube</h4> <p>brew install minikube<br /> 如果没有安装brew需要安装Homebrew</p> <h5><a id="11Homebrew_5" rel="nofollow"></a>1.1安装Homebrew</h5> <p>由于国内的各种墙官方推荐的方法无法安装<br /> 打开控制台<br /> cd ~<br /> curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh &gt;&gt; brew_install</p> <p>这里如果出现<br /> curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused<br /> 需要添加ip映射<br /> sudo vi /etc/hosts<br /> 199.232.28.133 raw.githubusercontent.com</p> <p>修改brew_install<br /> vi brew_install 把BREW_REPO替换成https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git<br /> #BREW_REPO = “https://github.com/Homebrew/brew”.freeze<br /> BREW_REPO = “https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git”.freeze</p> <p>开始安装<br /> ruby ./brew_install</p> <p>此时可能还会惊奇的发现ruby没有安装或者报错<br /> Mac ruby: no Ruby script found in input (LoadError)<br /> 此时就要重新安装ruby</p> <h5><a id="12ruby_28" rel="nofollow"></a>1.2安装ruby</h5> <p>/usr/bin/ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”</p> <p>安装完成之后再进行<br /> ruby ./brew_install</p> <p>你以为这样就可以了？<br /> 不一定哈哈哈，有可能会出现卡住在<br /> Cloning into ‘/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core’…<br /> 解决方案为</p> <h5><a id="13homebrew_38" rel="nofollow"></a>1.3重新克隆homebrew</h5> <p>cd /usr/local/Homebrew/Library/Taps/<br /> mkdir homebrew<br /> cd homebrew<br /> git clone https://mirrors.ustc.edu.cn/homebrew-core.git<br /> brew update<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/037602d929104eb0995c6131f9e158e1.jpg" alt="Mac安装Kubernetes-minikube专治各种坑"><br /> 再次 ruby ./brew_install 应该就能正常了</p> <h5><a id="2_47" rel="nofollow"></a>2.开始启动</h5> <p>brew cask remove minikube<br /> brew link minikube<br /> minikube start<br /> 这里可能需要等的时间会比较长</p> <h5><a id="3_dashboard_54" rel="nofollow"></a>3.打开 dashboard</h5> <p>kubectl get po -A<br /> minikube kubectl – get po -A<br /> minikube dashboard<br /> 出现这个即已经安装成功了<img decoding="async" src="http://img.555519.xyz/uploads3/20220819/d5f9e9edf8097d2af713d2a631e5273c.jpg" alt="Mac安装Kubernetes-minikube专治各种坑"><br /> ps: 停止要使用minikube stop 如果使用minikube delete 下次启动又要重新下载会很久</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71694.htm">宠物食品加工厂手续流程（宠物食品加工厂需要办理哪些手续）</a></p>
+                                        <p>下一个：<a href="/news/article-72368.htm">.NET混合开发解决方案WebView2的进程模型</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60456.htm" title="宠物领养网免费同城多少钱一只（宠物领养平台）">宠物领养网免费同城多少钱一只（宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/news/article-40075.htm" title="郑州哪里有卖狗粮的地方（郑州宠物粮批发市场）">郑州哪里有卖狗粮的地方（郑州宠物粮批发市场）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-v2ray-subscribe.htm" title="「3月6日」最高速度18.8M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接">「3月6日」最高速度18.8M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-63436.htm" title="宠物领养条约最新（宠物领养的法律法规）">宠物领养条约最新（宠物领养的法律法规）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-clash-windows.htm" title="「2月12日」最高速度22.5M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「2月12日」最高速度22.5M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-69720.htm" title="宠物粮食加工厂设备哪的好点呢知乎（宠物粮加工机器）">宠物粮食加工厂设备哪的好点呢知乎（宠物粮加工机器）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-clash.htm" title="「3月3日」最高速度20.4M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「3月3日」最高速度20.4M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-72368.htm" title=".NET混合开发解决方案WebView2的进程模型">.NET混合开发解决方案WebView2的进程模型</a></li>
+                        <li class="py-2"><a href="/news/article-39105.htm" title="小动物医院游戏（小动物医院活动目标）">小动物医院游戏（小动物医院活动目标）</a></li>
+                        <li class="py-2"><a href="/news/article-45046.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
