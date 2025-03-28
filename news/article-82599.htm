@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-82599.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>【MQTT】mqtt 服务器部署&#8211;go 生产和消费demo</title>
+        <meta name="description" content="1. 背景 Golang 是谷歌开发的一种静态强类型、编译、并发和垃圾收集编程语言。围棋富有表现力，干净，高效。它的并发机制使得编写最大限度地利用多核和网络机器的程序变得容易，它的创新类型系统使得灵活" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-82599.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="【MQTT】mqtt 服务器部署&#8211;go 生产和消费demo" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/a6d359b49d5ab3bc0952c419067a4135.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:15:12" />
+    <meta property="og:updated_time" content="2025-03-27T08:15:12" />
+        <meta property="og:description" content="1. 背景 Golang 是谷歌开发的一种静态强类型、编译、并发和垃圾收集编程语言。围棋富有表现力，干净，高效。它的并发机制使得编写最大限度地利用多核和网络机器的程序变得容易，它的创新类型系统使得灵活" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【MQTT】mqtt 服务器部署&#8211;go 生产和消费demo">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>【MQTT】mqtt 服务器部署&#8211;go 生产和消费demo</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>1. 背景</h2> <p>Golang 是谷歌开发的一种静态强类型、编译、并发和垃圾收集编程语言。围棋富有表现力，干净，高效。它的并发机制使得编写最大限度地利用多核和网络机器的程序变得容易，它的创新类型系统使得灵活和模块化的程序构造成为可能。Go 可以快速编译成机器代码，但具有垃圾收集的便利性和运行时反射的强大功能。它是一个快速的、静态类型的、编译语言的，就像一个动态类型的、直译语言的。</p> <p>MQTT 是一种基于发布/订阅模型的轻量级物联网消息传递协议，它只需要很少的代码和带宽，就可以为物联网设备提供实时可靠的消息传递服务。它适用于硬件资源有限的设备和带宽有限的网络环境。因此，MQTT 协议广泛应用于物联网、移动互联网、物联网、电力等行业。源码<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/emqx/emqx-rel"  title="GitHub - emqx/emqx-rel: Release Project for EMQ X Broker prior to 4.3. Newer releases are built here: https://github.com/emqx/emqx" rel="nofollow">GitHub - emqx/emqx-rel: Release Project for EMQ X Broker prior to 4.3. Newer releases are built here: https://github.com/emqx/emqx</a></p> <p>本文主要介绍如何在 Golang 项目中使用 paho.MQTT.Golang 客户端库，并实现客户端与 MQTT 代理之间的连接、订阅和消息传递。</p> <h2>2.&nbsp; 设计原理</h2> <p><img fetchpriority="high" decoding="async" alt="" height="806" src="http://img.555519.xyz/uploads/20230210/b07be2c60975fdc426aa9b5d76eefc64.jpg"></p> <h2>&nbsp;3. 服务部署</h2> <p><strong>方法一：命令安装</strong><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.emqx.io/docs/en/v3.0/install.html#debian"  title="Installation | EMQX 3.0 Documentation" rel="nofollow">Installation | EMQX 3.0 Documentation</a></p> <ul> <li>apt-get install lksctp-tools</li> <li>curl -s https://assets.emqx.com/scripts/install-emqx-deb.sh | sudo bash</li> <li>sudo apt-get install emqx</li> </ul> <p><strong>&nbsp;方法二：源码编译</strong></p> <ul> <li>$ git clone https://github.com/emqx/emqx-rel.git emqx-rel<br /> $ cd emqx-rel<br /> $ git checkout $(git describe --tags $(git rev-list --tags --max-count=1))<br /> $ make emqx-pkg<br /> $ ls _packages/emqx</li> </ul> <p><img decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads/20230210/3b1ae0c595ff63b61845f994f3455119.jpg"></p> <p><img decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads/20230210/fdb28ae8b182ac153f9fea952b98e114.jpg">&nbsp;</p> <h2>&nbsp;4. go 生产消费源码</h2> <p><img loading="lazy" decoding="async" alt="" height="141" src="http://img.555519.xyz/uploads/20230210/e24715133aa2932d689386a21341fe9f.jpg"></p> <p>common.go&nbsp;</p> <pre><code class="hljs">package main  import ( 	"fmt" 	mqtt "github.com/eclipse/paho.mqtt.golang" )  var broker = "你的broker ip" var port = 1883 var userName = "emqx" var passwd = "你的密码" var topic = "topic/test"  func sub(client mqtt.Client, producer bool) { 	token := client.Subscribe(topic, 1, nil) 	token.Wait() 	if producer { 		fmt.Printf("Producer subscribed to topic %s", topic) 	} else { 		fmt.Printf("Consumer subscribed to topic %s", topic) 	} } </code></pre> <p>producer.go</p> <pre><code class="hljs">package main  import ( 	"fmt" 	mqtt "github.com/eclipse/paho.mqtt.golang" 	"time" )  var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) { 	fmt.Printf("Producer Received message: %s from topic: %s\n", msg.Payload(), msg.Topic()) }  var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) { 	fmt.Println("Connected") }  var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) { 	fmt.Printf("Connect lost: %v", err) }  func producerPoint() { 	opts := mqtt.NewClientOptions() 	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", broker, port)) 	opts.SetClientID("go_mqtt_producer") 	opts.SetUsername(userName) 	opts.SetPassword(passwd) 	opts.SetKeepAlive(8 * time.Second) 	opts.SetDefaultPublishHandler(messagePubHandler) 	opts.OnConnect = connectHandler 	opts.OnConnectionLost = connectLostHandler 	client := mqtt.NewClient(opts) 	if token := client.Connect(); token.Wait() &amp;&amp; token.Error() != nil { 		panic(token.Error()) 	}  	sub(client, true) 	publish(client)  	time.Sleep(30 * time.Second) 	client.Disconnect(250) }  func publish(client mqtt.Client) { 	num := 10 	for i := 0; i &lt; num; i++ { 		text := fmt.Sprintf("Message %d", i) 		token := client.Publish(topic, 0, false, text) 		token.Wait() 		time.Sleep(time.Second) 	} } </code></pre> <p>consumer.go</p> <pre><code class="hljs">package main  import ( 	"fmt" 	mqtt "github.com/eclipse/paho.mqtt.golang" 	"time" )  var messageRecHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) { 	fmt.Printf("Clenit Received message: %s from topic: %s\n", msg.Payload(), msg.Topic()) }  // 其实consumer既可以收到消息，也可以发送消息 // 作为互联网硬件收集器，采集的环境信息数据（温度、湿度等）发送到broker // 作为互联网硬件执行器，可以接受broker的消息（执行指令信息，如显示文字、声音等），并根据消息执行硬件行为  func consumerPoint() { 	opts := mqtt.NewClientOptions() 	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", broker, port)) 	opts.SetClientID("go_mqtt_consumer") 	opts.SetUsername(userName) 	opts.SetPassword(passwd) 	opts.SetKeepAlive(8 * time.Second) 	opts.SetDefaultPublishHandler(messageRecHandler) 	opts.OnConnect = connectHandler 	opts.OnConnectionLost = connectLostHandler 	client := mqtt.NewClient(opts) 	if token := client.Connect(); token.Wait() &amp;&amp; token.Error() != nil { 		panic(token.Error()) 	}  	sub(client, false) 	time.Sleep(30 * time.Second) 	client.Disconnect(250) } </code></pre> <p>main.go</p> <pre><code class="hljs">package main  import "time"  func main() { 	go consumerPoint() 	go producerPoint() 	time.Sleep(30 * time.Second) } </code></pre> <p>结果：</p> <p><img loading="lazy" decoding="async" alt="" height="342" src="http://img.555519.xyz/uploads/20230210/7c0eb3cd50610661bd9015b8e50c6436.jpg"></p> <h2>&nbsp;5. 小结</h2> <ol> <li>其实consumer既可以收到消息，也可以发送消息</li> <li>作为互联网硬件收集器，采集的环境信息数据（温度、湿度等）发送到broker</li> <li>作为互联网硬件执行器，可以接受broker的消息（执行指令信息，如显示文字、声音等），并根据消息执行硬件行为</li> </ol> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81855.htm">拼多多56元开网店是真的吗（拼多多56元开网店是真的吗吗）</a></p>
+                                        <p>下一个：<a href="/news/article-82600.htm">动物疫苗产业链分析 动物疫苗产业链分析报告</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37128.htm" title="动物注射给药的方法有（动物注射给药的方法有哪两种）">动物注射给药的方法有（动物注射给药的方法有哪两种）</a></li>
+                        <li class="py-2"><a href="/news/article-38599.htm" title="Celery ETA任务重复提交的问题解决">Celery ETA任务重复提交的问题解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-node-share.htm" title="「3月8日」最高速度19.4M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「3月8日」最高速度19.4M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41061.htm" title="无货源网店一个月能赚多少钱（无货源店铺一个月可以赚多少）">无货源网店一个月能赚多少钱（无货源店铺一个月可以赚多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-shadowrocket-node.htm" title="「1月24日」最高速度21.9M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接">「1月24日」最高速度21.9M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-65276.htm" title="宠物医院好评200字怎么写 宠物医院好评200字怎么写的">宠物医院好评200字怎么写 宠物医院好评200字怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-74377.htm" title="动物疫苗销售需要什么手续和条件呢视频讲解（动物疫苗销售需要什么手续和条件呢视频讲解下载）">动物疫苗销售需要什么手续和条件呢视频讲解（动物疫苗销售需要什么手续和条件呢视频讲解下载）</a></li>
+                        <li class="py-2"><a href="/news/article-67152.htm" title="动物疫苗的使用方法及注意事项视频讲解下载 动物疫苗的使用方法及注意事项视频讲解下载">动物疫苗的使用方法及注意事项视频讲解下载 动物疫苗的使用方法及注意事项视频讲解下载</a></li>
+                        <li class="py-2"><a href="/news/article-39105.htm" title="小动物医院游戏（小动物医院活动目标）">小动物医院游戏（小动物医院活动目标）</a></li>
+                        <li class="py-2"><a href="/news/article-45537.htm" title="床上快速找到跳蚤的方法（跳蚤咬的包什么样图片）">床上快速找到跳蚤的方法（跳蚤咬的包什么样图片）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
