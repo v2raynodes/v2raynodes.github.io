@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-85443.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>vue+egg.js使用websocket</title>
+        <meta name="description" content="==&gt; 服务端促使客户端退出的小案例。 1 安装与配置 1.1 安装依赖包 # 1 egg 项目中安装npminstall egg-socket.io# 2 vue 项目中安装npminstal" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-85443.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="vue+egg.js使用websocket" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/a6d359b49d5ab3bc0952c419067a4135.webp" />
+        <meta property="og:release_date" content="2025-03-31T08:41:51" />
+    <meta property="og:updated_time" content="2025-03-31T08:41:51" />
+        <meta property="og:description" content="==&gt; 服务端促使客户端退出的小案例。 1 安装与配置 1.1 安装依赖包 # 1 egg 项目中安装npminstall egg-socket.io# 2 vue 项目中安装npminstal" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue+egg.js使用websocket">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>vue+egg.js使用websocket</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night-eighties"> <h2><a id="__0" rel="nofollow"></a><strong>==&gt; 服务端促使客户端退出的小案例。</strong></h2> <h3><a id="1__2" rel="nofollow"></a>1 安装与配置</h3> <h4><a id="11__4" rel="nofollow"></a>1.1 安装依赖包</h4> <pre><code class="prism language-shell"><span class="token comment"># 1 egg 项目中安装</span><span class="token function">npm</span><span class="token function">install</span> egg-socket.io<span class="token comment"># 2 vue 项目中安装</span><span class="token function">npm</span><span class="token function">install</span> vue-socket.io</code></pre> <h4><a id="12__eggjs_14" rel="nofollow"></a>1.2 配置 egg.js</h4> <h5><a id="configconfigdefaultjs_16" rel="nofollow"></a>config/config.default.js</h5> <pre><code class="prism language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token parameter">appInfo</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span> config<span class="token operator">=</span> exports<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token operator">...</span><span class="token operator">...</span><span class="token comment">// 关闭 csrf</span>   config<span class="token punctuation">.</span>security<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>     csrf<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>       enable<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">// cors 跨域配置</span>   config<span class="token punctuation">.</span>cors<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>     origin<span class="token operator">:</span><span class="token string">'*'</span><span class="token punctuation">,</span><span class="token comment">// 允许请求的方法</span>     allowMethods<span class="token operator">:</span><span class="token string">'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">// ************** socket.io 配置 **************</span>   config<span class="token punctuation">.</span>io<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>     init<span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span>     namespace<span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 命名空间</span><span class="token string">'/'</span><span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 可通过 app.io.of('/') 获取到这个命名空间，下面代码中有用到</span><span class="token comment">// 对应下面的 app/io/middleware/connection.js</span>         connectionMiddleware<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'connection'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment">// 对应下面的 app/io/middleware/packet.js</span>         packetMiddleware<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'packet'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">// *******************************************</span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span>config<span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h5><a id="configpluginjs_58" rel="nofollow"></a>config/plugin.js</h5> <pre><code class="prism language-js">module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span><span class="token operator">...</span><span class="token operator">...</span><span class="token operator">...</span>   io<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>     enable<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">package</span><span class="token operator">:</span><span class="token string">'egg-socket.io'</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre> <h5><a id="appiomiddlewareconnectionjs_71" rel="nofollow"></a>app/io/middleware/connection.js</h5> <pre><code class="prism language-js"><span class="token comment">/**  * 在每一个客户端连接或者退出时发生作用  * @param app  * @returns {(function(*, *): Promise&lt;void&gt;)|*}  */</span> module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token parameter">app</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">async</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     ctx<span class="token punctuation">.</span>socket<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'res'</span><span class="token punctuation">,</span><span class="token string">'connected!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server socket connected'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">await</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre> <h5><a id="appiomiddlewarepacketjs_88" rel="nofollow"></a>app/io/middleware/packet.js</h5> <pre><code class="prism language-js"><span class="token comment">/**  * 对消息进行预处理  * @param app  * @returns {(function(*, *): Promise&lt;void&gt;)|*}  */</span> module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token parameter">app</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">async</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     ctx<span class="token punctuation">.</span>socket<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'res'</span><span class="token punctuation">,</span><span class="token string">'packet received!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'packet:'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>packet<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">await</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre> <h3><a id="2_eggjs__websocket__105" rel="nofollow"></a>2 egg.js 中 websocket 使用</h3> <pre><code class="prism language-js"><span class="token keyword">class</span><span class="token class-name">AdminController</span><span class="token keyword">extends</span><span class="token class-name">Controller</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span><span class="token operator">...</span><span class="token comment">// 其他代码</span><span class="token operator">...</span><span class="token operator">...</span><span class="token comment">/**    * @description: 修改用户信息    * @param {*}    * @return {*}    */</span><span class="token keyword">async</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span><span class="token punctuation">{<!-- --></span> ctx<span class="token punctuation">,</span> app<span class="token punctuation">}</span><span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">;</span><span class="token comment">// =================== 引入 nsp，用于 websocket 相关操作 ===================</span><span class="token keyword">const</span> nsp<span class="token operator">=</span> app<span class="token punctuation">.</span>io<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 获取到对应的命名空间的内容</span><span class="token comment">// =====================================================================</span><span class="token keyword">let</span> res<span class="token punctuation">;</span><span class="token keyword">const</span> reqBody<span class="token operator">=</span> ctx<span class="token punctuation">.</span>request<span class="token punctuation">.</span>body<span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>reqBody<span class="token punctuation">.</span>type<span class="token operator">===</span><span class="token string">'rename'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 重命名</span>       res<span class="token operator">=</span><span class="token keyword">await</span> ctx<span class="token punctuation">.</span>service<span class="token punctuation">.</span>admin<span class="token punctuation">.</span><span class="token function">rename</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">,</span> reqBody<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>reqBody<span class="token punctuation">.</span>type<span class="token operator">===</span><span class="token string">'editPassword'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 重置密码</span>       res<span class="token operator">=</span><span class="token keyword">await</span> ctx<span class="token punctuation">.</span>service<span class="token punctuation">.</span>admin<span class="token punctuation">.</span><span class="token function">editPassword</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">,</span> reqBody<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>reqBody<span class="token punctuation">.</span>type<span class="token operator">===</span><span class="token string">'editStatus'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 设置用户状态</span>       res<span class="token operator">=</span><span class="token keyword">await</span> ctx<span class="token punctuation">.</span>service<span class="token punctuation">.</span>admin<span class="token punctuation">.</span><span class="token function">editStatus</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">,</span> reqBody<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>reqBody<span class="token punctuation">.</span>userStatus<span class="token operator">===</span><span class="token number">2</span><span class="token operator">||</span> reqBody<span class="token punctuation">.</span>userStatus<span class="token operator">===</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// ====================== 发送消息 ======================</span>           nsp<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'logout'</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span> msg<span class="token operator">:</span><span class="token string">'logout'</span><span class="token punctuation">,</span> id<span class="token operator">:</span> ctx<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// ====================================================</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       ctx<span class="token punctuation">.</span>body<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">SuccessResponse</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token string">'修改成功'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span>       ctx<span class="token punctuation">.</span>body<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ErrorResponse</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token string">'修改失败'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">...</span><span class="token operator">...</span><span class="token comment">// 其他代码</span><span class="token operator">...</span><span class="token operator">...</span><span class="token punctuation">}</span></code></pre> <h3><a id="3_vue__websocket_156" rel="nofollow"></a>3 vue 中使用 websocket</h3> <h5><a id="mainjs_158" rel="nofollow"></a>main.js</h5> <pre><code class="prism language-js"><span class="token comment">// 引入 websocket</span><span class="token keyword">import</span> VueSocketIO<span class="token keyword">from</span><span class="token string">'vue-socket.io'</span><span class="token comment">// 配置</span><span class="token keyword">const</span> vueSocketIO<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">VueSocketIO</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   debug<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token comment">// 后端服务地址</span>   connection<span class="token operator">:</span><span class="token string">'http://127.0.0.1:7001'</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">// 监听connect事件</span> vueSocketIO<span class="token punctuation">.</span>io<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'connect'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'socket connect from main.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>vueSocketIO<span class="token punctuation">)</span></code></pre> <h5><a id="homevue_177" rel="nofollow"></a>home.vue</h5> <pre><code class="prism language-js"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">...</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span>   sockets<span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 连接事件</span><span class="token function-variable function">connect</span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"socket connect from HOME page"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">// 登出事件</span><span class="token function-variable function">logout</span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"wesocket-logout"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>id<span class="token operator">===</span> sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"userId"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$notify<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>           title<span class="token operator">:</span><span class="token string">"您的账号已被停用/注销/删除！"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我退出了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> <h3><a id="4__205" rel="nofollow"></a>4 参考文献</h3> <p>[1]<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/dreamsqin/p/12018866.html"  rel="nofollow">vue-socket.io使用教程与踩坑记录.</a></p> <p>[2]<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/kbnet/archive/2019/05/30/10949074.html"  rel="nofollow">egg-socket在egg中的使用.</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-84738.htm">养猫会引起人的身体生病了（养猫会造成主人什么样的病）</a></p>
+                                        <p>下一个：<a href="/news/article-85444.htm">领养狗的协议怎么写（狗狗领养协议书有没有法律效益）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-node-share-links.htm" title="「3月11日」最高速度20.3M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接">「3月11日」最高速度20.3M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-clash-windows.htm" title="「3月9日」最高速度18.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「3月9日」最高速度18.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-69072.htm" title="被猫爪子勾了一下出了一点血要打疫苗吗（有人死于被猫抓伤吗）">被猫爪子勾了一下出了一点血要打疫苗吗（有人死于被猫抓伤吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-subscribe-node.htm" title="「3月26日」最高速度19.5M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接">「3月26日」最高速度19.5M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76404.htm" title="沈阳宠物免费领养赠送（沈阳宠物狗免费领养）">沈阳宠物免费领养赠送（沈阳宠物狗免费领养）</a></li>
+                        <li class="py-2"><a href="/news/article-86172.htm" title="被猫轻微咬伤一个小孔没有流血（被猫轻微咬伤一个小孔没有流血怎么办）">被猫轻微咬伤一个小孔没有流血（被猫轻微咬伤一个小孔没有流血怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-node-share.htm" title="「3月8日」最高速度19.4M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接">「3月8日」最高速度19.4M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-subscribe-node.htm" title="「3月19日」最高速度22.7M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「3月19日」最高速度22.7M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-free-node-subscribe-links.htm" title="「3月13日」最高速度20.9M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接">「3月13日」最高速度20.9M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-65863.htm" title="办理动物医院需要什么手续和证件呢图片（办理动物医院需要什么手续和证件呢图片高清）">办理动物医院需要什么手续和证件呢图片（办理动物医院需要什么手续和证件呢图片高清）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
