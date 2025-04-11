@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-91961.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>记一次Spring|项目启动耗时超级长的优化</title>
+        <meta name="description" content="起因: 手上的一个spring项目启动耗时超级长，启动后查看花费的时间，一共花了426849毫秒，换算近7.11415分钟。  1，观察日志初步排查问题，发现系统卡在此处不动了。。。  2，继续等待日" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-91961.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="记一次Spring|项目启动耗时超级长的优化" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/87ac0693476d1b191407bfe732659428.webp" />
+        <meta property="og:release_date" content="2025-04-09T09:17:17" />
+    <meta property="og:updated_time" content="2025-04-09T09:17:17" />
+        <meta property="og:description" content="起因: 手上的一个spring项目启动耗时超级长，启动后查看花费的时间，一共花了426849毫秒，换算近7.11415分钟。  1，观察日志初步排查问题，发现系统卡在此处不动了。。。  2，继续等待日" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="记一次Spring|项目启动耗时超级长的优化">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>记一次Spring|项目启动耗时超级长的优化</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>起因: 手上的一个spring项目启动耗时超级长，启动后查看花费的时间，一共花了426849毫秒，换算近7.11415分钟。</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/416be95e3cf5594d6ad7b98448cad03f.jpg"></p> <p><strong>1，观察日志初步排查问题，发现系统卡在此处不动了。。。</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/131b2595ffe4a89c2e41e9de4f67ebe0.jpg"></p> <p><strong>2，继续等待日志，发现在启动过程中加载阿里数据库连接池DruidDataSource耗时近4分钟。</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/327aaf2334a86c45806bd780a005e204.jpg"></p> <p><strong>3，由此怀疑是连接池配置问题，去除所有初始化的参数，保留连接信息(driverClassName,url,username,password)，启动耗时39282毫秒, 0.6547 分</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/54f96ad8c388eb2bbd9fd7b90f347e80.jpg"></p> <p><strong>4，继续排查连接池配置，放出几个初始化参数，再重新启动服务，发现耗时又出现将近7分钟，由此可发现问题出现在此。</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/d2838a45580f83ae9a296225d99e1131.jpg"></p> <p><strong>5，查看Druid的官方文档，配置推荐<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/alibaba/druid/wiki/DruidDataSource%E9%85%8D%E7%BD%AE"  title="DruidDataSource配置 · alibaba/druid Wiki · GitHub" rel="nofollow">DruidDataSource配置 · alibaba/druid Wiki · GitHub</a></strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/d75419081c92bdb8bd5ed6e591006314.jpg"></p> <pre>&lt;property name="initialSize" value="500" /&gt;   //此处配置的值问题很大。</pre> <p>查询官网文档：<br /> initialSize&nbsp;&nbsp; &nbsp; 默认值是0&nbsp; 初始化时建立物理连接的个数，初始化发生在显示调用init方法，或者第一次getConnection时</p> <p>初始化配置了500的个数，Spring启动过程就需要花费大量的时间去初始化创建连接，导致系统启动超级的慢。</p> <p><strong>准确定位到初始化参数问题，导致项目启动耗时如此之长久。&nbsp;&nbsp; &nbsp;</strong></p> <p><strong>原先&lt;property name="initialSize" value="500" /&gt;<br /> 修改后&lt;property name="initialSize" value="50" /&gt;</strong></p> <p><strong>此次优化效果如下：<br /> 系统启动性能优化（前后耗时对比）：</strong><br /> 优化前：spring项目启动耗时426849毫秒，大约7分钟。<br /> 优化后：spring项目启动耗时185613毫秒，大约3分钟，启动性能提升2倍多。<br /> 极致情况下，开发人员本地启动服务，可直接删掉initialSize参数配置，启动性能还可在原基础上提升20秒左右。<br /> 启动这个项目，一次可提速近3分钟。</p> <p><strong>将近3分钟的启动时长，对于项目来说还是太长了，继续深度优化。</strong></p> <p><strong>6，监控日志发现加载线程池出现耗时将近（从18s到27s）10秒</strong></p> <p>2022-03-01 16:47:<strong>18</strong> [RMI TCP Connection(5)-127.0.0.1] INFO &nbsp;bs2.xxxxxxxxx.orm.core.SQLExecutor &nbsp;- 2441 query select &nbsp;from `xxxxxxx` &nbsp;<br /> 2022-03-01 16:47:<strong>27</strong> [RMI TCP Connection(5)-127.0.0.1] INFO &nbsp;org.springframework.xxxxx.concurrent.ThreadPoolTaskExecutor &nbsp;- Initializing 'txxxxkxecutor'</p> <p><strong>定位到系统使用xml配置线程池，在初始化的时候直接加载，导致耗时增加，于是修改加载为lazy-init</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/3ea30caecf636d527aba11997fad4589.jpg"></p> <p><strong>7，继续监控日志，在webApplication初始化时停留了一分多钟。</strong><br /> 16:33:40.811 [NettyClientSelector_1] DEBUG i.n.u.i.JavassistTypeParameterMatcherGenerator - Generated: io.netty.util.internal.__matchers__.com.alibaba.xxxxxmq.remoting.protocol.RemotingCommandMatcher<br /> 2022-03-01 <strong>16:34:48</strong> [RMI TCP Connection(3)-127.0.0.1] INFO &nbsp;org.springframework.web.context.ContextLoader &nbsp;- Root WebApplicationContext: initialization completed in 104988 ms<br /> 2022-03-01<strong> 16:34:52 </strong>[RMI TCP Connection(3)-127.0.0.1] INFO&nbsp; rsLog &nbsp;- com.baison.bap.resource.StringResourceLoader starting load</p> <p><strong>8，定位到是由于spring的bean加载，启动过程中加载了大量的bean类，于是在bean.xml文件中，进行懒加载配置。</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/cba4f565256234a9b5f5c4cef34f5950.jpg"></p> <p> 优化后，耗时已经到1分多钟了，这下启动起来瞬间就爽了。</p> <p><strong>此次优化效果如下：<br /> 系统启动性能优化（前后耗时对比）：</strong><br /><strong>优化前：spring项目启动耗时426849毫秒，大约7分钟。<br /> 优化后：spring项目启动耗时99505毫秒，大约1分半，启动性能提升将近5倍。</strong><br /> 启动这个项目，一次可提速近5分钟，平均下来用在这些项目启动的时间上面，每天可以节省几十分钟。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-91187.htm">宠物领养市场需求分析论文（宠物领养项目计划书）</a></p>
+                                        <p>下一个：<a href="/news/article-91962.htm">宠物领养中心官网电话号码（宠物领养中心官网电话号码是多少）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-89029.htm" title="Laravel学习三：路由以及跳转和重定向用法总结">Laravel学习三：路由以及跳转和重定向用法总结</a></li>
+                        <li class="py-2"><a href="/news/article-90514.htm" title="动物疫苗股票龙头一览（动物疫苗上市a股龙头）">动物疫苗股票龙头一览（动物疫苗上市a股龙头）</a></li>
+                        <li class="py-2"><a href="/news/article-89783.htm" title="狗粮加工生产线图片（狗粮加工生产线图片大全）">狗粮加工生产线图片（狗粮加工生产线图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-77753.htm" title="天津宠物领养中心地址电话 天津宠物领养中心地址电话号码">天津宠物领养中心地址电话 天津宠物领养中心地址电话号码</a></li>
+                        <li class="py-2"><a href="/news/article-68410.htm" title="宠物领养需要花钱吗多少钱（宠物领养需要花钱吗多少钱一个月）">宠物领养需要花钱吗多少钱（宠物领养需要花钱吗多少钱一个月）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-clash-windows.htm" title="「3月28日」最高速度19.9M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接">「3月28日」最高速度19.9M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-78447.htm" title="卖狗狗的平台微信怎么登录（卖狗狗的平台微信怎么登录不了）">卖狗狗的平台微信怎么登录（卖狗狗的平台微信怎么登录不了）</a></li>
+                        <li class="py-2"><a href="/news/article-89030.htm" title="Vue中所有的v-指令">Vue中所有的v-指令</a></li>
+                        <li class="py-2"><a href="/news/article-82600.htm" title="动物疫苗产业链分析 动物疫苗产业链分析报告">动物疫苗产业链分析 动物疫苗产业链分析报告</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-clash-v2ray-ss-ssr.htm" title="「3月12日」最高速度19.3M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接">「3月12日」最高速度19.3M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
