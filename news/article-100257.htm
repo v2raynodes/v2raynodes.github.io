@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-100257.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>按值致电与按引用致电之间的区别</title>
+        <meta name="description" content="在将参数传递给函数的编程中，我们将函数调用分为两种：按值调用和按引用调用。正如两次调用中所建议的那样，我们按参数类型调用函数，即传递参数的实际值，在其他情况下，我们传递参数的位置/引用。 以下是“按值" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-100257.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="按值致电与按引用致电之间的区别" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/bb4b020335cd785442b455ac06b7dfa1.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:04:16" />
+    <meta property="og:updated_time" content="2025-04-20T09:04:16" />
+        <meta property="og:description" content="在将参数传递给函数的编程中，我们将函数调用分为两种：按值调用和按引用调用。正如两次调用中所建议的那样，我们按参数类型调用函数，即传递参数的实际值，在其他情况下，我们传递参数的位置/引用。 以下是“按值" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="按值致电与按引用致电之间的区别">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>按值致电与按引用致电之间的区别</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>在将参数传递给函数的编程中，我们将函数调用分为两种：按值调用和按引用调用。正如两次调用中所建议的那样，我们按参数类型调用函数，即传递参数的实际值，在其他情况下，我们传递参数的位置/引用。</p> <p>以下是“按值调用”和“按引用调用”之间的重要区别。</p> <table class="table table-bordered table-striped"> <thead> <tr class="firstRow"> <th>序号</th> <th>键</th> <th>按值致电</th> <th>通过参考电话</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>命名约定</td> <td>与这种类型一样，参数的值将传递给函数调用，因此将其命名为“按值调用”。</td> <td>另一方面，在此类型中，参数的引用被传递以调用该函数，因此将其命名为“按引用调用”。</td> </tr> <tr> <td>2</td> <td>内部实施</td> <td>在“按值调用”中，我们在调用函数期间传递的参数值将被复制到函数的实际局部参数中。</td> <td>在“按引用调用”中，将复制传递参数的位置地址/引用，并将其分配给函数的本地参数，因此传递参数和实际参数都指向同一位置。</td> </tr> <tr> <td>3</td> <td>变化的影响</td> <td>由于将传递的参数的值复制到函数的参数，因此函数内部的参数所做的任何更改都不会反映在传递的参数中。</td> <td>由于参数和传递的参数都指向同一位置，因此对函数内部参数所做的任何更改都会反映在传递的参数中。</td> </tr> <tr> <td>4</td> <td>引用的内存位置</td> <td>传递的参数和函数的实际参数所引用的内存位置是不同的。</td> <td>传递的参数和函数的实际参数所引用的内存位置相同。</td> </tr> <tr> <td>5</td> <td>支持的语言。</td> <td>值调用由以下语言支持：C ++。PHP。Visual Basic NET和C#。</td> <td>JAVA主要支持按引用调用。</td> </tr> </tbody> </table> <h2>按值调用与按引用调用的示例</h2> <p><strong>ByValue.c</strong></p> <pre>#include&nbsp;&lt;stdio.h&gt; class&nbsp;ByValue{ &nbsp;&nbsp;&nbsp;void&nbsp;swapByValue(int,&nbsp;int);&nbsp;/*&nbsp;Prototype&nbsp;*/ &nbsp;&nbsp;&nbsp;int&nbsp;main(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;n1&nbsp;=&nbsp;10,&nbsp;n2&nbsp;=&nbsp;20; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapByValue(n1,&nbsp;n2); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("n1:&nbsp;%d,&nbsp;n2:&nbsp;%d\n",&nbsp;n1,&nbsp;n2); &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;void&nbsp;swapByValue(int&nbsp;a,&nbsp;int&nbsp;b){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;t; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;a;&nbsp;a&nbsp;=&nbsp;b;&nbsp;b&nbsp;=&nbsp;t; &nbsp;&nbsp;&nbsp;} }</pre> <p>输出结果</p> <pre>n1:&nbsp;10,&nbsp;n2:&nbsp;20</pre> <h2>示例</h2> <p><strong>ByReference.c</strong></p> <pre>#include&nbsp;&lt;stdio.h&gt; class&nbsp;ByReference{ &nbsp;&nbsp;&nbsp;void&nbsp;swapByReference(int*,&nbsp;int*); &nbsp;&nbsp;&nbsp;int&nbsp;main(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;n1&nbsp;=&nbsp;10,&nbsp;n2&nbsp;=&nbsp;20; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapByReference(&amp;n1,&nbsp;&amp;n2); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("n1:&nbsp;%d,&nbsp;n2:&nbsp;%d\n",&nbsp;n1,&nbsp;n2); &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;void&nbsp;swapByReference(int&nbsp;*a,&nbsp;int&nbsp;*b){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;t; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;*a;&nbsp;*a&nbsp;=&nbsp;*b;&nbsp;*b&nbsp;=&nbsp;t; &nbsp;&nbsp;&nbsp;} }</pre> <p>输出结果</p> <pre>n1:&nbsp;20,&nbsp;n2:&nbsp;10</pre> <div></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99383.htm">动物疫苗有哪几种类型（我国疫苗有几种类型）</a></p>
+                                        <p>下一个：<a href="/news/article-100258.htm">上海地区宠物领养微信群号查询平台（上海宠物领养救助基地是真的吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-78447.htm" title="卖狗狗的平台微信怎么登录（卖狗狗的平台微信怎么登录不了）">卖狗狗的平台微信怎么登录（卖狗狗的平台微信怎么登录不了）</a></li>
+                        <li class="py-2"><a href="/news/article-86171.htm" title="狗狗免费领养中心临汾（临汾狗狗收容站）">狗狗免费领养中心临汾（临汾狗狗收容站）</a></li>
+                        <li class="py-2"><a href="/news/article-89784.htm" title="动物防疫站打疫苗需要什么手续和证件（动物防疫站在哪）">动物防疫站打疫苗需要什么手续和证件（动物防疫站在哪）</a></li>
+                        <li class="py-2"><a href="/news/article-77063.htm" title="三国杀新武将台词大全（三国杀武将台词大全语音）">三国杀新武将台词大全（三国杀武将台词大全语音）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-node-share-links.htm" title="「4月7日」最高速度20.2M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接">「4月7日」最高速度20.2M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-89783.htm" title="狗粮加工生产线图片（狗粮加工生产线图片大全）">狗粮加工生产线图片（狗粮加工生产线图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-91187.htm" title="宠物领养市场需求分析论文（宠物领养项目计划书）">宠物领养市场需求分析论文（宠物领养项目计划书）</a></li>
+                        <li class="py-2"><a href="/news/article-81854.htm" title="十大品牌兽药厂家 十大品牌兽药厂家是哪些">十大品牌兽药厂家 十大品牌兽药厂家是哪些</a></li>
+                        <li class="py-2"><a href="/news/article-81216.htm" title="[转载] Python中format函数用法">[转载] Python中format函数用法</a></li>
+                        <li class="py-2"><a href="/news/article-93990.htm" title="宠物诊所需要办理哪些证（宠物诊所办理营业执照需要些什么）">宠物诊所需要办理哪些证（宠物诊所办理营业执照需要些什么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
