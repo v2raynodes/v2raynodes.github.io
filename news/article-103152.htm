@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-103152.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Mr.Alright&#8212;使用AndroidStudio断点调试安卓源码</title>
+        <meta name="description" content="我为甚要用AS来调试安卓源码呢？来自尼克杨的疑问 当然是因为爽啦！之前都是开发app，后面接触到了修改系统源码，App调试的时候可以断点调试，省去了一部分加log的麻烦，所以希望源码也可以这样，于是有" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-103152.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="Mr.Alright&#8212;使用AndroidStudio断点调试安卓源码" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/7f8a2354bd56fe0a38cf1b6cf6cf6292.webp" />
+        <meta property="og:release_date" content="2025-04-24T09:17:21" />
+    <meta property="og:updated_time" content="2025-04-24T09:17:21" />
+        <meta property="og:description" content="我为甚要用AS来调试安卓源码呢？来自尼克杨的疑问 当然是因为爽啦！之前都是开发app，后面接触到了修改系统源码，App调试的时候可以断点调试，省去了一部分加log的麻烦，所以希望源码也可以这样，于是有" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mr.Alright&#8212;使用AndroidStudio断点调试安卓源码">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Mr.Alright&#8212;使用AndroidStudio断点调试安卓源码</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>我为甚要用AS来调试安卓源码呢？来自尼克杨的疑问</p> <p>当然是因为爽啦！之前都是开发app，后面接触到了修改系统源码，App调试的时候可以断点调试，省去了一部分加log的麻烦，所以希望源码也可以这样，于是有了下面方案。</p> <p>1.首先你要有系统源码，还要有linux的环境，至于源码的下载，linux的安装配置，大家先问下度娘</p> <p>2.上面的环境配置好之后，执行</p> <pre><code>source build/envsetup.sh</code></pre> <p>初始化了一些函数，接着执行</p> <pre><code>make idegen -j32</code></pre> <p>执行完这个，会生成idegen.jar ，接着执行</p> <pre><code>sh ./development/tools/idegen/idegen.sh</code></pre> <p>执行完这个就会生成，AS需要的一些文件 android.ipr、android.iml</p> <p>android.ipr：通常是保存工程编译器配置，入口，相关LIBRARIES等配置</p> <p>android.iml：主要描述了modules的路径，依赖关系等</p> <p>3.到这里，双击android.ipr 就可以用AS打开项目了，但是如果真的要直接打开，AS会加载的非常慢，毕竟安卓源码是非常庞大的，所以需要对android.iml处理，只添加我们需要的目录即可，下面简单介绍下android.iml的标签，之后会上传一份模板</p> <p>关于&lt;sourceFolder&gt;标签：</p> <p>通需要的文件添加到这里面，其他的删除，如package、framework<br /> &lt;sourceFolder url="file://$MODULE_DIR$/packages" isTestSource="false" /&gt;<br /> &lt;sourceFolder url="file://$MODULE_DIR$/frameworks" isTestSource="false" /&gt;</p> <p>关于&lt;excludeFolder&gt;标签：</p> <p>exclude顾名思义就是不包含的意思，不需要的添加到这里面，如vendor、external</p> <p>&lt;excludeFolder url="file://$MODULE_DIR$/vendor" /&gt;</p> <p>&lt;excludeFolder url="file://$MODULE_DIR$/external" /&gt;</p> <p>关于&lt;orderEntry&gt;标签：</p> <p>保留这两个就可以了</p> <p>&lt;orderEntry type="sourceFolder" forTests="false" /&gt;</p> <p>&lt;orderEntry type="jdk" jdkName="Android API 24 Platform" jdkType="Android SDK" /&gt;</p> <pre><code class="language-XML">android.iml &lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;module version="4" relativePaths="true" type="JAVA_MODULE"&gt;   &lt;component name="FacetManager"&gt;     &lt;facet type="android" name="Android"&gt;       &lt;configuration /&gt;     &lt;/facet&gt;   &lt;/component&gt;   &lt;component name="ModuleRootManager" /&gt;   &lt;component name="NewModuleRootManager" inherit-compiler-output="true"&gt;     &lt;exclude-output /&gt;     &lt;content url="file://$MODULE_DIR$"&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/packages/apps/Launcher3" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/packages/wallpapers/LivePicker" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/vendor/mediatek/proprietary/packages/apps/SystemUI" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/frameworks/base/services" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/frameworks/base/core/java" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/frameworks/base/core/res" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/frameworks/base/packages/SystemUI" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/frameworks/libs/systemui" isTestSource="false" /&gt;       &lt;sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/.repo" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/FeatrueTableSpec" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/abi" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/apps" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/art" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/bionic" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/bootable" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/build" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/ccu_tool" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/compatibility" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/cts" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/dalvik" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/developers" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/development" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/device" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/docs" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/external" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/frameworks" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/hardware" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel-3.18" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel-4.4" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel-4.19" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel-4.19-lc" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/kernel-4.14" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/libcore" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/libnativehelper" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/ndk" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/out" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/packages" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/pdk" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/phoenix" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/platform_testing" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/prebuilt" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/prebuilts" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/res" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/sdk" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/system" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/test" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/toolchain" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/tools" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/trusty" /&gt;       &lt;excludeFolder url="file://$MODULE_DIR$/vendor" /&gt;     &lt;/content&gt;     &lt;orderEntry type="sourceFolder" forTests="false" /&gt;     &lt;orderEntry type="jdk" jdkName="Android API 30 Platform" jdkType="Android SDK" /&gt;   &lt;/component&gt; &lt;/module&gt;</code></pre> <p>这样AS的只会去索引你添加的sourceFolder ，其他的都不添加，就会快了很多</p> <p>4.该文件在AS安装目录下面，bin文件夹下<br /> 64位的修改studio64.exe.vmoptions、32位的修改studio.exe.vmoptions<br /> -Xms1024m 修改这个，表示的是分配给studio的内存大小<br /> -Xmx1280m</p> <p>5.打开AS，选择open exist...,选择刚生成的android.ipr<br /> 这时候会快很多，因为好多索引我们都去除了，如果需要，再添加回来就是了<br /> 等待漫长的indexing...</p> <p>6.添加一个安卓app，选择要调试的进程即可</p> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220708/a748c60aa0a36803d3167bd0f0b4c0d7.jpg" alt="Mr.Alright---使用AndroidStudio断点调试安卓源码"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/35d2d3e7cb2169ee1e70a3c851b251b8.jpg" alt="Mr.Alright---使用AndroidStudio断点调试安卓源码"></p> <p>8.最终效果如下图，比如我调试的是系统的launcher3</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/420252b935e552bb53e8d2f396dbee3f.jpg" alt="Mr.Alright---使用AndroidStudio断点调试安卓源码"></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102331.htm">猫咪疫苗价钱（猫猫疫苗价位）</a></p>
+                                        <p>下一个：<a href="/news/article-103153.htm">进口猫粮好在哪（进口猫粮好在哪里）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-73690.htm" title="动物疫苗新规定有哪些品种的种类（动物疫苗新规定有哪些品种的种类图片）">动物疫苗新规定有哪些品种的种类（动物疫苗新规定有哪些品种的种类图片）</a></li>
+                        <li class="py-2"><a href="/news/article-79131.htm" title="python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）">python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-free-subscribe-node.htm" title="「4月12日」最高速度21.7M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「4月12日」最高速度21.7M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-81854.htm" title="十大品牌兽药厂家 十大品牌兽药厂家是哪些">十大品牌兽药厂家 十大品牌兽药厂家是哪些</a></li>
+                        <li class="py-2"><a href="/news/article-93990.htm" title="宠物诊所需要办理哪些证（宠物诊所办理营业执照需要些什么）">宠物诊所需要办理哪些证（宠物诊所办理营业执照需要些什么）</a></li>
+                        <li class="py-2"><a href="/news/article-73691.htm" title="被2.3个月小猫咬了出血不打疫苗可以吗（被23个月小猫咬了破皮）">被2.3个月小猫咬了出血不打疫苗可以吗（被23个月小猫咬了破皮）</a></li>
+                        <li class="py-2"><a href="/news/article-98651.htm" title="vue生命周期 钩子函数">vue生命周期 钩子函数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-shadowrocket-node.htm" title="「4月2日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接">「4月2日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-clash-node-daily-updates.htm" title="「4月4日」最高速度19.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接">「4月4日」最高速度19.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-clash-windows.htm" title="「3月9日」最高速度18.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接">「3月9日」最高速度18.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">74</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
