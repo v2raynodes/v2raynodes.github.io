@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynodes.github.io/news/article-110582.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SM2密码算法数据结构</title>
+        <meta name="description" content="SM2密码算法数据结构已经在GM/T 0009规范中详细定义了，为巩固加深理解，本节内容为学习笔记，仅摘抄记录。  1.1 SM2公钥 SM2公钥是SM2曲线上的一个点，由横坐标和纵坐标两个分量来标识" />
+        <link rel="icon" href="/assets/website/img/v2raynodes/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayNodes节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynodes.github.io/news/article-110582.htm" />
+    <meta property="og:site_name" content="V2rayNodes节点订阅站" />
+    <meta property="og:title" content="SM2密码算法数据结构" />
+    <meta property="og:image" content="https://v2raynodes.github.io/uploads/20240603/06f7b5f5265f50716aebb8669855ea5b.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:28:57" />
+    <meta property="og:updated_time" content="2025-05-03T10:28:57" />
+        <meta property="og:description" content="SM2密码算法数据结构已经在GM/T 0009规范中详细定义了，为巩固加深理解，本节内容为学习笔记，仅摘抄记录。  1.1 SM2公钥 SM2公钥是SM2曲线上的一个点，由横坐标和纵坐标两个分量来标识" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SM2密码算法数据结构">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2raynodes/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q31DFYB8XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q31DFYB8XJ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo">
+                        <span>V2ray Nodes</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>SM2密码算法数据结构</h1>
+                </div>
+                <div>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p><strong>SM2密码算法数据结构已经在GM/T 0009规范中详细定义了，为巩固加深理解，本节内容为学习笔记，仅摘抄记录。</strong></p> </h1> <h2>1.1 SM2公钥</h2> <p>SM2公钥是SM2曲线上的一个点，由横坐标和纵坐标两个分量来标识，记为(x, y)，简记为Q，每个分量的长度为256位。</p> <h2>1.2 SM2私钥</h2> <p>SM2私钥是一个大于或等于1且小于n-1的整数(n为SM2算法的阶，其值详见GM/T 0003)，简记为k，长度为256位。</p> <hr/> </h1> <h2>2.1&nbsp;密钥数据格式</h2> <p>SM2算法的私钥数据格式的ASN.1定义为：</p> <p><strong>SM2PrivateKey::=INTEGER</strong></p> <p>SM2算法公钥数据格式的ASN.1定义为：</p> <p><strong>SM2PublicKey::=BIT STRING</strong></p> <p>SM2PublicKey为BIT STRING类型，结构为04||X||Y，其中X，Y分别表示公钥额x分量和y分量，其长度各为256位。</p> <h2>2.2&nbsp;加密数据格式</h2> <p><strong>SM2算法加密后的数据格式的ASN.1定义为：</strong></p> <blockquote> <p><strong>SM2Cipher:: = SEQUENCE{<!-- --></strong></p> <p><strong>XCoordinate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;INTEGER,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; --x分量</strong></p> <p><strong>YCoordinate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;INTEGER,&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --y分量</strong></p> <p><strong>HASH&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;OCTET STRING SIZE(32),&nbsp; &nbsp;&nbsp; &nbsp;--杂凑值</strong></p> <p><strong>CipherText&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OCTET STRING,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;--密文</strong></p> <p><strong>}</strong></p> </blockquote> <p><span style="color:#0d0016;"><strong><span style="background-color:#ffd900;">其中，HASH为使用SM3算法对明文数据运算得到的杂凑值，其长度固定为256位。</span></strong></span></p> <p><span style="color:#0d0016;"><strong><span style="background-color:#ffd900;">CipherText是与明文数据等长的密文。</span></strong></span></p> <h2>2.3&nbsp;签名数据格式</h2> <p><strong>SM2算法签名数据格式的ASN.1定义为：</strong></p> <blockquote> <p><strong>SM2Cipher:: = SEQUENCE{<!-- --></strong></p> <p><strong>R&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;INTEGER,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--签名值的第一部分</strong></p> <p><strong>S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INTEGER,&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--签名值的第二部分</strong></p> <p><strong>}</strong></p> </blockquote> <p><span style="color:#0d0016;"><span style="background-color:#ffd900;"><strong>R和S的长度各为256位。</strong></span></span></p> <h2>2.4&nbsp;密钥对保护数据格式</h2> <p>在SM2密钥对传递时，需要对SM2密钥对进行加密保护。具体的保护方法为：</p> <ol> <li>产生一个对称密钥。</li> <li>按对称密码算法标识指定的算法对SM2私钥进行加密，得到私钥的密文。若对称算法为分组算法，则其运算模式为ECB。</li> <li>使用<strong>外部SM2公钥</strong>加密对称密钥得到对称密钥密文。</li> <li>将私钥密文、对称密钥密文封装到密钥对保护数据中。</li> </ol> <blockquote> <p><strong>SM2EnvelopeKey:: = SEQUENCE{<!-- --></strong></p> <p><strong>symAlgID&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AlgorithmIdentifier,&nbsp; &nbsp;--对称算法标识</strong></p> <p><strong>symEncryptedKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SM2Cipher,&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--对称密钥密文</strong></p> <p><strong>Sm2PublicKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SM2PublicKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--SM2公钥</strong></p> <p><strong>Sm2EncryptedPrivateKey&nbsp; &nbsp;BIT STRING&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --SM2私钥密文</strong></p> <p><strong>}</strong></p> </blockquote> <p><strong>上述密钥对保护数据格式实际上就是一个SM2加密信封的数据格式，SM2公钥仅仅是封装在信封内部，依然是裸公钥。</strong></p> <p>此时有A和B双方进行密钥对传递，B先将自己的SM2公钥传递给A；</p> <p>A此时要把自己的非对称密钥对安全地传递给B，做法如下：</p> <ul> <li>A产生一对SM2密钥对，然后A又产生一个对称算法密钥(假定算法为SM4)symK；</li> <li>A用symK加密自己的私钥，得到SKCipher，</li> <li>A用B的公钥去加密自己的symK，得到对称密钥密文symKCipher；</li> <li>A将上述数据封装成一个SM2的加密信封EnvelopA，然后将EnvelopA传递给B。</li> </ul> <p>B收到A发过来的EnvelopA数据后，解开信封过程如下：</p> <ul> <li>B用自己的私钥解密EnvelopA数据，获取到信封里边的数据。</li> <li>B用自己的私钥去解开EnvelopA数据中的对称密钥密文后，拿到对称密钥明文symPlainKey</li> <li>B用对称密钥明文数据解开SM2私钥密文，拿到A的私钥明文。</li> <li>B拿到了A的SM2公钥/私钥密钥对。</li> </ul> <p>最后，A将自己的SM2密钥对安全传递给B。当然上述传递方式是最基础的，在不同的应用场景下或许有更为复杂的传递方式设计。</p> <hr/> </h1> <p>预处理过程详见0009规范。</p> <p><img fetchpriority="high" decoding="async" alt="" height="760" src="http://img.555519.xyz/uploads3/20220823/52c7a8de40757a4e5ad2a34cb08827ca.jpg"></p> <hr/> </h1> <h2>4.1&nbsp;生成密钥</h2> <p>ＳＭ２密钥生成是指生成ＳＭ２算法的密钥对的过程，该密钥对包括私钥和与之对应的公钥。其中，私钥的长度为２５６位，公钥的长度为５１２位(x和y分量)。</p> <blockquote> <p><strong>输入：&nbsp; &nbsp; &nbsp; &nbsp; 无</strong></p> <p><strong>输出：&nbsp; &nbsp; &nbsp; &nbsp; k&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SM2PrivateKey&nbsp; &nbsp; &nbsp; &nbsp; SM2私钥</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Q&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; SM2PublicKey&nbsp; &nbsp; &nbsp; &nbsp; SM2公钥</strong></p> <p><strong>详细的计算过程见GM/T 0003</strong></p> </blockquote> <h2>4.2&nbsp;加密</h2> <p>ＳＭ２加密是指使用指定公开密钥对明文进行特定的加密计算，生成相应密文的过程。该密文只能由该指定公开密钥对应的私钥解密。</p> <blockquote> <p><strong>输入：&nbsp; &nbsp; &nbsp; &nbsp; Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM2PublicKey&nbsp; &nbsp; &nbsp; &nbsp; SM2公钥</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;m&nbsp; &nbsp; &nbsp; &nbsp; 字节串&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 待加密的明文数据</strong></p> <p><strong>输出：&nbsp; &nbsp; &nbsp; &nbsp; c&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SM2Cipher&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;加密密文</strong></p> <p><strong>其中：</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; 输出参数C的格式在2.2中定义了。</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;输出参数C的XCoordinate、YCoordinate为随机产生的公钥的x分量和y分量</strong></p> <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出参数C中的HASH计算公式为：</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; HASH = SM3(x||m||y)</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; 其中，ｘ，ｙ为Ｑ的ｘ分量和ｙ分量；</strong></p> <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出参数ｃ中ＣｉｐｈｅｒＴｅｘｔ为加密密文，其长度等于明文的长度。</strong></p> <p><strong>详细的计算过程见GM/T 0003和GM/T 0004。</strong></p> </blockquote> <h2>4.3&nbsp;解密</h2> <p>ＳＭ２解密是指使用指定私钥对密文进行解密计算，还原对应明文的过程。</p> <blockquote> <p><strong>输入：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ｄ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM2PrivateKey&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM2私钥</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;SM2Cipher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;密文</strong></p> <p><strong>输出：&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ｍ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字节串&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与密文对应的明文</strong></p> <p><strong>ｍ为SM2Cipher经过解密运算得到的明文，该明文的长度与输入参数ｃ中CipherText的长度相同。详细的计算过程见GM/T 0003。</strong></p> </blockquote> <h2>4.4&nbsp;数字签名</h2> <p>ＳＭ２签名是指使用0009规范8.2预处理结果2与签名者私钥，通过签名计算得到签名结果的过程。</p> <blockquote> <p><strong>输入：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ｄ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM2PrivateKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;签名者私钥</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; H&nbsp; &nbsp; &nbsp; &nbsp; 字节串&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 预处理2的结果</strong></p> <p><strong>输出：&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sign&nbsp; &nbsp; SM2Signature&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;签名值</strong></p> <p><strong>详细的计算过程见GM/T 0003。</strong></p> </blockquote> <h2>4.5&nbsp;签名验证</h2> <p>ＳＭ２签名验证是指使用0009规范8.2预处理结果2、签名值和签名者公钥，通过验证计算确定签名是否通过验证的过程。</p> <blockquote> <p><strong>输入：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ｄ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SM2PrivateKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 签名者私钥</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sign&nbsp; &nbsp; SM2Signature&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;签名值</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Q&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; SM2PublicKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 签名者公钥</strong></p> <p><strong>输出：&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;为“真”表示“验证通过”，为“假”表示“验证不通过”</strong></p> <p><strong>详细的计算过程见GM/T 0003。</strong></p> </blockquote> <h2>4.6&nbsp;密钥协商</h2> <p>密钥协商是在两个用户之间建立一个共享秘密密钥的协商过程，通过这种方式能够确定一个共享秘密密钥的值。</p> <p>设密钥协商双方为Ａ、Ｂ，其密钥对分别为（ｄＡ，ＱＡ）和（ｄＢ，ＱＢ），双方需要获得的密钥数据的比特长度为ｋｌｅｎ。密钥协商协议分为两个阶段。</p> <p>具体过程见GM/T 0009。</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110580.htm">win11系统如何创建虚拟磁盘</a></p>
+                                        <p>下一个：<a href="/news/article-111517.htm">mysql limit和offset用法_在线工具</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-111520.htm" title="宠物店一个月能卖多少狗粮和狗粮 宠物店一个月能卖多少狗粮和狗粮呢">宠物店一个月能卖多少狗粮和狗粮 宠物店一个月能卖多少狗粮和狗粮呢</a></li>
+                        <li class="py-2"><a href="/news/article-86171.htm" title="狗狗免费领养中心临汾（临汾狗狗收容站）">狗狗免费领养中心临汾（临汾狗狗收容站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-24-free-node-subscribe-links.htm" title="「4月24日」最高速度20.2M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接">「4月24日」最高速度20.2M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-8-clash-windows.htm" title="「4月8日」最高速度20.1M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「4月8日」最高速度20.1M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-104855.htm" title="2021公务员考试国考报名条件及流程（公务员国考报考指南）">2021公务员考试国考报名条件及流程（公务员国考报考指南）</a></li>
+                        <li class="py-2"><a href="/news/article-86877.htm" title="狗粮品牌哪个好（国产十大放心狗粮品牌排行榜）">狗粮品牌哪个好（国产十大放心狗粮品牌排行榜）</a></li>
+                        <li class="py-2"><a href="/news/article-100257.htm" title="按值致电与按引用致电之间的区别">按值致电与按引用致电之间的区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-23-free-high-speed-nodes.htm" title="「4月23日」最高速度20.1M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接">「4月23日」最高速度20.1M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-20-clash-windows.htm" title="「4月20日」最高速度20.4M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接">「4月20日」最高速度20.4M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-97965.htm" title="etcd分布式键值数据库安装（单机版）">etcd分布式键值数据库安装（单机版）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container py-4">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2raynodes/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2raynodes/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2raynodes/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
