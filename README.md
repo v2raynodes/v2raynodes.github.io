@@ -1,4 +1,4 @@
-# 「6月15日」最高速度21.2M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅链接  更新时间 2025-06-15 07:29:32
+# 「6月20日」最高速度19.5M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接  更新时间 2025-06-20 10:23:54
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2raynodes.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://v2raynodes.github.io/uploads/2025/06/0-20250615.yaml
-- https://v2raynodes.github.io/uploads/2025/06/1-20250615.yaml
-- https://v2raynodes.github.io/uploads/2025/06/2-20250615.yaml
-- https://v2raynodes.github.io/uploads/2025/06/3-20250615.yaml
-- https://v2raynodes.github.io/uploads/2025/06/4-20250615.yaml
+- https://v2raynodes.github.io/uploads/2025/06/0-20250620.yaml
+- https://v2raynodes.github.io/uploads/2025/06/1-20250620.yaml
+- https://v2raynodes.github.io/uploads/2025/06/2-20250620.yaml
+- https://v2raynodes.github.io/uploads/2025/06/3-20250620.yaml
+- https://v2raynodes.github.io/uploads/2025/06/4-20250620.yaml
 
 ### V2ray订阅链接
 
-- https://v2raynodes.github.io/uploads/2025/06/0-20250615.txt
-- https://v2raynodes.github.io/uploads/2025/06/1-20250615.txt
-- https://v2raynodes.github.io/uploads/2025/06/2-20250615.txt
-- https://v2raynodes.github.io/uploads/2025/06/3-20250615.txt
-- https://v2raynodes.github.io/uploads/2025/06/4-20250615.txt
+- https://v2raynodes.github.io/uploads/2025/06/0-20250620.txt
+- https://v2raynodes.github.io/uploads/2025/06/1-20250620.txt
+- https://v2raynodes.github.io/uploads/2025/06/2-20250620.txt
+- https://v2raynodes.github.io/uploads/2025/06/3-20250620.txt
+- https://v2raynodes.github.io/uploads/2025/06/4-20250620.txt
 
 ### Sing-box订阅链接
 
-- https://v2raynodes.github.io/uploads/2025/06/20250615.json
+- https://v2raynodes.github.io/uploads/2025/06/20250620.json
 
 ## 更多clash节点订阅 ：
 
