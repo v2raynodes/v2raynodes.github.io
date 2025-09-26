@@ -66,7 +66,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="/" class="logo">
-                        <span>V2ray Nodes</span>
+                        <span>V2ray 节点资源</span>
                         </a>
             <nav id="navbar" class="navbar">
                 <ul>
@@ -85,7 +85,7 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>「8月18日」最高速度21.6M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅链接</h1>
+                    <h1>「8月18日」最高速度21.6M/S，2025年SSR/Shadowrocket节点/Clash节点/V2ray每天更新免费机场订阅链接</h1>
                 </div>
                 <div>
                     <a href="/">首页</a> / <a href="/free-nodes/">免费节点</a> / <span>正文</span>
@@ -122,8 +122,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅链接</h2><p>&nbsp;</p><p><strong>clash订阅链接</strong></p><p>https://v2raynodes.github.io/uploads/2025/08/0-20250818.yaml</p><p>https://v2raynodes.github.io/uploads/2025/08/1-20250818.yaml</p><p>https://v2raynodes.github.io/uploads/2025/08/3-20250818.yaml</p><p>https://v2raynodes.github.io/uploads/2025/08/4-20250818.yaml</p><p>&nbsp;</p><p><strong>v2ray订阅链接:</strong></p><p>https://v2raynodes.github.io/uploads/2025/08/0-20250818.txt</p><p>https://v2raynodes.github.io/uploads/2025/08/3-20250818.txt</p><p><strong>sing-box订阅链接</strong></p><p>https://v2raynodes.github.io/uploads/2025/08/20250818.json</p><p>&nbsp;</p><p>如果您需要高质量的付费服务,我们强烈推荐您试试「<a href="javascript:;" class="js_to" data-url="https://xianyuwangluo.top/#/register?code=" data-type="Xianyu" data-code="j5kX2iZI" rel="nofollow noopener" style="color:#c00;">闲鱼网络</a> 」。提供全球范围内快速稳定的高速节点,轻松处理8K高清视频流量,并可解锁流媒体网站和chatGPT。其服务器性能出色,确保您享受到高品质的体验。</p><h2>全面解析v2ray常见报错：从诊断到修复的完整指南</h2>  <p>在当今互联网环境中，v2ray作为一款功能强大的代理工具，已经成为许多用户突破网络限制的首选方案。然而，即便是最稳定的工具也难免会遇到各种运行问题。本文将深入剖析v2ray使用过程中最常见的报错现象，提供系统化的解决方案，并分享实用的排查技巧，帮助您建立完整的故障处理知识体系。  </p>  <h2>一、为什么v2ray会出现报错？</h2>  <p>理解报错的根源是解决问题的第一步。v2ray的报错通常不是孤立现象，而是系统运行状态的直接反馈。这些问题的产生往往与以下几个关键因素密切相关：  </p>  <ol> <li><p><strong>配置文件的精确性要求</strong><br /> v2ray对配置文件的格式要求极为严格，一个多余的逗号或缺失的引号都可能导致整个服务瘫痪。许多用户初次接触JSON格式时容易忽视其语法规则，这是配置错误高发的主要原因。  </p></li> <li><p><strong>网络环境的复杂性</strong><br /> 不同于普通应用，代理工具需要建立跨越防火墙的加密通道。在这个过程中，DNS污染、运营商QoS限制、中间人攻击等都可能成为连接失败的诱因。有数据显示，超过40%的连接问题实际上源自本地网络环境异常。  </p></li> <li><p><strong>版本迭代的兼容性挑战</strong><br /> v2ray社区保持着活跃的更新节奏，新版本不仅修复漏洞，还会引入更先进的传输协议。但这也带来了新旧版本兼容性问题，特别是当客户端和服务端版本差异较大时，协议不匹配就会导致连接异常。  </p></li> </ol>  <h2>二、五大典型报错深度修复指南</h2>  <h3>1. 连接超时（ReadTimeout）</h3>  <p><strong>现象诊断</strong><br /> 当控制台显示"ReadTimeout"错误时，说明客户端在预设时间内（通常30秒）未收到服务器响应。这种情况可能表现为间歇性连接失败，尤其在网络高峰期更为明显。  </p>  <p><strong>解决方案</strong><br /> - 网络链路检测：使用<code>traceroute</code>命令分析路由路径，检查是否存在节点丢包<br /> - 超时参数调整：在<code>outbounds</code>配置段增加<code>"streamSettings": {"sockopt": {"dialerProxy": "direct", "tcpFastOpen": true}}</code><br /> - 备用端口测试：若默认443端口被干扰，可尝试使用非标准端口如2053、2083等  </p>  <h3>2. 认证失败（Unauthorized）</h3>  <p><strong>现象诊断</strong><br /> "Unauthorized"错误直指身份验证问题，但具体原因可能隐藏更深。除了明显的UUID输入错误外，还需注意：  </p>  <p><strong>关键检查点</strong><br /> - AlterID一致性：服务端若启用VMESS协议，需确保客户端alterId ≥ 服务端设置值<br /> - 时间同步差异：VMESS认证对时间敏感，时差超过90秒就会拒绝连接（建议部署NTP服务）<br /> - 用户等级匹配：部分服务端配置了userLevel限制，需在客户端补充<code>"userLevel": 0</code>参数  </p>  <h3>3. 配置解析失败（Invalid Configuration）</h3>  <p><strong>高级排查技巧</strong><br /> - 使用jq工具验证：<code>cat config.json | jq empty</code>可快速定位语法错误位置<br /> - 字段优先级问题：注意transportSettings必须位于streamSettings之下，层级错误会导致静默失败<br /> - 注释处理方案：JSON标准不支持注释，但可通过<code>"_comment": "备注内容"</code>实现等效功能  </p>  <h3>4. 更新服务异常（Update Failed）</h3>  <p><strong>深度优化方案</strong><br /> - 镜像源替换：将默认更新源替换为国内镜像（如清华源）<br /> - 手动更新流程：<br />   <code>bash   wget https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip   unzip -o v2ray-linux-64.zip -d /usr/local/v2ray   systemctl restart v2ray</code></p>  <h3>5. 连接拒绝（Connection Refused）</h3>  <p><strong>多维解决方案</strong><br /> - 端口占用检测：<code>netstat -tulnp | grep 端口号</code><br /> - 防火墙深度配置：<br />   <code>bash   firewall-cmd --permanent --add-port=端口号/tcp   firewall-cmd --reload</code> - 服务端日志分析：<code>journalctl -u v2ray -n 50 -f</code>实时查看最新50条日志  </p>  <h2>三、专家级故障排查框架</h2>  <p>建立系统化的排查流程可以显著提高问题解决效率。推荐采用以下五步诊断法：  </p>  <ol> <li><p><strong>现象捕获阶段</strong><br /> 使用<code>v2ray -test -config config.json</code>进行预检，配合<code>-log-level debug</code>参数获取详细日志  </p></li> <li><p><strong>环境隔离测试</strong><br /> 在纯净网络环境（如手机热点）下测试，排除本地网络策略干扰  </p></li> <li><p><strong>配置比对验证</strong><br /> 使用diff工具对比当前配置与官方示例配置（建议从v2ray官方GitHub获取）  </p></li> <li><p><strong>组件健康检查</strong><br /> 验证相关组件状态：<br /> <code>bash systemctl status v2ray  # 服务状态 ss -tlnp | grep v2ray   # 端口监听</code></p></li> <li><p><strong>流量分析阶段</strong><br /> 使用tcpdump进行流量抓包分析：<br /> <code>bash tcpdump -i eth0 -w v2ray.pcap port 目标端口</code></p></li> </ol>  <h2>四、安全使用进阶建议</h2>  <ol> <li><p><strong>动态端口配置技巧</strong><br /> 在<code>inbounds</code>配置中启用动态端口可显著增强抗封锁能力：<br /> <code>json "portAllocation": {  "strategy": "random",  "min": 20000,  "max": 30000 }</code></p></li> <li><p><strong>TLS证书最佳实践</strong>  </p>  <ul> <li>避免使用自签名证书，推荐申请Let's Encrypt免费证书  </li> <li>开启OCSP Stapling提升性能：<br /> <code>json "tlsSettings": { "ocspStapling": 3600 }</code></li> </ul></li> <li><p><strong>多协议融合方案</strong><br /> 在极端网络环境下，可配置多协议备用方案：<br /> <code>json "outbounds": [  {    "protocol": "vmess",    "settings": { ... },    "fallback": {      "protocol": "shadowsocks",      "settings": { ... }    }  } ]</code></p></li> </ol>  <h2>专业点评</h2>  <p>本文构建的v2ray故障处理体系具有三大显著价值：首先，采用"现象-原理-方案"的三层解析结构，使技术解析既有深度又具可操作性；其次，引入网络诊断工具链的组合应用，将简单的错误处理升级为系统性能优化；最后，安全建议部分体现了防御性编程思想，不仅解决问题更预防问题。  </p>  <p>特别值得注意的是，文中强调的配置验证方法和日志分析技巧，实际上构成了处理任何复杂系统故障的通用方法论。这种从具体工具抽象出普适性技术思维的方式，正是优秀技术文档区别于普通教程的关键所在。对于希望深入理解网络代理技术的用户而言，掌握这些诊断思路比记忆具体命令更为重要。  </p>  <p>在实践层面，建议用户建立自己的"错误代码-解决方案"知识库，随着经验积累逐步形成直觉判断能力。记住，每个报错都是系统在向你传递信息，而本文提供的正是破译这些信息的密码本。</p>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-8-17-node-share-links.htm">「8月17日」最高速度21.9M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></p>
-                                        <p>下一个：<a href="/free-nodes/2025-8-19-clash-node-daily-updates.htm">「8月19日」最高速度21.5M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></p>
+                                        <p>上一个：<a href="/free-nodes/2025-8-17-node-share-links.htm">「8月17日」最高速度21.9M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费机场订阅链接</a></p>
+                                        <p>下一个：<a href="/free-nodes/2025-8-19-clash-node-daily-updates.htm">「8月19日」最高速度21.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR每天更新免费机场订阅链接</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
                     <div class="panel-heading">
@@ -131,16 +131,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                     </div>
                     <div class="panel-body">
                         <ul class="p-0 x-0">
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-node-share-links.htm">「8月17日」最高速度21.9M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-shadowrocket-node.htm">「8月16日」最高速度19.4M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-node-share-links.htm">「8月15日」最高速度23M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-v2ray-subscribe.htm">「8月14日」最高速度19.8M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-v2ray-subscribe.htm">「8月13日」最高速度23M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-node-share-links.htm">「8月12日」最高速度18.4M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-free-ssr-subscribe.htm">「8月11日」最高速度22.6M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-v2ray.htm">「8月10日」最高速度18.8M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-clash-subscribe.htm">「8月9日」最高速度19.6M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-8-free-clash-subscribe.htm">「8月8日」最高速度18.3M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-node-share-links.htm">「8月17日」最高速度21.9M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-shadowrocket-node.htm">「8月16日」最高速度19.4M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-node-share-links.htm">「8月15日」最高速度23M/S，2025年SSR/Clash节点/Shadowrocket节点/V2ray每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-v2ray-subscribe.htm">「8月14日」最高速度19.8M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-v2ray-subscribe.htm">「8月13日」最高速度23M/S，2025年SSR/Shadowrocket节点/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-node-share-links.htm">「8月12日」最高速度18.4M/S，2025年SSR/Shadowrocket节点/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-free-ssr-subscribe.htm">「8月11日」最高速度22.6M/S，2025年SSR/Clash节点/V2ray节点/Shadowrocket每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-v2ray.htm">「8月10日」最高速度18.8M/S，2025年V2ray节点/Clash节点/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-clash-subscribe.htm">「8月9日」最高速度19.6M/S，2025年V2ray节点/SSR/Clash节点/Shadowrocket每天更新免费机场订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-8-free-clash-subscribe.htm">「8月8日」最高速度18.3M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR每天更新免费机场订阅链接</a></li>
                                                     </ul>
                     </div>
                 </div>
@@ -152,16 +152,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-7-9-free-v2ray-subscribe.htm" title="「7月9日」最高速度19M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接">「7月9日」最高速度19M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-25-free-high-speed-nodes.htm" title="「7月25日」最高速度19.6M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「7月25日」最高速度19.6M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-3-free-ssr-node.htm" title="「8月3日」最高速度22M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接">「8月3日」最高速度22M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-19-clash-node-daily-updates.htm" title="「8月19日」最高速度21.5M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接">「8月19日」最高速度21.5M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-12-free-high-speed-nodes.htm" title="「7月12日」最高速度19.6M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「7月12日」最高速度19.6M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-6-node-share.htm" title="「8月6日」最高速度18.2M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接">「8月6日」最高速度18.2M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-v2ray-subscribe.htm" title="「8月13日」最高速度23M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接">「8月13日」最高速度23M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-11-free-clash.htm" title="「7月11日」最高速度23M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接">「7月11日」最高速度23M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-clash-subscribe.htm" title="「8月9日」最高速度19.6M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接">「8月9日」最高速度19.6M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-v2ray-subscribe.htm" title="「8月14日」最高速度19.8M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接">「8月14日」最高速度19.8M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-12-node-share-links.htm" title="「8月12日」最高速度18.4M/S，2025年SSR/Shadowrocket节点/V2ray节点/Clash每天更新免费机场订阅链接">「8月12日」最高速度18.4M/S，2025年SSR/Shadowrocket节点/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-19-shadowrocket-node.htm" title="「9月19日」最高速度18.5M/S，2025年Shadowrocket节点/V2ray节点/SSR/Clash每天更新免费机场订阅链接">「9月19日」最高速度18.5M/S，2025年Shadowrocket节点/V2ray节点/SSR/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-22-free-shadowrocket-node.htm" title="「9月22日」最高速度19.9M/S，2025年Clash节点/V2ray节点/SSR/Shadowrocket每天更新免费机场订阅链接">「9月22日」最高速度19.9M/S，2025年Clash节点/V2ray节点/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-16-shadowrocket-node.htm" title="「8月16日」最高速度19.4M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费机场订阅链接">「8月16日」最高速度19.4M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-4-clash-node-daily-updates.htm" title="「8月4日」最高速度20.6M/S，2025年V2ray节点/Clash节点/SSR/Shadowrocket每天更新免费机场订阅链接">「8月4日」最高速度20.6M/S，2025年V2ray节点/Clash节点/SSR/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-13-free-clash-subscribe.htm" title="「9月13日」最高速度22M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR每天更新免费机场订阅链接">「9月13日」最高速度22M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-7-clash-windows.htm" title="「9月7日」最高速度21.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR每天更新免费机场订阅链接">「9月7日」最高速度21.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-12-free-v2ray-subscribe.htm" title="「9月12日」最高速度22.8M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR每天更新免费机场订阅链接">「9月12日」最高速度22.8M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-17-free-v2ray.htm" title="「9月17日」最高速度23M/S，2025年SSR/V2ray节点/Clash节点/Shadowrocket每天更新免费机场订阅链接">「9月17日」最高速度23M/S，2025年SSR/V2ray节点/Clash节点/Shadowrocket每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-clash-subscribe.htm" title="「8月9日」最高速度19.6M/S，2025年V2ray节点/SSR/Clash节点/Shadowrocket每天更新免费机场订阅链接">「8月9日」最高速度19.6M/S，2025年V2ray节点/SSR/Clash节点/Shadowrocket每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -173,10 +173,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -193,7 +193,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <footer id="footer">
         <div class="container py-4">
             <div class="copyright">
-                                    <p>
+                                    <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -204,7 +205,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
+                                    <a href="/">V2rayNodes节点订阅站</a> 版权所有 Powered by WordPress
             </div>
         </div>
     </footer><!-- End Footer -->
