@@ -332,14 +332,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         TLS+WebSocket 可伪装 HTTPS 流量，增强抗封锁能力，同时降低被封检测风险。结合策略组和节点延迟检测，可保证访问速度和连接稳定性，适合视频和游戏场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何实现精确端口分流？</h5></div>
     <div class="panel-body">
-        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
+        Sing-box 支持按端口匹配流量，将不同类型应用流量分配到指定节点。结合策略组，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的节点测速结果会自动更新吗？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
     <div class="panel-body">
-        PassWall2 可设置定期自动测速节点，更新延迟和可用性。结合策略组自动选择最优节点，可确保用户使用网络时始终连接到速度最快、最稳定的节点。<hr />    </div>
+        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow TUN 模式适合哪些应用？</h5></div>
@@ -352,9 +352,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         策略组可以将多个节点或规则组合在一起，实现按条件自动选择最佳节点。通过策略组，用户无需手动切换节点即可根据延迟、地理位置或流量类型自动分流，提高网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
+    <div class="panel-heading"><h5>VLESS + XTLS 模式相比普通 VLESS 有哪些优势？</h5></div>
     <div class="panel-body">
-        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。<hr />    </div>
+        XTLS 模式减少冗余加密开销，提高传输效率，并在多连接高负载环境下表现更佳。同时仍保持 TLS 安全性，结合策略组可实现高性能和高隐蔽性的双重优势。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何在 V2Ray 中自定义路由规则？</h5></div>
@@ -362,19 +362,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         在 V2Ray 中可以通过修改 config.json 文件中的 routing 部分来自定义路由规则。用户可以根据 IP 段、域名或地理位置来决定流量的去向，从而实现自动分流或访问加速的效果。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现精确端口分流？</h5></div>
+    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
     <div class="panel-body">
-        Sing-box 支持按端口匹配流量，将不同类型应用流量分配到指定节点。结合策略组，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
+        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 模式相比普通 VLESS 有哪些优势？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 的节点测速结果会自动更新吗？</h5></div>
     <div class="panel-body">
-        XTLS 模式减少冗余加密开销，提高传输效率，并在多连接高负载环境下表现更佳。同时仍保持 TLS 安全性，结合策略组可实现高性能和高隐蔽性的双重优势。<hr />    </div>
+        PassWall2 可设置定期自动测速节点，更新延迟和可用性。结合策略组自动选择最优节点，可确保用户使用网络时始终连接到速度最快、最稳定的节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
+    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
     <div class="panel-body">
-        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。    </div>
+        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -403,16 +403,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-high-speed-nodes.htm" title="「10月7日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点每天更新免费机场订阅链接">「10月7日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-clash.htm" title="「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-21-clash-windows.htm" title="「11月21日」最高速度22.3M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接">「11月21日」最高速度22.3M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-22-clash-v2ray-ss-ssr.htm" title="「10月22日」最高速度19.7M/S，2025年SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「10月22日」最高速度19.7M/S，2025年SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-27-clash-node.htm" title="「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-4-free-shadowrocket-node.htm" title="「11月4日」最高速度18.7M/S，2025年SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「11月4日」最高速度18.7M/S，2025年SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-2-free-clash-subscribe.htm" title="「11月2日」最高速度20M/S，2025年Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接">「11月2日」最高速度20M/S，2025年Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-9-node-share.htm" title="「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-9-free-v2ray-subscribe.htm" title="「10月9日」最高速度22.9M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「10月9日」最高速度22.9M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-10-free-ssr-node.htm" title="「10月10日」最高速度21.3M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「10月10日」最高速度21.3M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-v2ray.htm" title="「11月7日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费机场订阅链接">「11月7日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-clash-v2ray-ss-ssr.htm" title="「11月17日」最高速度18.9M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接">「11月17日」最高速度18.9M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-16-free-v2ray-subscribe.htm" title="「10月16日」最高速度19.3M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「10月16日」最高速度19.3M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-v2ray-subscribe.htm" title="「10月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-15-node-share-links.htm" title="「10月15日」最高速度19.6M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点每天更新免费机场订阅链接">「10月15日」最高速度19.6M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-31-clash-windows.htm" title="「10月31日」最高速度21M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「10月31日」最高速度21M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-17-free-v2ray.htm" title="「10月17日」最高速度19.8M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接">「10月17日」最高速度19.8M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-node-share.htm" title="「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -424,7 +424,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
