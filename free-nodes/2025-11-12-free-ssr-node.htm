@@ -346,39 +346,9 @@ Trojan 和 Psiphon 拥有极强的流量伪装能力，适合在高审查环境�
         Rule Provider 是 Clash 的规则分发机制。用户可以订阅不同的规则集，比如广告拦截、社交媒体、流媒体等，实现按需加载。它让配置文件更加简洁、动态更新，并支持多源规则管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 VMess over WebSocket 适合什么场景？</h5></div>
-    <div class="panel-body">
-        VMess over WebSocket 可以伪装成正常的 Web 流量，适用于被封锁较严格的网络环境。它通过将代理流量嵌入 WebSocket 协议中，使流量更难被检测和拦截。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的多策略组设置能提高访问效率吗？</h5></div>
     <div class="panel-body">
         多策略组可以将节点按用途、延迟或地域分类，结合规则文件自动分流不同流量。这样可以确保游戏、视频或网页流量走最优节点，提高整体访问效率和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 手动节点选择有什么好处？</h5></div>
-    <div class="panel-body">
-        手动选择节点可以让用户根据网络延迟和需求选择最优节点。适合节点不稳定或特定访问需求，灵活调整流量走向，提高访问速度和网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现端口与流量的精确分流？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持按端口匹配流量，将不同类型应用的流量分配到指定节点。结合策略组使用，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用对高频连接的优势？</h5></div>
-    <div class="panel-body">
-        多路复用可让多个短连接共享同一通道，减少握手和加密开销，提高吞吐量。适合高频短连接场景，如即时通讯和游戏，保证流量快速、稳定传输。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 支持 Reality 吗？</h5></div>
-    <div class="panel-body">
-        支持。Hiddify Next 基于 sing-box 内核，可加载 Vless+Reality、Trojan+TLS 等高级协议配置。用户可直接导入机场订阅，无需手动修改复杂参数。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 如何手动设置某应用直连？</h5></div>
-    <div class="panel-body">
-        在 Clash 的规则文件中添加 PROCESS-NAME 规则，如 `PROCESS-NAME,chrome.exe,DIRECT`。保存并重启后，该应用的流量将绕过代理直连。适用于游戏或内网程序等特殊场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 节点延迟排序如何提升访问体验？</h5></div>
@@ -386,9 +356,39 @@ Trojan 和 Psiphon 拥有极强的流量伪装能力，适合在高审查环境�
         Shadowrocket 会测速节点延迟和丢包率，并优先使用低延迟节点。结合策略组和分流规则，可保证网页、视频和游戏流量通过最优节点，提高访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 手动节点选择有什么好处？</h5></div>
+    <div class="panel-body">
+        手动选择节点可以让用户根据网络延迟和需求选择最优节点。适合节点不稳定或特定访问需求，灵活调整流量走向，提高访问速度和网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 支持 Reality 吗？</h5></div>
+    <div class="panel-body">
+        支持。Hiddify Next 基于 sing-box 内核，可加载 Vless+Reality、Trojan+TLS 等高级协议配置。用户可直接导入机场订阅，无需手动修改复杂参数。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 VMess over WebSocket 适合什么场景？</h5></div>
+    <div class="panel-body">
+        VMess over WebSocket 可以伪装成正常的 Web 流量，适用于被封锁较严格的网络环境。它通过将代理流量嵌入 WebSocket 协议中，使流量更难被检测和拦截。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 如何手动设置某应用直连？</h5></div>
+    <div class="panel-body">
+        在 Clash 的规则文件中添加 PROCESS-NAME 规则，如 `PROCESS-NAME,chrome.exe,DIRECT`。保存并重启后，该应用的流量将绕过代理直连。适用于游戏或内网程序等特殊场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现端口与流量的精确分流？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持按端口匹配流量，将不同类型应用的流量分配到指定节点。结合策略组使用，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
     <div class="panel-body">
-        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。    </div>
+        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 多路复用对高频连接的优势？</h5></div>
+    <div class="panel-body">
+        多路复用可让多个短连接共享同一通道，减少握手和加密开销，提高吞吐量。适合高频短连接场景，如即时通讯和游戏，保证流量快速、稳定传输。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -417,16 +417,16 @@ Trojan 和 Psiphon 拥有极强的流量伪装能力，适合在高审查环境�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-18-free-shadowrocket-node.htm" title="「10月18日」最高速度21M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「10月18日」最高速度21M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-clash.htm" title="「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-14-free-node-subscribe-links.htm" title="「10月14日」最高速度22.3M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费机场订阅链接">「10月14日」最高速度22.3M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-20-clash-v2ray-ss-ssr.htm" title="「10月20日」最高速度18M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点每天更新免费机场订阅链接">「10月20日」最高速度18M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-1-free-clash.htm" title="「11月1日」最高速度18.2M/S，2025年SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「11月1日」最高速度18.2M/S，2025年SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-31-clash-windows.htm" title="「10月31日」最高速度21M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「10月31日」最高速度21M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-high-speed-nodes.htm" title="「11月6日」最高速度21.4M/S，2025年V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「11月6日」最高速度21.4M/S，2025年V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-node-share.htm" title="「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「11月9日」最高速度18.2M/S，2025年V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-node-share-links.htm" title="「11月14日」最高速度18.7M/S，2025年Singbox节点/SSR节点/Shadowrocket节点/Clash节点/V2ray节点每天更新免费机场订阅链接">「11月14日」最高速度18.7M/S，2025年Singbox节点/SSR节点/Shadowrocket节点/Clash节点/V2ray节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-1-node-share-links.htm" title="「12月1日」最高速度18.5M/S，2025年Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接">「12月1日」最高速度18.5M/S，2025年Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-subscribe-node.htm" title="「11月18日」最高速度19.4M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「11月18日」最高速度19.4M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-8-clash-windows.htm" title="「11月8日」最高速度20.8M/S，2025年SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接">「11月8日」最高速度20.8M/S，2025年SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-12-free-ssr-node.htm" title="「11月12日」最高速度19.1M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「11月12日」最高速度19.1M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-13-node-share-links.htm" title="「10月13日」最高速度23M/S，2025年Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月13日」最高速度23M/S，2025年Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-21-free-clash-subscribe.htm" title="「10月21日」最高速度21.8M/S，2025年SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接">「10月21日」最高速度21.8M/S，2025年SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-free-clash-subscribe.htm" title="「11月5日」最高速度22.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接">「11月5日」最高速度22.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-clash.htm" title="「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「11月15日」最高速度20.2M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-clash.htm" title="「11月30日」最高速度18M/S，2025年V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「11月30日」最高速度18M/S，2025年V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-clash-windows.htm" title="「11月21日」最高速度22.3M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接">「11月21日」最高速度22.3M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -438,10 +438,10 @@ Trojan 和 Psiphon 拥有极强的流量伪装能力，适合在高审查环境�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>

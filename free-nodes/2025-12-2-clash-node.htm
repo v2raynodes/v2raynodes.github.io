@@ -259,24 +259,9 @@ A5：建议仅保留一个版本，避免配置文件冲突或端口占用问题
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何针对不同用户设置流量配额？</h5></div>
+    <div class="panel-heading"><h5>VMess 协议的动态端口功能是什么？</h5></div>
     <div class="panel-body">
-        管理员可以为每个用户单独设置流量上限或带宽限制。超过配额时可自动阻止或降速，保证服务器资源合理分配，避免单用户占用过多带宽影响其他用户。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 配置有哪些优势？</h5></div>
-    <div class="panel-body">
-        WebSocket + TLS 可以伪装成普通 HTTPS 流量，增强抗封锁能力。适合高封锁环境，结合域名伪装和策略组，可实现高安全性和稳定的网络访问体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名选择有哪些原则？</h5></div>
-    <div class="panel-body">
-        伪装域名必须是真实可访问网站，并且证书有效。这样可以让 Trojan 流量看起来像普通 HTTPS 请求，减少被封锁或 DPI 检测风险，确保节点安全和可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合哪些使用场景？</h5></div>
-    <div class="panel-body">
-        PAC 模式可根据规则文件动态判断流量是否走代理。适合访问国内外混合网站环境，无需手动切换节点，程序自动分流，提高网络访问效率和稳定性。<hr />    </div>
+        VMess 支持动态端口（port hopping）功能，能在一定范围内自动变更通信端口。此机制可有效防止防火墙基于端口的封锁策略，提高节点长期稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否支持多客户端同时管理节点？</h5></div>
@@ -284,14 +269,9 @@ A5：建议仅保留一个版本，避免配置文件冲突或端口占用问题
         支持。Nekobox 可以独立管理多个客户端，如 Shadowsocks 和 Clash 节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高便利性和效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
+    <div class="panel-heading"><h5>VLESS + Reality 模式相比普通 TLS 有什么优势？</h5></div>
     <div class="panel-body">
-        Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 协议的动态端口功能是什么？</h5></div>
-    <div class="panel-body">
-        VMess 支持动态端口（port hopping）功能，能在一定范围内自动变更通信端口。此机制可有效防止防火墙基于端口的封锁策略，提高节点长期稳定性。<hr />    </div>
+        Reality 模式通过伪装握手和真实网站特征，提高流量隐蔽性，难以被 DPI 检测。TLS 模式更侧重加密和传输效率，Reality 更适合高封锁网络环境。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 支持手动和二维码导入节点吗？</h5></div>
@@ -299,14 +279,34 @@ A5：建议仅保留一个版本，避免配置文件冲突或端口占用问题
         支持。用户可以手动添加节点信息，或者通过扫描节点二维码导入节点。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 模式相比普通 TLS 有什么优势？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
     <div class="panel-body">
-        Reality 模式通过伪装握手和真实网站特征，提高流量隐蔽性，难以被 DPI 检测。TLS 模式更侧重加密和传输效率，Reality 更适合高封锁网络环境。<hr />    </div>
+        Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名选择有哪些原则？</h5></div>
+    <div class="panel-body">
+        伪装域名必须是真实可访问网站，并且证书有效。这样可以让 Trojan 流量看起来像普通 HTTPS 请求，减少被封锁或 DPI 检测风险，确保节点安全和可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 节点健康检测如何提升网络体验？</h5></div>
     <div class="panel-body">
-        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的稳定性和速度。    </div>
+        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的稳定性和速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合哪些使用场景？</h5></div>
+    <div class="panel-body">
+        PAC 模式可根据规则文件动态判断流量是否走代理。适合访问国内外混合网站环境，无需手动切换节点，程序自动分流，提高网络访问效率和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何针对不同用户设置流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可以为每个用户单独设置流量上限或带宽限制。超过配额时可自动阻止或降速，保证服务器资源合理分配，避免单用户占用过多带宽影响其他用户。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 配置有哪些优势？</h5></div>
+    <div class="panel-body">
+        WebSocket + TLS 可以伪装成普通 HTTPS 流量，增强抗封锁能力。适合高封锁环境，结合域名伪装和策略组，可实现高安全性和稳定的网络访问体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -335,16 +335,16 @@ A5：建议仅保留一个版本，避免配置文件冲突或端口占用问题
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-9-free-v2ray-subscribe.htm" title="「10月9日」最高速度22.9M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「10月9日」最高速度22.9M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-shadowrocket-node.htm" title="「11月19日」最高速度22.2M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接">「11月19日」最高速度22.2M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-subscribe-node.htm" title="「11月18日」最高速度19.4M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「11月18日」最高速度19.4M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-29-free-v2ray.htm" title="「11月29日」最高速度23M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点每天更新免费机场订阅链接">「11月29日」最高速度23M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-free-clash-subscribe.htm" title="「11月5日」最高速度22.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接">「11月5日」最高速度22.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-26-free-high-speed-nodes.htm" title="「11月26日」最高速度19.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点每天更新免费机场订阅链接">「11月26日」最高速度19.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-3-free-ssr-node.htm" title="「12月3日」最高速度19.7M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「12月3日」最高速度19.7M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-4-clash-v2ray-ss-ssr.htm" title="「12月4日」最高速度18.7M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/Clash节点/V2ray节点每天更新免费机场订阅链接">「12月4日」最高速度18.7M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/Clash节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-high-speed-nodes.htm" title="「11月6日」最高速度21.4M/S，2025年V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「11月6日」最高速度21.4M/S，2025年V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-8-clash-windows.htm" title="「10月8日」最高速度18.1M/S，2025年Clash节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接">「10月8日」最高速度18.1M/S，2025年Clash节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-v2ray-subscribe.htm" title="「10月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-clash-node.htm" title="「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-3-free-subscribe-node.htm" title="「10月3日」最高速度19.1M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费机场订阅链接">「10月3日」最高速度19.1M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费机场订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-high-speed-nodes.htm" title="「10月7日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点每天更新免费机场订阅链接">「10月7日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-shadowrocket-node.htm" title="「11月19日」最高速度22.2M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接">「11月19日」最高速度22.2M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费机场订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-20-shadowrocket-node.htm" title="「11月20日」最高速度19.1M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点每天更新免费机场订阅链接">「11月20日」最高速度19.1M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-27-clash-node.htm" title="「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「11月27日」最高速度22.5M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-12-free-ssr-node.htm" title="「11月12日」最高速度19.1M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「11月12日」最高速度19.1M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -359,10 +359,7 @@ A5：建议仅保留一个版本，避免配置文件冲突或端口占用问题
                 <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
