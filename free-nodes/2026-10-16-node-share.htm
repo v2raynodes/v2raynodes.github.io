@@ -238,22 +238,18 @@ Clash可以通过集成方式，将多名用户的网络需求集中到一台服
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/free-subscribe-node-2026-10-15.htm">「10月15日」最高速度20.7M/S，2025年SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a></p>
+        <p>下一个：<a href="/free-nodes/free-subscribe-node-2026-10-17.htm">「10月17日」最高速度22.1M/S，2025年Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点每天更新免费机场订阅链接</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的测速功能不显示结果怎么办？</h5></div>
+    <div class="panel-heading"><h5>如何将 Windows 上的 V2Ray 与 WSL 环境联合调试？</h5></div>
     <div class="panel-body">
-        测速依赖于节点响应时间与服务器网络质量。若测速为空白，请检查系统时间同步、网络防火墙及代理端口设置是否正确；也可更新到最新版本修复已知测速模块异常问题。<hr />    </div>
+        在 WSL 内运行需要的调试工具并通过 localhost 或将 V2Ray 监听地址绑定为 0.0.0.0，然后在 Windows 与 WSL 之间配置端口映射。注意 Windows 防火墙规则需允许 WSL 与 Windows 进程通信。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何安全地共享订阅链接而不泄露个人信息？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 能否同步 Quantumult X 的规则？</h5></div>
     <div class="panel-body">
-        避免将私人订阅直接在公开场合分享，若需要共享可在服务端生成只读或限速专用订阅，并定期更换 token。对外公开时移除或隐藏用户识别字段，确保他人无法通过订阅追溯出个人账户信息。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 模式适合高并发环境吗？</h5></div>
-    <div class="panel-body">
-        适合。XTLS 去除冗余加密，提高 CPU 使用效率，降低延迟。结合策略组和多出口节点，可在高并发或多连接场景下保持稳定、高速的网络体验。<hr />    </div>
+        Surfboard 的规则语法与 Quantumult X 相似，但并非完全兼容。部分策略组或脚本需手动修改格式方能正常使用，因此不建议直接复制，最好通过转换工具处理。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 能否使用订阅链接？</h5></div>
@@ -266,19 +262,14 @@ Clash可以通过集成方式，将多名用户的网络需求集中到一台服
         Mellow 采用基于透明代理的架构，适合路由或系统级流量重定向，而 Clash 更偏向规则式应用代理。Mellow 的灵活性更高，但配置复杂；Clash 则兼顾易用性与功能扩展性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 使用 AEAD 加密的优势是什么？</h5></div>
+    <div class="panel-body">
+        AEAD 加密提供更强的安全性和抗重放攻击能力，同时隐藏流量特征，降低被 DPI 检测风险。在高封锁环境下使用，可提升连接稳定性和长期可用性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分组如何自动切换？</h5></div>
     <div class="panel-body">
         用户可按延迟、地区或用途将节点分组，并启用策略组。系统会根据节点健康状况和延迟自动切换到最佳节点，保证网页浏览、视频播放和游戏连接稳定顺畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 能否同步 Quantumult X 的规则？</h5></div>
-    <div class="panel-body">
-        Surfboard 的规则语法与 Quantumult X 相似，但并非完全兼容。部分策略组或脚本需手动修改格式方能正常使用，因此不建议直接复制，最好通过转换工具处理。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何将 Windows 上的 V2Ray 与 WSL 环境联合调试？</h5></div>
-    <div class="panel-body">
-        在 WSL 内运行需要的调试工具并通过 localhost 或将 V2Ray 监听地址绑定为 0.0.0.0，然后在 Windows 与 WSL 之间配置端口映射。注意 Windows 防火墙规则需允许 WSL 与 Windows 进程通信。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则订阅更新频率如何设置？</h5></div>
@@ -286,9 +277,19 @@ Clash可以通过集成方式，将多名用户的网络需求集中到一台服
         Clash 支持设置订阅规则的更新频率，例如每小时或每天。定期更新可保证节点和规则最新，减少手动维护，提高访问速度和分流效率，同时保持网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 使用 AEAD 加密的优势是什么？</h5></div>
+    <div class="panel-heading"><h5>如何安全地共享订阅链接而不泄露个人信息？</h5></div>
     <div class="panel-body">
-        AEAD 加密提供更强的安全性和抗重放攻击能力，同时隐藏流量特征，降低被 DPI 检测风险。在高封锁环境下使用，可提升连接稳定性和长期可用性。    </div>
+        避免将私人订阅直接在公开场合分享，若需要共享可在服务端生成只读或限速专用订阅，并定期更换 token。对外公开时移除或隐藏用户识别字段，确保他人无法通过订阅追溯出个人账户信息。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的测速功能不显示结果怎么办？</h5></div>
+    <div class="panel-body">
+        测速依赖于节点响应时间与服务器网络质量。若测速为空白，请检查系统时间同步、网络防火墙及代理端口设置是否正确；也可更新到最新版本修复已知测速模块异常问题。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + XTLS 模式适合高并发环境吗？</h5></div>
+    <div class="panel-body">
+        适合。XTLS 去除冗余加密，提高 CPU 使用效率，降低延迟。结合策略组和多出口节点，可在高并发或多连接场景下保持稳定、高速的网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -336,16 +337,16 @@ Clash可以通过集成方式，将多名用户的网络需求集中到一台服
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-10-14-free-ssr-subscribe.htm" title="「10月14日」最高速度21.8M/S，2025年SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅链接">「10月14日」最高速度21.8M/S，2025年SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-21.htm" title="「9月21日」最高速度21.6M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/Trojan节点/V2ray节点每天更新免费机场订阅链接">「9月21日」最高速度21.6M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/Trojan节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-13.htm" title="「10月13日」最高速度22.5M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接">「10月13日」最高速度22.5M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-clash.htm" title="「10月2日」最高速度18.9M/S，2025年Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月2日」最高速度18.9M/S，2025年Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-9-29.htm" title="「9月29日」最高速度20.7M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点每天更新免费机场订阅链接">「9月29日」最高速度20.7M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-20-clash-node-daily-updates.htm" title="「10月20日」最高速度19.2M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接">「10月20日」最高速度19.2M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-10-clash-node-daily-updates.htm" title="「9月10日」最高速度18.2M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接">「9月10日」最高速度18.2M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-5.htm" title="「9月5日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点每天更新免费机场订阅链接">「9月5日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-6-free-clash.htm" title="「10月6日」最高速度20.5M/S，2025年Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「10月6日」最高速度20.5M/S，2025年Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-17.htm" title="「9月17日」最高速度23M/S，2025年Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接">「9月17日」最高速度23M/S，2025年Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-node-subscribe.htm" title="「9月24日」最高速度21.7M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点每天更新免费机场订阅链接">「9月24日」最高速度21.7M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-11.htm" title="「10月11日」最高速度18.2M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「10月11日」最高速度18.2M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-27.htm" title="「9月27日」最高速度19.6M/S，2025年Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅链接">「9月27日」最高速度19.6M/S，2025年Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-19.htm" title="「9月19日」最高速度19.3M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接">「9月19日」最高速度19.3M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-21.htm" title="「10月21日」最高速度22.4M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Trojan节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「10月21日」最高速度22.4M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Trojan节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-22-free-ssr-subscribe.htm" title="「9月22日」最高速度22.8M/S，2025年V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「9月22日」最高速度22.8M/S，2025年V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-10-15.htm" title="「10月15日」最高速度20.7M/S，2025年SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月15日」最高速度20.7M/S，2025年SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-11.htm" title="「9月11日」最高速度22.6M/S，2025年Singbox节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「9月11日」最高速度22.6M/S，2025年Singbox节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-28-free-clash.htm" title="「9月28日」最高速度18.8M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「9月28日」最高速度18.8M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -357,7 +358,7 @@ Clash可以通过集成方式，将多名用户的网络需求集中到一台服
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>

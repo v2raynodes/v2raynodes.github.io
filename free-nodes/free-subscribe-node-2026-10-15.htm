@@ -323,6 +323,21 @@ A：每局游戏开始前都可以进行编队调整，灵活组合才是胜利�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何保证规则订阅的实时更新？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持远程规则订阅 URL，可设置定期自动更新频率，如每小时或每天。自动更新保证节点和规则保持最新，减少手动维护，提高访问速度和分流效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何给 Clash 添加自定义域名白名单以提升访问体验？</h5></div>
+    <div class="panel-body">
+        在 rules 中添加 `DOMAIN-SUFFIX,example.com,DIRECT` 或 `DOMAIN-KEYWORD,example,DIRECT` 条目，将常用且可靠的站点设为直连，可减少代理绕行延迟并避免因代理造成的登录/验证问题。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何结合节点测速优化策略组？</h5></div>
+    <div class="panel-body">
+        PassWall2 会定期测速节点延迟和丢包率，并根据策略组自动选择最优节点。通过测速和自动切换，可保证网页、视频和游戏流量走低延迟节点，提升整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>如何优化 Clash DNS 解析速度？</h5></div>
     <div class="panel-body">
         可在配置文件中启用 fake-ip 模式或使用高质量的 DoH 服务（如 Cloudflare、AliDNS）。同时将 `fallback-filter.geoip` 设置为 true，避免国内域名被错误解析到境外，提高解析效率。<hr />    </div>
@@ -331,31 +346,6 @@ A：每局游戏开始前都可以进行编队调整，灵活组合才是胜利�
     <div class="panel-heading"><h5>Trojan-Go 与 Trojan 有什么区别？</h5></div>
     <div class="panel-body">
         Trojan-Go 是 Trojan 的改进版，加入了多路复用、WebSocket 和 gRPC 支持。它兼容原版配置，同时在性能和连接灵活性上更优秀，适合多环境部署。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 支持节点批量更新吗？</h5></div>
-    <div class="panel-body">
-        支持。Nekoray 可通过订阅 URL 批量下载最新节点并替换旧节点。结合定时更新功能，可保持节点列表最新，减少手动维护和配置工作。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何结合节点测速优化策略组？</h5></div>
-    <div class="panel-body">
-        PassWall2 会定期测速节点延迟和丢包率，并根据策略组自动选择最优节点。通过测速和自动切换，可保证网页、视频和游戏流量走低延迟节点，提升整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何给 Clash 添加自定义域名白名单以提升访问体验？</h5></div>
-    <div class="panel-body">
-        在 rules 中添加 `DOMAIN-SUFFIX,example.com,DIRECT` 或 `DOMAIN-KEYWORD,example,DIRECT` 条目，将常用且可靠的站点设为直连，可减少代理绕行延迟并避免因代理造成的登录/验证问题。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化网络体验？</h5></div>
-    <div class="panel-body">
-        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何保证规则订阅的实时更新？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持远程规则订阅 URL，可设置定期自动更新频率，如每小时或每天。自动更新保证节点和规则保持最新，减少手动维护，提高访问速度和分流效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 与 Shadowrocket 相比的最大区别是什么？</h5></div>
@@ -368,9 +358,19 @@ A：每局游戏开始前都可以进行编队调整，灵活组合才是胜利�
         PassWall2 会根据节点延迟和成功率自动调整策略组选择最优节点。测速结果直接影响程序选择出口，从而提高连接速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 支持节点批量更新吗？</h5></div>
+    <div class="panel-body">
+        支持。Nekoray 可通过订阅 URL 批量下载最新节点并替换旧节点。结合定时更新功能，可保持节点列表最新，减少手动维护和配置工作。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray QUIC 模式适合高丢包网络吗？</h5></div>
     <div class="panel-body">
-        QUIC 基于 UDP 协议，支持多路复用和零握手，能在高丢包和不稳定网络中减少延迟和丢包。适合视频、游戏和即时通讯等高频应用场景，提高稳定性和速度。    </div>
+        QUIC 基于 UDP 协议，支持多路复用和零握手，能在高丢包和不稳定网络中减少延迟和丢包。适合视频、游戏和即时通讯等高频应用场景，提高稳定性和速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化网络体验？</h5></div>
+    <div class="panel-body">
+        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -418,16 +418,16 @@ A：每局游戏开始前都可以进行编队调整，灵活组合才是胜利�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="「10月16日」最高速度21.3M/S，2025年V2ray节点/SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接">「10月16日」最高速度21.3M/S，2025年V2ray节点/SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-5.htm" title="「10月5日」最高速度19.3M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点每天更新免费机场订阅链接">「10月5日」最高速度19.3M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-9-29.htm" title="「9月29日」最高速度20.7M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点每天更新免费机场订阅链接">「9月29日」最高速度20.7M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-5.htm" title="「9月5日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点每天更新免费机场订阅链接">「9月5日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-3.htm" title="「10月3日」最高速度20.7M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点每天更新免费机场订阅链接">「10月3日」最高速度20.7M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-16-clash-node.htm" title="「9月16日」最高速度18.7M/S，2025年V2ray节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「9月16日」最高速度18.7M/S，2025年V2ray节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-10-2-free-clash.htm" title="「10月2日」最高速度18.9M/S，2025年Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「10月2日」最高速度18.9M/S，2025年Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-10-1.htm" title="「10月1日」最高速度21.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点每天更新免费机场订阅链接">「10月1日」最高速度21.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-4-clash-v2ray-ss-ssr.htm" title="「9月4日」最高速度18.5M/S，2025年SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接">「9月4日」最高速度18.5M/S，2025年SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-20-free-v2ray.htm" title="「9月20日」最高速度22.3M/S，2025年Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费机场订阅链接">「9月20日」最高速度22.3M/S，2025年Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-10-free-ssr-subscribe.htm" title="「10月10日」最高速度22.3M/S，2025年Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费机场订阅链接">「10月10日」最高速度22.3M/S，2025年Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-10-1.htm" title="「10月1日」最高速度21.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点每天更新免费机场订阅链接">「10月1日」最高速度21.5M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-10-clash-node-daily-updates.htm" title="「9月10日」最高速度18.2M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接">「9月10日」最高速度18.2M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-23.htm" title="「9月23日」最高速度18.5M/S，2025年Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接">「9月23日」最高速度18.5M/S，2025年Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-27.htm" title="「9月27日」最高速度19.6M/S，2025年Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅链接">「9月27日」最高速度19.6M/S，2025年Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-13.htm" title="「10月13日」最高速度22.5M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接">「10月13日」最高速度22.5M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-7.htm" title="「9月7日」最高速度20.4M/S，2025年SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接">「9月7日」最高速度20.4M/S，2025年SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -439,7 +439,7 @@ A：每局游戏开始前都可以进行编队调整，灵活组合才是胜利�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
