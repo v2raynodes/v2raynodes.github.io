@@ -394,44 +394,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 全局与规则代理如何合理选择？</h5></div>
-    <div class="panel-body">
-        全局代理适合游戏或全局科学上网，将所有流量通过节点；规则代理仅对指定应用或 IP 走代理，可提高带宽利用率和访问效率，根据使用场景灵活选择模式。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 的 TLS+伪装模式适合什么情况？</h5></div>
-    <div class="panel-body">
-        TLS+伪装模式能隐藏真实流量特征，适用于封锁严格的环境。结合域名伪装和证书配置，可以使流量看似普通 HTTPS 请求，提高安全性和抗封锁能力。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
-    <div class="panel-body">
-        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
-    <div class="panel-body">
-        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 如何结合手动节点选择优化访问？</h5></div>
-    <div class="panel-body">
-        用户可根据网络延迟和用途手动切换节点，选择最优节点处理不同流量。虽然不支持自动更新，但在节点不稳定或特定需求下可以灵活调整，提高访问效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 mKCP 参数如何调优以适应不稳定链路？</h5></div>
-    <div class="panel-body">
-        mKCP 有多个参数如 mtu、tinterval、uplink/downlink 等，可通过降低 mtu 与增大 mtu 重试间隔来适应高丢包场景；启用 FEC 与调整窗口大小能提高容错性，最终需在实际网络环境中逐步调试获得最佳值。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的协议插件如何应对封锁？</h5></div>
     <div class="panel-body">
         协议插件可隐藏真实通信特征，将流量伪装成正常 HTTP 或 TLS 数据。结合混淆方式使用，可以有效降低被 DPI 检测或封锁的风险，提高节点稳定性和长期可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 支持手动和二维码导入节点吗？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 mKCP 参数如何调优以适应不稳定链路？</h5></div>
     <div class="panel-body">
-        支持。用户可以手动添加节点信息，或者通过扫描节点二维码导入节点。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
+        mKCP 有多个参数如 mtu、tinterval、uplink/downlink 等，可通过降低 mtu 与增大 mtu 重试间隔来适应高丢包场景；启用 FEC 与调整窗口大小能提高容错性，最终需在实际网络环境中逐步调试获得最佳值。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 TUN 模式与 SOCKS 模式有何差异？</h5></div>
@@ -441,7 +411,37 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 如何在 Android 上导入配置？</h5></div>
     <div class="panel-body">
-        打开 Nekobox，点击“导入配置”按钮，选择订阅链接或本地 JSON 文件。程序会解析后自动生成节点列表，用户可一键连接或测速筛选最优节点。    </div>
+        打开 Nekobox，点击“导入配置”按钮，选择订阅链接或本地 JSON 文件。程序会解析后自动生成节点列表，用户可一键连接或测速筛选最优节点。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-body">
+        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 支持手动和二维码导入节点吗？</h5></div>
+    <div class="panel-body">
+        支持。用户可以手动添加节点信息，或者通过扫描节点二维码导入节点。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 如何结合手动节点选择优化访问？</h5></div>
+    <div class="panel-body">
+        用户可根据网络延迟和用途手动切换节点，选择最优节点处理不同流量。虽然不支持自动更新，但在节点不稳定或特定需求下可以灵活调整，提高访问效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
+    <div class="panel-body">
+        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 的 TLS+伪装模式适合什么情况？</h5></div>
+    <div class="panel-body">
+        TLS+伪装模式能隐藏真实流量特征，适用于封锁严格的环境。结合域名伪装和证书配置，可以使流量看似普通 HTTPS 请求，提高安全性和抗封锁能力。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 全局与规则代理如何合理选择？</h5></div>
+    <div class="panel-body">
+        全局代理适合游戏或全局科学上网，将所有流量通过节点；规则代理仅对指定应用或 IP 走代理，可提高带宽利用率和访问效率，根据使用场景灵活选择模式。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -489,16 +489,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-10-18-free-ssr-subscribe.htm" title="「10月18日」最高速度19.9M/S，2025年Trojan节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「10月18日」最高速度19.9M/S，2025年Trojan节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-31.htm" title="「10月31日」最高速度21.7M/S，2025年Trojan节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接">「10月31日」最高速度21.7M/S，2025年Trojan节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-11-13.htm" title="「11月13日」最高速度21.1M/S，2026年SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接">「11月13日」最高速度21.1M/S，2026年SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-19.htm" title="「10月19日」最高速度18.8M/S，2025年V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接">「10月19日」最高速度18.8M/S，2025年V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-18-free-clash.htm" title="「11月18日」最高速度22.6M/S，2026年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Singbox节点每天更新免费机场订阅链接">「11月18日」最高速度22.6M/S，2026年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-25.htm" title="「10月25日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/Singbox节点每天更新免费机场订阅链接">「10月25日」最高速度22.1M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="「10月16日」最高速度21.3M/S，2025年V2ray节点/SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接">「10月16日」最高速度21.3M/S，2025年V2ray节点/SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-21.htm" title="「10月21日」最高速度22.4M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Trojan节点/Singbox节点/V2ray节点每天更新免费机场订阅链接">「10月21日」最高速度22.4M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Trojan节点/Singbox节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-11-10-clash-v2ray-ss-ssr.htm" title="「11月10日」最高速度22.5M/S，2026年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接">「11月10日」最高速度22.5M/S，2026年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-20-clash-node-daily-updates.htm" title="「10月20日」最高速度19.2M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接">「10月20日」最高速度19.2M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费机场订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-24-node-share.htm" title="「10月24日」最高速度22.7M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点每天更新免费机场订阅链接">「10月24日」最高速度22.7M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-22-free-ssr-subscribe.htm" title="「10月22日」最高速度19.5M/S，2025年Singbox节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点每天更新免费机场订阅链接">「10月22日」最高速度19.5M/S，2025年Singbox节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-30-free-v2ray.htm" title="「10月30日」最高速度18.6M/S，2025年V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接">「10月30日」最高速度18.6M/S，2025年V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-2-node-share.htm" title="「11月2日」最高速度20.2M/S，2025年Singbox节点/Trojan节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接">「11月2日」最高速度20.2M/S，2025年Singbox节点/Trojan节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-12-free-v2ray.htm" title="「11月12日」最高速度22.4M/S，2026年Trojan节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接">「11月12日」最高速度22.4M/S，2026年Trojan节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-11.htm" title="「10月11日」最高速度18.2M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接">「10月11日」最高速度18.2M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-14-free-ssr-subscribe.htm" title="「10月14日」最高速度21.8M/S，2025年SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅链接">「10月14日」最高速度21.8M/S，2025年SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-19.htm" title="「10月19日」最高速度18.8M/S，2025年V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接">「10月19日」最高速度18.8M/S，2025年V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-20-clash-node.htm" title="「11月20日」最高速度21.7M/S，2026年Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费机场订阅链接">「11月20日」最高速度21.7M/S，2026年Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费机场订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -510,7 +510,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">21</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
